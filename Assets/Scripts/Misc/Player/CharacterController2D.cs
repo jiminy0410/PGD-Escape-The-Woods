@@ -41,9 +41,15 @@ public class CharacterController2D : MonoBehaviour
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
 	}
 
+	private void OnDrawGizmosSelected()
+	{
+		Gizmos.DrawWireSphere(m_GroundCheck.position, k_GroundedRadius);
+		Gizmos.DrawWireSphere(m_CeilingCheck.position, k_CeilingRadius);
+		Gizmos.DrawWireSphere(m_CornerCheck.position, k_CornerRadius);
+	}
+
 	void Update()
 	{
-
 		horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
 		if (Input.GetButtonDown("Jump"))
