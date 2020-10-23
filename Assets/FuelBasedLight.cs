@@ -4,13 +4,14 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 
-public class FlashMechanic : MonoBehaviour
+public class FuelBasedLight : MonoBehaviour
 {
     public Light2D playerVision;
-    public float maxFlashCharges = 3;
-    public float flashCharges;
-    public static float lightDecay = 3f;
-    public static float defaultOuterRadius = 2;
+    public float maxFuel = 3;
+    public float CurrentFuel;
+    public float lightDecay = 3f;
+    public float lightGrowth = 3f;
+    public float defaultOuterRadius = 2;
 
     private static float enlargedOuterRadius = 10;
 
@@ -19,37 +20,32 @@ public class FlashMechanic : MonoBehaviour
 
     void Start()
     {
-        flashCharges = maxFlashCharges;
+        CurrentFuel = maxFuel;
         playerVision = GetComponent<Light2D>();
         flashSound = this.GetComponent<AudioSource>();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKey(KeyCode.Q) && (CurrentFuel >= 1) &&(playerVision.pointLightOuterRadius< enlargedOuterRadius))
         {
-            if (flashCharges >= 1)
-            {
-                StartCoroutine(Flash());
-                flashCharges--;
-            }
+            //StartCoroutine(Flash());
+            playerVision.pointLightOuterRadius += lightGrowth * Time.deltaTime;
+            CurrentFuel--;
+            Debug.Log("Growing");
         }
-
-
-        
-        if (playerVision.pointLightOuterRadius > defaultOuterRadius)
+        else if (playerVision.pointLightOuterRadius > defaultOuterRadius)
         {
             playerVision.pointLightOuterRadius -= lightDecay * Time.deltaTime;
-            Debug.Log(lightDecay);
+            Debug.Log("Shrinking");
         }
-        
 
     }
-
+    /*
     public IEnumerator Flash()
     {
         playerVision.pointLightOuterRadius = enlargedOuterRadius;
         //flashSound.Play();
         yield return null;
-    }
+    }*/
 }

@@ -13,9 +13,9 @@ public class Checkpoint : MonoBehaviour
             GameObject deathPit = GameObject.Find("DeathPit");
             deathPit.GetComponent<DeathPit>().respawnPoint = this.transform;
 
-            if (FlashMechanic.flashCharges <= FlashMechanic.maxFlashCharges)
+            if (GetComponent<FlashMechanic>().flashCharges <= GetComponent<FlashMechanic>().maxFlashCharges)
             {
-                FlashMechanic.flashCharges = FlashMechanic.maxFlashCharges;
+                GetComponent<FlashMechanic>().flashCharges = GetComponent<FlashMechanic>().maxFlashCharges;
             }    
         }
     }
