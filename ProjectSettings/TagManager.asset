@@ -38,6 +38,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: LevelComponents
+    uniqueID: 3177370029
+    locked: 0
+  - name: Tilemap
+    uniqueID: 47480375
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

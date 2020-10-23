@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class FlashMechanic : MonoBehaviour
 {
-    //public Light2D playerVision;
+    public Light2D playerVision;
     public static float maxFlashCharges = 3;
     public static float flashCharges = maxFlashCharges;
     public static float lightDecay = 3f;
@@ -18,7 +19,7 @@ public class FlashMechanic : MonoBehaviour
 
     void Start()
     {
-        //playerVision = GetComponent<Light2D>();
+        playerVision = GetComponent<Light2D>();
         flashSound = this.GetComponent<AudioSource>();
     }
 
@@ -34,19 +35,19 @@ public class FlashMechanic : MonoBehaviour
         }
 
 
-        /*
+        
         if (playerVision.pointLightOuterRadius > defaultOuterRadius)
         {
             playerVision.pointLightOuterRadius -= lightDecay * Time.deltaTime;
             Debug.Log(lightDecay);
         }
-        */
+        
 
     }
 
     public IEnumerator Flash()
     {
-        //playerVision.pointLightOuterRadius = enlargedOuterRadius;
+        playerVision.pointLightOuterRadius = enlargedOuterRadius;
         flashSound.Play();
         yield return null;
     }
