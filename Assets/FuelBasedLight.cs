@@ -7,7 +7,7 @@ using UnityEngine.Experimental.Rendering.Universal;
 public class FuelBasedLight : MonoBehaviour
 {
     public Light2D playerVision;
-    public float maxFuel = 3;
+    public float maxFuel = 1000;
     public float CurrentFuel;
     public float lightDecay = 3f;
     public float lightGrowth = 3f;
@@ -17,10 +17,13 @@ public class FuelBasedLight : MonoBehaviour
 
     private AudioSource flashSound;
 
+    public FuelBar fuelBar;
+
 
     void Start()
     {
         CurrentFuel = maxFuel;
+        fuelBar.SetMaxFuel(maxFuel);
         playerVision = GetComponent<Light2D>();
         flashSound = this.GetComponent<AudioSource>();
     }
@@ -32,6 +35,7 @@ public class FuelBasedLight : MonoBehaviour
             //StartCoroutine(Flash());
             playerVision.pointLightOuterRadius += lightGrowth * Time.deltaTime;
             CurrentFuel--;
+            fuelBar.SetFuel(CurrentFuel);
             Debug.Log("Growing");
         }
         else if (playerVision.pointLightOuterRadius > defaultOuterRadius)
