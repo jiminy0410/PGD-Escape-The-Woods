@@ -2,21 +2,28 @@ using UnityEngine;
 
 public class CharacterController2D : MonoBehaviour
 {
-	[SerializeField] private float m_JumpForce = 400f;							// Amount of force added when the player jumps.
-	[Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;			// Amount of maxSpeed applied to crouching movement. 1 = 100%
-	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	// How much to smooth out the movement
-	[SerializeField] private bool m_AirControl = false;							// Whether or not a player can steer while jumping;
-	[SerializeField] private LayerMask m_WhatIsGround;							// A mask determining what is ground to the character
-	[SerializeField] private Transform m_GroundCheck;							// A position marking where to check if the player is grounded.
-	[SerializeField] private Transform m_CeilingCheck;							// A position marking where to check for ceilings
-	[SerializeField] private Collider2D m_CrouchDisableCollider;				// A collider that will be disabled when crouching
+	[SerializeField] private float m_JumpForce = 200f;                          // Amount of force added when the player jumps.
+	[SerializeField] private float m_JumpForce_Crouch = 400f;                   // Amount of force added when the player jumps & crouch.
+	[Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;          // Amount of maxSpeed applied to crouching movement. 1 = 100%
+	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;  // How much to smooth out the movement
+	[SerializeField] private bool m_AirControl = false;                         // Whether or not a player can steer while jumping;
+	[SerializeField] private LayerMask m_WhatIsGround;                          // A mask determining what is ground to the character
+	[SerializeField] private Transform m_GroundCheck;                           // A position marking where to check if the player is grounded.
+	[SerializeField] private Transform m_CeilingCheck;                          // A position marking where to check for ceilings
+	[SerializeField] private Collider2D m_CrouchDisableCollider;                // A collider that will be disabled when crouching
 
-	const float k_GroundedRadius = 0.3f; // Radius of the overlap circle to determine if grounded
+	public PlayerMovement controller;
+
+	const float k_GroundedRadius = 0.4f; // Radius of the overlap circle to determine if grounded
 	private bool m_Grounded;            // Whether or not the player is grounded.
 	const float k_CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
 	private Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 velocity = Vector3.zero;
+
+	public float jump_Counter, jump_Time, hang_Counter, hang_Time;
+
+	public bool crouch_Jump, press_Jump, double_Button_Jump;
 
 	private void Awake()
 	{
@@ -26,6 +33,11 @@ public class CharacterController2D : MonoBehaviour
 
 	private void FixedUpdate()
 	{
+	}
+
+
+	public void Move(float move, bool crouch, bool jump, bool jump_Short)
+	{
 		m_Grounded = false;
 
 		// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
@@ -34,13 +46,22 @@ public class CharacterController2D : MonoBehaviour
 		for (int i = 0; i < colliders.Length; i++)
 		{
 			if (colliders[i].gameObject != gameObject)
+			{
 				m_Grounded = true;
+				jump_Counter = 0;
+			}
 		}
-	}
+
+		if(m_Grounded)
+		{
+			hang_Counter = hang_Time;
+		}
+		else
+		{
+			hang_Counter -= Time.deltaTime;
+		}
 
 
-	public void Move(float move, bool crouch, bool jump)
-	{
 		// If crouching, check to see if the character can stand up
 		if (!crouch)
 		{
@@ -52,23 +73,26 @@ public class CharacterController2D : MonoBehaviour
 		}
 
 		//only control the player if grounded or airControl is turned on
-		if (m_Grounded || m_AirControl)
+		if (hang_Counter > 0 || m_AirControl)
 		{
-
-			// If crouching
-			if (crouch)
+			if (hang_Counter > 0)
 			{
-				// Reduce the speed by the crouchSpeed multiplier
-				move *= m_CrouchSpeed;
+				// If crouching
+				if (crouch)
+				{
+					// Reduce the speed by the crouchSpeed multiplier
+					move *= m_CrouchSpeed;
 
-				// Disable one of the colliders when crouching
-				if (m_CrouchDisableCollider != null)
-					m_CrouchDisableCollider.enabled = false;
-			} else
-			{
-				// Enable the collider when not crouching
-				if (m_CrouchDisableCollider != null)
-					m_CrouchDisableCollider.enabled = true;
+					// Disable one of the colliders when crouching
+					if (m_CrouchDisableCollider != null)
+						m_CrouchDisableCollider.enabled = false;
+				}
+				else
+				{
+					// Enable the collider when not crouching
+					if (m_CrouchDisableCollider != null)
+						m_CrouchDisableCollider.enabled = true;
+				}
 			}
 
 			// Move the character by finding the target velocity
@@ -89,12 +113,70 @@ public class CharacterController2D : MonoBehaviour
 				Flip();
 			}
 		}
-		// If the player should jump...
-		if (m_Grounded && jump)
+
+		if (crouch_Jump)
 		{
-			// Add a vertical force to the player.
-			m_Grounded = false;
-			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+			// If the player should jump wile crouch...
+			if (hang_Counter > 0 && jump)
+			{
+				// Add a vertical force to the player.
+				m_Grounded = false;
+				if (crouch)
+				{
+					m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce_Crouch));
+				}
+				else
+				{
+					m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+				}
+			}
+		}
+		else if (press_Jump)
+		{
+			// If the player should jump, short press short hop and long press long jump...
+			if (hang_Counter > 0 && jump)
+			{
+				// Add a vertical force to the player.
+				m_Grounded = false;
+				m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce / 2));
+				jump_Counter = jump_Time;
+			}
+
+			if (jump && Input.GetButton("Jump"))
+			{
+				if (jump_Counter > 0)
+				{
+					m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce / 20));
+					jump_Counter -= Time.deltaTime;
+				}
+				else
+				{
+					jump_Counter = 0;
+					controller.jump = false;
+				}
+			}
+			if (Input.GetButtonUp("Jump"))
+			{
+				jump_Counter = 0;
+				controller.jump = false;
+			}
+		}
+		else if (double_Button_Jump)
+		{
+			// If the player should jump one button short jump other long jump...
+			if (hang_Counter > 0 && (jump || jump_Short))
+			{
+				// Add a vertical force to the player.
+				m_Grounded = false;
+				if (jump)
+				{
+					m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce_Crouch));
+				}
+				else if (jump_Short)
+				{
+					m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+				}
+			}
 		}
 	}
 
