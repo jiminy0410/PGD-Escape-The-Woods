@@ -890,7 +890,7 @@ MonoBehaviour:
   controller: {fileID: 1284947756}
   press_Jump_First: 0
   jump_Counter: 0
-  jump_Time: 0.4
+  jump_Time: 0.2
   hang_Counter: 0
   hang_Time: 0.2
   crouch_Jump: 0

@@ -151,7 +151,7 @@ public class CharacterController2D : MonoBehaviour
 				{
 					if (jump_Counter != jump_Time)
 					{
-						m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce / 20));
+						m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce / 10));
 					}
 					jump_Counter -= Time.deltaTime;
 				}
