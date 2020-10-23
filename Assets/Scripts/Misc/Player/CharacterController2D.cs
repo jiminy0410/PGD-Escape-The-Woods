@@ -16,6 +16,7 @@ public class CharacterController2D : MonoBehaviour
 
 	const float k_GroundedRadius = 0.4f; // Radius of the overlap circle to determine if grounded
 	private bool m_Grounded;            // Whether or not the player is grounded.
+	public bool press_Jump_First;
 	const float k_CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
 	private Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
@@ -52,7 +53,7 @@ public class CharacterController2D : MonoBehaviour
 			}
 		}
 
-		if(m_Grounded)
+		if (m_Grounded)
 		{
 			hang_Counter = hang_Time;
 		}
@@ -134,11 +135,13 @@ public class CharacterController2D : MonoBehaviour
 		else if (press_Jump)
 		{
 			// If the player should jump, short press short hop and long press long jump...
-			if (hang_Counter > 0 && jump)
+			if (hang_Counter > 0 && jump && !press_Jump_First)
 			{
 				// Add a vertical force to the player.
+				press_Jump_First = true;
+				hang_Counter = 0;
 				m_Grounded = false;
-				m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce / 2));
+				m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
 				jump_Counter = jump_Time;
 			}
 
@@ -146,17 +149,22 @@ public class CharacterController2D : MonoBehaviour
 			{
 				if (jump_Counter > 0)
 				{
-					m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce / 20));
+					if (jump_Counter != jump_Time)
+					{
+						m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce / 20));
+					}
 					jump_Counter -= Time.deltaTime;
 				}
 				else
 				{
+					press_Jump_First = false;
 					jump_Counter = 0;
 					controller.jump = false;
 				}
 			}
 			if (Input.GetButtonUp("Jump"))
 			{
+				press_Jump_First = false;
 				jump_Counter = 0;
 				controller.jump = false;
 			}

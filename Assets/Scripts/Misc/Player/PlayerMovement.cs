@@ -43,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
 
 		if (controller.jump_Counter < 0 || Input.GetButtonUp("Jump"))
 		{
+			controller.press_Jump_First = false;
 			controller.hang_Counter = 0;
 			jump = false;
 		}
