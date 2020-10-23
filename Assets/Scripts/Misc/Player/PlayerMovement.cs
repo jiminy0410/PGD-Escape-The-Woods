@@ -4,6 +4,7 @@ public class PlayerMovement : MonoBehaviour
 {
 
 	public CharacterController2D controller;
+	private Rigidbody2D m_Rigidbody2D;
 
 	public float runSpeed = 40f;
 
@@ -11,6 +12,11 @@ public class PlayerMovement : MonoBehaviour
 	public bool jump = false;
 	public bool jump_Short = false;
 	public bool crouch = false;
+
+	private void Awake()
+	{
+		m_Rigidbody2D = GetComponent<Rigidbody2D>();
+	}
 
 	// Update is called once per frame
 	void Update()
@@ -21,12 +27,14 @@ public class PlayerMovement : MonoBehaviour
 		if (Input.GetButtonDown("Jump"))
 		{
 			jump = true;
+			m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, 0f);
 		}
 
 		if (controller.double_Button_Jump)
 		{
 			if (Input.GetButtonDown("Jump_Short"))
 			{
+				m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, 0f);
 				jump_Short = true;
 			}
 		}
@@ -47,6 +55,11 @@ public class PlayerMovement : MonoBehaviour
 			controller.hang_Counter = 0;
 			controller.jump_Counter = 0;
 			jump = false;
+		}
+
+		if (Input.GetButtonUp("Jump") && m_Rigidbody2D.velocity.y > 0 && controller.press_Jump)
+		{
+			m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, m_Rigidbody2D.velocity.y / 4);
 		}
 	}
 

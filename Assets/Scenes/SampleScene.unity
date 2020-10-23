@@ -430,7 +430,7 @@ GameObject:
   m_Component:
   - component: {fileID: 859505362}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -784,7 +784,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1201745142}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: feet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -798,7 +798,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1201745141}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.066, z: 0}
+  m_LocalPosition: {x: 0, y: -0.077, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1284947761}
@@ -818,7 +818,6 @@ GameObject:
   - component: {fileID: 1284947758}
   - component: {fileID: 1284947755}
   - component: {fileID: 1284947757}
-  - component: {fileID: 1284947756}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -847,23 +846,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1284947756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284947754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 715ce08fbb87d8c47b72177f50a77b9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 1284947757}
-  runSpeed: 20
-  jump: 0
-  jump_Short: 0
-  crouch: 0
 --- !u!114 &1284947757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -877,7 +859,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_JumpForce: 350
-  m_JumpForce_Crouch: 630
+  m_JumpForce_Crouch: 600
   m_CrouchSpeed: 0.36
   m_MovementSmoothing: 0.05
   m_AirControl: 1
@@ -886,15 +868,19 @@ MonoBehaviour:
     m_Bits: 256
   m_GroundCheck: {fileID: 1201745142}
   m_CeilingCheck: {fileID: 859505362}
+  m_CornerCheck: {fileID: 1378727205}
   m_CrouchDisableCollider: {fileID: 1284947759}
-  controller: {fileID: 1284947756}
   press_Jump_First: 0
+  runSpeed: 20
+  jump: 0
+  jump_Short: 0
+  crouch: 0
   jump_Counter: 0
-  jump_Time: 0.2
+  jump_Time: 0.19
   hang_Counter: 0
-  hang_Time: 0.2
-  crouch_Jump: 0
-  press_Jump: 1
+  hang_Time: 0.1
+  crouch_Jump: 1
+  press_Jump: 0
   double_Button_Jump: 0
 --- !u!58 &1284947758
 CircleCollider2D:
@@ -925,7 +911,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.103095055}
+  m_Offset: {x: 0, y: 0.117708996}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -936,7 +922,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.29513127, y: 0.1538099}
+  m_Size: {x: 0.29513127, y: 0.12458202}
   m_EdgeRadius: 0
 --- !u!212 &1284947760
 SpriteRenderer:
@@ -1001,7 +987,38 @@ Transform:
   m_Children:
   - {fileID: 1201745142}
   - {fileID: 859505362}
+  - {fileID: 1378727205}
   m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1378727204
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1378727205}
+  m_Layer: 0
+  m_Name: arms
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1378727205
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378727204}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1284947761}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1571191819

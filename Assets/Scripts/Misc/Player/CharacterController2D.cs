@@ -10,17 +10,27 @@ public class CharacterController2D : MonoBehaviour
 	[SerializeField] private LayerMask m_WhatIsGround;                          // A mask determining what is ground to the character
 	[SerializeField] private Transform m_GroundCheck;                           // A position marking where to check if the player is grounded.
 	[SerializeField] private Transform m_CeilingCheck;                          // A position marking where to check for ceilings
+	[SerializeField] private Transform m_CornerCheck;                          // A position marking where to check for corners
 	[SerializeField] private Collider2D m_CrouchDisableCollider;                // A collider that will be disabled when crouching
 
-	public PlayerMovement controller;
+	//public PlayerMovement controller;
 
-	const float k_GroundedRadius = 0.4f; // Radius of the overlap circle to determine if grounded
+	float k_GroundedRadius = 0.4f; // Radius of the overlap circle to determine if grounded
+	float k_CornerRadius = 0.4f; // Radius of the overlap circle to determine if grounded
 	private bool m_Grounded;            // Whether or not the player is grounded.
+	private bool m_Ledge_Grab;            // Whether or not the player is grounded.
 	public bool press_Jump_First;
 	const float k_CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
 	private Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 velocity = Vector3.zero;
+
+	public float runSpeed = 20f;
+
+	float horizontalMove = 0f;
+	public bool jump = false;
+	public bool jump_Short = false;
+	public bool crouch = false;
 
 	public float jump_Counter, jump_Time, hang_Counter, hang_Time;
 
@@ -31,11 +41,46 @@ public class CharacterController2D : MonoBehaviour
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
 	}
 
-
-	private void FixedUpdate()
+	void Update()
 	{
-	}
 
+		horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+
+		if (Input.GetButtonDown("Jump"))
+		{
+			jump = true;
+		}
+
+		if (double_Button_Jump)
+		{
+			if (Input.GetButtonDown("Jump_Short"))
+			{
+				jump_Short = true;
+			}
+		}
+
+		if (Input.GetButtonDown("Crouch"))
+		{
+			crouch = true;
+		}
+		else if (Input.GetButtonUp("Crouch"))
+		{
+			crouch = false;
+		}
+
+		if (jump_Counter < 0 || Input.GetButtonUp("Jump"))
+		{
+			press_Jump_First = false;
+			hang_Counter = 0;
+			jump_Counter = 0;
+			jump = false;
+		}
+
+		if (Input.GetButtonUp("Jump") && m_Rigidbody2D.velocity.y > 0 && press_Jump)
+		{
+			m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, m_Rigidbody2D.velocity.y / 4);
+		}
+	}
 
 	public void Move(float move, bool crouch, bool jump, bool jump_Short)
 	{
@@ -49,7 +94,6 @@ public class CharacterController2D : MonoBehaviour
 			if (colliders[i].gameObject != gameObject)
 			{
 				m_Grounded = true;
-				jump_Counter = 0;
 			}
 		}
 
@@ -73,14 +117,24 @@ public class CharacterController2D : MonoBehaviour
 			}
 		}
 
+		if (Physics2D.OverlapCircle(m_CornerCheck.position, k_CornerRadius, m_WhatIsGround))
+		{
+			m_Ledge_Grab = true;
+		}
+		else
+		{
+			m_Ledge_Grab = false;
+		}
+
 		//only control the player if grounded or airControl is turned on
 		if (hang_Counter > 0 || m_AirControl)
 		{
-			if (hang_Counter > 0)
+			if (m_Grounded)
 			{
 				// If crouching
 				if (crouch)
 				{
+					k_GroundedRadius = 0.3f;
 					// Reduce the speed by the crouchSpeed multiplier
 					move *= m_CrouchSpeed;
 
@@ -90,6 +144,7 @@ public class CharacterController2D : MonoBehaviour
 				}
 				else
 				{
+					k_GroundedRadius = 0.4f;
 					// Enable the collider when not crouching
 					if (m_CrouchDisableCollider != null)
 						m_CrouchDisableCollider.enabled = true;
@@ -120,9 +175,10 @@ public class CharacterController2D : MonoBehaviour
 			// If the player should jump wile crouch...
 			if (hang_Counter > 0 && jump)
 			{
+				m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, 0f);
 				// Add a vertical force to the player.
 				m_Grounded = false;
-				if (crouch)
+				if (crouch && !m_Ledge_Grab)
 				{
 					m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce_Crouch));
 				}
@@ -137,16 +193,25 @@ public class CharacterController2D : MonoBehaviour
 			// If the player should jump, short press short hop and long press long jump...
 			if (hang_Counter > 0 && jump && !press_Jump_First)
 			{
+			m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, 0f);
 				// Add a vertical force to the player.
 				press_Jump_First = true;
 				hang_Counter = 0;
 				m_Grounded = false;
 				m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
-				jump_Counter = jump_Time;
+				if (!m_Ledge_Grab)
+				{
+					jump_Counter = jump_Time;
+				}
 			}
 
 			if (jump && Input.GetButton("Jump"))
 			{
+				if(m_Ledge_Grab)
+				{
+					jump_Counter = 0;
+				}
+
 				if (jump_Counter > 0)
 				{
 					if (jump_Counter != jump_Time)
@@ -157,16 +222,15 @@ public class CharacterController2D : MonoBehaviour
 				}
 				else
 				{
-					press_Jump_First = false;
 					jump_Counter = 0;
-					controller.jump = false;
+					jump = false;
 				}
 			}
 			if (Input.GetButtonUp("Jump"))
 			{
 				press_Jump_First = false;
 				jump_Counter = 0;
-				controller.jump = false;
+				jump = false;
 			}
 		}
 		else if (double_Button_Jump)
@@ -174,9 +238,10 @@ public class CharacterController2D : MonoBehaviour
 			// If the player should jump one button short jump other long jump...
 			if (hang_Counter > 0 && (jump || jump_Short))
 			{
+			m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, 0f);
 				// Add a vertical force to the player.
 				m_Grounded = false;
-				if (jump)
+				if (jump && !m_Ledge_Grab)
 				{
 					m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce_Crouch));
 				}
@@ -188,6 +253,17 @@ public class CharacterController2D : MonoBehaviour
 		}
 	}
 
+	void FixedUpdate()
+	{
+		// Move our character
+		Move(horizontalMove * Time.fixedDeltaTime, crouch, jump, jump_Short);
+		if (!press_Jump)
+		{
+			jump = false;
+		}
+
+		jump_Short = false;
+	}
 
 	private void Flip()
 	{
