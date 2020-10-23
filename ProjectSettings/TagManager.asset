@@ -41,3 +41,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: LevelComponents
+    uniqueID: 3177370029
+    locked: 0
