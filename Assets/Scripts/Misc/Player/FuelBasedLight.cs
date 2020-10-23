@@ -7,13 +7,16 @@ using UnityEngine.Experimental.Rendering.Universal;
 public class FuelBasedLight : MonoBehaviour
 {
     public Light2D playerVision;
-    public float maxFuel = 1000;
-    public float CurrentFuel;
+
+    public float maxFuel = 3;
+    public float currentFuel;
+    private float useRate = 0;
+
     public float lightDecay = 3f;
     public float lightGrowth = 3f;
-    public float defaultOuterRadius = 2;
 
-    private static float enlargedOuterRadius = 10;
+    public float minimumOuterRadius = 2;
+    public float enlargedOuterRadius = 10;
 
     private AudioSource flashSound;
 
@@ -22,27 +25,37 @@ public class FuelBasedLight : MonoBehaviour
 
     void Start()
     {
-        CurrentFuel = maxFuel;
-        fuelBar.SetMaxFuel(maxFuel);
+        currentFuel = maxFuel;
         playerVision = GetComponent<Light2D>();
         flashSound = this.GetComponent<AudioSource>();
+        fuelBar.SetMaxFuel(maxFuel);
     }
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Q) && (CurrentFuel >= 1) &&(playerVision.pointLightOuterRadius< enlargedOuterRadius))
+        if (Input.GetKey(KeyCode.Q) && (currentFuel >= 1) && (playerVision.pointLightOuterRadius < enlargedOuterRadius))
         {
             //StartCoroutine(Flash());
             playerVision.pointLightOuterRadius += lightGrowth * Time.deltaTime;
-            CurrentFuel--;
-            fuelBar.SetFuel(CurrentFuel);
             Debug.Log("Growing");
+
         }
-        else if (playerVision.pointLightOuterRadius > defaultOuterRadius)
+        else if ((Input.GetKey(KeyCode.E) || currentFuel <= 0) && (playerVision.pointLightOuterRadius > minimumOuterRadius) )
         {
             playerVision.pointLightOuterRadius -= lightDecay * Time.deltaTime;
             Debug.Log("Shrinking");
         }
+
+        if (playerVision.pointLightOuterRadius <2)
+        {
+            playerVision.pointLightOuterRadius = 2;
+        }
+
+        fuelBar.SetFuel(currentFuel);
+
+        useRate = (playerVision.pointLightOuterRadius - minimumOuterRadius)*0.1f;
+
+        currentFuel -= useRate;
 
     }
     /*

@@ -372,10 +372,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerVision: {fileID: 438917823}
   maxFuel: 1000
-  CurrentFuel: 0
-  lightDecay: 3
-  lightGrowth: 3
-  defaultOuterRadius: 2
+  currentFuel: 0
+  lightDecay: 10
+  lightGrowth: 10
+  minimumOuterRadius: 2
+  enlargedOuterRadius: 10
   fuelBar: {fileID: 438917827}
 --- !u!114 &438917827
 MonoBehaviour:
@@ -425,7 +426,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -456.68, y: -280.49}
+  m_AnchoredPosition: {x: -300, y: 194}
   m_SizeDelta: {x: 350.64026, y: 64.93503}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &989587882
