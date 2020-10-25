@@ -204,7 +204,7 @@ public class CharacterController2D : MonoBehaviour
 				press_Jump_First = true;
 				hang_Counter = 0;
 				m_Grounded = false;
-				m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+				m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce*1.3f));
 				if (!m_Ledge_Grab)
 				{
 					jump_Counter = jump_Time;

@@ -876,7 +876,7 @@ MonoBehaviour:
   jump_Short: 0
   crouch: 0
   jump_Counter: 0
-  jump_Time: 0.19
+  jump_Time: 0.095
   hang_Counter: 0
   hang_Time: 0.1
   crouch_Jump: 1
