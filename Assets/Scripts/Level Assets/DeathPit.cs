@@ -15,6 +15,7 @@ public class DeathPit : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        player.GetComponent<FuelBasedLight>().currentFuel = player.GetComponent<FuelBasedLight>().maxFuel;
         player.transform.position = respawnPoint.position;
         //Flash.GetComponent<FlashMechanic>().StartCoroutine("Flash");
     }
