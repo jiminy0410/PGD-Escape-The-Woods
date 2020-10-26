@@ -21,6 +21,7 @@ public class CharacterController2D : MonoBehaviour
 	private bool m_Ledge_Grab;            // Whether or not the player is grounded.
 	public bool press_Jump_First;
 	const float k_CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
+	public Transform sprite;
 	private Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 velocity = Vector3.zero;
@@ -143,13 +144,14 @@ public class CharacterController2D : MonoBehaviour
 					k_GroundedRadius = 0.3f;
 					// Reduce the speed by the crouchSpeed multiplier
 					move *= m_CrouchSpeed;
-
+					sprite.transform.localScale = new Vector2(sprite.transform.localScale.x,0.7f);
 					// Disable one of the colliders when crouching
 					if (m_CrouchDisableCollider != null)
 						m_CrouchDisableCollider.enabled = false;
 				}
 				else
 				{
+					sprite.transform.localScale = new Vector2(sprite.transform.localScale.x, 1f);
 					k_GroundedRadius = 0.4f;
 					// Enable the collider when not crouching
 					if (m_CrouchDisableCollider != null)
@@ -192,6 +194,11 @@ public class CharacterController2D : MonoBehaviour
 				{
 					m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
 				}
+				sprite.transform.localScale = new Vector2(sprite.transform.localScale.x, 1f);
+				k_GroundedRadius = 0.4f;
+				// Enable the collider when not crouching
+				if (m_CrouchDisableCollider != null)
+					m_CrouchDisableCollider.enabled = true;
 			}
 		}
 		else if (press_Jump)
@@ -209,6 +216,11 @@ public class CharacterController2D : MonoBehaviour
 				{
 					jump_Counter = jump_Time;
 				}
+				sprite.transform.localScale = new Vector2(sprite.transform.localScale.x, 1f);
+				k_GroundedRadius = 0.4f;
+				// Enable the collider when not crouching
+				if (m_CrouchDisableCollider != null)
+					m_CrouchDisableCollider.enabled = true;
 			}
 
 			if (jump && Input.GetButton("Jump"))
@@ -255,6 +267,11 @@ public class CharacterController2D : MonoBehaviour
 				{
 					m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
 				}
+				sprite.transform.localScale = new Vector2(sprite.transform.localScale.x, 1f);
+				k_GroundedRadius = 0.4f;
+				// Enable the collider when not crouching
+				if (m_CrouchDisableCollider != null)
+					m_CrouchDisableCollider.enabled = true;
 			}
 		}
 	}
