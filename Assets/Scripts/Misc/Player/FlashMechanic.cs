@@ -35,7 +35,7 @@ public class FlashMechanic : MonoBehaviour
             }
         }
 
-
+        Debug.Log(playerVision.pointLightOuterRadius);
         
         if (playerVision.pointLightOuterRadius > defaultOuterRadius)
         {

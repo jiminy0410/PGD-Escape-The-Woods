@@ -43,6 +43,10 @@ GameObject:
   - component: {fileID: 6091798533617958305}
   - component: {fileID: 6091798533617958308}
   - component: {fileID: 6091798533617958306}
+  - component: {fileID: 500968754838323890}
+  - component: {fileID: 8856381814320112219}
+  - component: {fileID: 8194100450823158164}
+  - component: {fileID: 5945640561723757654}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -59,7 +63,7 @@ Transform:
   m_GameObject: {fileID: 6091798533617958309}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -10.39, y: -2.92, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 3, y: 3, z: 0}
   m_Children:
   - {fileID: 6091798533705084537}
   - {fileID: 6091798534970310749}
@@ -168,6 +172,95 @@ MonoBehaviour:
   crouch_Jump: 1
   press_Jump: 0
   double_Button_Jump: 0
+--- !u!114 &500968754838323890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6091798533617958309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec65be18fc55336498949eb3dbba431e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 0}
+--- !u!114 &8856381814320112219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6091798533617958309}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a7890ddad593b9449c56d6494c24655, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerVision: {fileID: 0}
+  maxFuel: 3
+  currentFuel: 0
+  lightDecay: 3
+  lightGrowth: 3
+  minimumOuterRadius: 2
+  enlargedOuterRadius: 10
+  fuelBar: {fileID: 0}
+--- !u!114 &8194100450823158164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6091798533617958309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c2739ff0c2e7cc42bf6f8a8fc407006, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerVision: {fileID: 0}
+  maxFlashCharges: 3
+  flashCharges: 0
+--- !u!114 &5945640561723757654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6091798533617958309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LightType: 3
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.5
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1
+  m_LightVolumeOpacity: 0
+  m_ApplyToSortingLayers: 00000000
+  m_LightCookieSprite: {fileID: 0}
+  m_UseNormalMap: 0
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_ShadowIntensity: 0
+  m_ShadowVolumeIntensity: 0
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 1
+  m_PointLightDistance: 3
+  m_PointLightQuality: 1
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
 --- !u!1 &6091798533705084538
 GameObject:
   m_ObjectHideFlags: 0
