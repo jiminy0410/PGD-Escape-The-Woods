@@ -533,18 +533,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &261940170 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 500968754838323890, guid: 8c113c0a15febff468c0beb1c7752b32,
-    type: 3}
-  m_PrefabInstance: {fileID: 2041554471}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec65be18fc55336498949eb3dbba431e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &300301632
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,7 +765,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1980519064}
   m_Lens:
     FieldOfView: 40
-    OrthographicSize: 10
+    OrthographicSize: 5
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
@@ -798,7 +786,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 471957641}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 60.7, y: -1.7, z: -10}
+  m_LocalPosition: {x: 27.48, y: -2.92, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1173227566}
@@ -2113,12 +2101,12 @@ PrefabInstance:
     - target: {fileID: 7590417675915803539, guid: 6d465901ed362ee4482b571b24cabaae,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -300
+      value: -208
       objectReference: {fileID: 0}
     - target: {fileID: 7590417675915803539, guid: 6d465901ed362ee4482b571b24cabaae,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 194
+      value: 142
       objectReference: {fileID: 0}
     - target: {fileID: 7590417675915803539, guid: 6d465901ed362ee4482b571b24cabaae,
         type: 3}
@@ -2227,7 +2215,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2251,7 +2239,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1404131232}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 60.7, y: -1.7, z: -10}
+  m_LocalPosition: {x: 27.48, y: -2.92, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -14824,16 +14812,6 @@ PrefabInstance:
       propertyPath: slider
       value: 
       objectReference: {fileID: 1986680626}
-    - target: {fileID: 5945640561723757654, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: m_LightType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6091798533617958306, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6091798533617958309, guid: 8c113c0a15febff468c0beb1c7752b32,
         type: 3}
       propertyPath: m_Name
@@ -14842,12 +14820,12 @@ PrefabInstance:
     - target: {fileID: 6091798533617958334, guid: 8c113c0a15febff468c0beb1c7752b32,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 60.7
+      value: 27.48
       objectReference: {fileID: 0}
     - target: {fileID: 6091798533617958334, guid: 8c113c0a15febff468c0beb1c7752b32,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.7
+      value: -2.92
       objectReference: {fileID: 0}
     - target: {fileID: 6091798533617958334, guid: 8c113c0a15febff468c0beb1c7752b32,
         type: 3}
@@ -14893,26 +14871,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194100450823158164, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8856381814320112219, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8856381814320112219, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: fuelBar
-      value: 
-      objectReference: {fileID: 261940170}
-    - target: {fileID: 8856381814320112219, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: maxFuel
-      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c113c0a15febff468c0beb1c7752b32, type: 3}

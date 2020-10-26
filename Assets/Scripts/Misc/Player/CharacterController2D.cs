@@ -136,7 +136,7 @@ public class CharacterController2D : MonoBehaviour
 		//only control the player if grounded or airControl is turned on
 		if (hang_Counter > 0 || m_AirControl)
 		{
-			if (m_Grounded)
+			if (m_Grounded || m_Ledge_Grab)
 			{
 				// If crouching
 				if (crouch)
@@ -157,6 +157,14 @@ public class CharacterController2D : MonoBehaviour
 					if (m_CrouchDisableCollider != null)
 						m_CrouchDisableCollider.enabled = true;
 				}
+			}
+			else
+			{
+				sprite.transform.localScale = new Vector2(sprite.transform.localScale.x, 1f);
+				k_GroundedRadius = 0.4f;
+				// Enable the collider when not crouching
+				if (m_CrouchDisableCollider != null)
+					m_CrouchDisableCollider.enabled = true;
 			}
 
 			// Move the character by finding the target velocity
@@ -194,11 +202,6 @@ public class CharacterController2D : MonoBehaviour
 				{
 					m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
 				}
-				sprite.transform.localScale = new Vector2(sprite.transform.localScale.x, 1f);
-				k_GroundedRadius = 0.4f;
-				// Enable the collider when not crouching
-				if (m_CrouchDisableCollider != null)
-					m_CrouchDisableCollider.enabled = true;
 			}
 		}
 		else if (press_Jump)
@@ -216,11 +219,6 @@ public class CharacterController2D : MonoBehaviour
 				{
 					jump_Counter = jump_Time;
 				}
-				sprite.transform.localScale = new Vector2(sprite.transform.localScale.x, 1f);
-				k_GroundedRadius = 0.4f;
-				// Enable the collider when not crouching
-				if (m_CrouchDisableCollider != null)
-					m_CrouchDisableCollider.enabled = true;
 			}
 
 			if (jump && Input.GetButton("Jump"))
@@ -267,11 +265,6 @@ public class CharacterController2D : MonoBehaviour
 				{
 					m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
 				}
-				sprite.transform.localScale = new Vector2(sprite.transform.localScale.x, 1f);
-				k_GroundedRadius = 0.4f;
-				// Enable the collider when not crouching
-				if (m_CrouchDisableCollider != null)
-					m_CrouchDisableCollider.enabled = true;
 			}
 		}
 	}

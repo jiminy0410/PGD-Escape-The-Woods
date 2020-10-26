@@ -147,8 +147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9de828450c46ed40967a6b8fa958469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 350
-  m_JumpForce_Crouch: 600
+  m_JumpForce: 400
+  m_JumpForce_Crouch: 700
   m_CrouchSpeed: 0.36
   m_MovementSmoothing: 0.05
   m_AirControl: 1
@@ -166,11 +166,11 @@ MonoBehaviour:
   jump_Short: 0
   crouch: 0
   jump_Counter: 0
-  jump_Time: 0.095
+  jump_Time: 0.11
   hang_Counter: 0
   hang_Time: 0.1
-  crouch_Jump: 1
-  press_Jump: 0
+  crouch_Jump: 0
+  press_Jump: 1
   double_Button_Jump: 0
 --- !u!114 &500968754838323890
 MonoBehaviour:
@@ -192,19 +192,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6091798533617958309}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a7890ddad593b9449c56d6494c24655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerVision: {fileID: 0}
-  maxFuel: 3
+  maxFuel: 1000
   currentFuel: 0
   lightDecay: 3
   lightGrowth: 3
   minimumOuterRadius: 2
   enlargedOuterRadius: 10
-  fuelBar: {fileID: 0}
+  fuelBar: {fileID: 500968754838323890}
 --- !u!114 &8194100450823158164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6091798533617958309}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c2739ff0c2e7cc42bf6f8a8fc407006, type: 3}
   m_Name: 
