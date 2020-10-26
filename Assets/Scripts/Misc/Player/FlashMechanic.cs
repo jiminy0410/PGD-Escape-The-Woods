@@ -7,8 +7,8 @@ using UnityEngine.Experimental.Rendering.Universal;
 public class FlashMechanic : MonoBehaviour
 {
     public Light2D playerVision;
-    public static float maxFlashCharges = 3;
-    public static float flashCharges = maxFlashCharges;
+    public float maxFlashCharges = 3;
+    public float flashCharges;
     public static float lightDecay = 3f;
     public static float defaultOuterRadius = 2;
 
@@ -19,6 +19,7 @@ public class FlashMechanic : MonoBehaviour
 
     void Start()
     {
+        flashCharges = maxFlashCharges;
         playerVision = GetComponent<Light2D>();
         flashSound = this.GetComponent<AudioSource>();
     }
@@ -47,8 +48,8 @@ public class FlashMechanic : MonoBehaviour
 
     public IEnumerator Flash()
     {
+        //flashSound.Play();
         playerVision.pointLightOuterRadius = enlargedOuterRadius;
-        flashSound.Play();
         yield return null;
     }
 }
