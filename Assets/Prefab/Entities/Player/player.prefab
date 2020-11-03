@@ -147,31 +147,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9de828450c46ed40967a6b8fa958469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 400
-  m_JumpForce_Crouch: 700
-  m_CrouchSpeed: 0.36
-  m_MovementSmoothing: 0.05
-  m_AirControl: 1
-  m_WhatIsGround:
+  JumpForce: 250
+  CrouchSpeed: 0.36
+  MovementSmoothing: 0.05
+  AirControl: 1
+  WhatIsGround:
     serializedVersion: 2
     m_Bits: 256
-  m_GroundCheck: {fileID: 6091798533705084537}
-  m_CeilingCheck: {fileID: 6091798534970310749}
-  m_CornerCheck: {fileID: 6091798533377111978}
-  m_CrouchDisableCollider: {fileID: 6091798533617958304}
-  press_Jump_First: 0
+  GroundCheck: {fileID: 6091798533705084537}
+  CeilingCheck: {fileID: 6091798534970310749}
+  CornerCheck: {fileID: 6091798533377111978}
+  CrouchDisableCollider: {fileID: 6091798533617958304}
+  Ledge_Grab: 0
   sprite: {fileID: 6091798533899146966}
   runSpeed: 20
   jump: 0
-  jump_Short: 0
+  jump_Hold: 0
   crouch: 0
+  jumps_Left: 0
+  Max_Jumps: 0
   jump_Counter: 0
-  jump_Time: 0.11
+  jump_Time: 0.15
   hang_Counter: 0
   hang_Time: 0.1
-  crouch_Jump: 0
   press_Jump: 1
-  double_Button_Jump: 0
+  dashDistance: 75
 --- !u!114 &500968754838323890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a7890ddad593b9449c56d6494c24655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerVision: {fileID: 0}
+  playerVision: {fileID: 5945640561723757654}
   maxFuel: 1000
   currentFuel: 0
   lightDecay: 3
