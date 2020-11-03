@@ -45,9 +45,9 @@ public class LifetimeDim : MonoBehaviour
     void FixedUpdate()
     {
         
-        tint += 1*(colorIntensity)*(blinks/lifeTime);
+        tint += 0.02f*(colorIntensity)*(blinks/lifeTime);
         //image.r = tint;
-        GetComponent<SpriteRenderer>().color = Color.Lerp(from, to, tint); ;
+        GetComponent<SpriteRenderer>().color = Color.Lerp(from, to, tint);
         GetComponent<SpriteRenderer>().color = new Color(GetComponent<SpriteRenderer>().color.r, GetComponent<SpriteRenderer>().color.g, GetComponent<SpriteRenderer>().color.b, 1);
         if (tint >= 1*colorIntensity)
         {
