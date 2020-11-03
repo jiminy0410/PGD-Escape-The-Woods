@@ -30,9 +30,30 @@ public class Automove : MonoBehaviour
         else
         {
             Vector3 lol = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-            //flip the speed
+            //turn around and walk away
             transform.localScale = lol;
             speed *= -1;
+        }
+        if (speed>0)
+        {
+            pathingRay = Physics2D.Raycast(raypoo.position, Vector2.right, rayLength);
+        }
+        else
+        {
+            pathingRay = Physics2D.Raycast(raypoo.position, Vector2.left, rayLength);
+        }
+        
+
+        if (pathingRay.collider != null)
+        {
+            Vector3 lol = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+            //turn around and walk away
+            transform.localScale = lol;
+            speed *= -1;
+        }
+        else
+        {
+            
         }
     }
 }
