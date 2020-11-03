@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 137717092}
   - component: {fileID: 137717091}
   - component: {fileID: 137717095}
+  - component: {fileID: 137717096}
   m_Layer: 0
   m_Name: Famine
   m_TagString: Untagged
@@ -268,6 +269,19 @@ MonoBehaviour:
   raypoo: {fileID: 1264172202}
   rayLength: 0.1
   speed: 1
+--- !u!114 &137717096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137717090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3500e6ba93808de44850b94ec0d7d516, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
 --- !u!1 &156368255
 GameObject:
   m_ObjectHideFlags: 0
