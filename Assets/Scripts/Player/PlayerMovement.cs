@@ -29,17 +29,7 @@ public class PlayerMovement : MonoBehaviour
 			jump = true;
 			m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, 0f);
 		}
-
-		if (controller.double_Button_Jump)
-		{
-			if (Input.GetButtonDown("Jump_Short"))
-			{
-				m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, 0f);
-				jump_Short = true;
-			}
-		}
-
-
+		
 		if (Input.GetButtonDown("Crouch"))
 		{
 			crouch = true;

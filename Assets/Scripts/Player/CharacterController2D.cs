@@ -35,12 +35,13 @@ public class CharacterController2D : MonoBehaviour
 	public bool crouch = false;
 
 	public float jump_Counter, jump_Time, hang_Counter, hang_Time;
-	public bool crouch_Jump, press_Jump, double_Button_Jump;
+	public bool press_Jump;
 
 	public float dashDistance = 15f;
 	bool isDashing;
 	bool isAbleToDash = true;
 	float doubleTapTime;
+	float dashTimer;
 	KeyCode lastKeyCode;
 
 	private void Awake()
@@ -57,21 +58,17 @@ public class CharacterController2D : MonoBehaviour
 
 	void Update()
 	{
+		if(dashTimer > 0)
+        {
+			isAbleToDash = false;
+			dashTimer -= Time.deltaTime;
+        }
 		horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
 		if (Input.GetButtonDown("Jump"))
 		{
 			jump = true;
-		}
-
-		if (double_Button_Jump)
-		{
-			if (Input.GetButtonDown("Jump_Short"))
-			{
-				jump_Short = true;
-			}
-		}
-
+		}		
 		if (Input.GetButtonDown("Crouch"))
 		{
 			crouch = true;
@@ -138,12 +135,15 @@ public class CharacterController2D : MonoBehaviour
 		if (m_Grounded)
 		{
 			hang_Counter = hang_Time;
+			if (dashTimer <= 0){
+				isAbleToDash = true;				
+			}
+
 		}
 		else
 		{
 			hang_Counter -= Time.deltaTime;
 		}
-
 
 		// If crouching, check to see if the character can stand up
 		if (!crouch)
@@ -217,25 +217,8 @@ public class CharacterController2D : MonoBehaviour
 			}
 		}
 
-		if (crouch_Jump)
-		{
-			// If the player should jump wile crouch...
-			if (hang_Counter > 0 && jump)
-			{
-				m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, 0f);
-				// Add a vertical force to the player.
-				m_Grounded = false;
-				if (crouch && !m_Ledge_Grab)
-				{
-					m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce_Crouch));
-				}
-				else
-				{
-					m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
-				}
-			}
-		}
-		else if (press_Jump)
+		
+		if (press_Jump)
 		{
 			// If the player should jump, short press short hop and long press long jump...
 			if (hang_Counter > 0 && jump && !press_Jump_First)
@@ -279,25 +262,7 @@ public class CharacterController2D : MonoBehaviour
 				jump_Counter = 0;
 				jump = false;
 			}
-		}
-		else if (double_Button_Jump)
-		{
-			// If the player should jump one button short jump other long jump...
-			if (hang_Counter > 0 && (jump || jump_Short))
-			{
-			m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, 0f);
-				// Add a vertical force to the player.
-				m_Grounded = false;
-				if (jump && !m_Ledge_Grab)
-				{
-					m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce_Crouch));
-				}
-				else if (jump_Short)
-				{
-					m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
-				}
-			}
-		}
+		}		
 	}
 
 	void FixedUpdate()
@@ -329,6 +294,7 @@ public class CharacterController2D : MonoBehaviour
 	IEnumerator Dash(float direction) {
 		isDashing = true;
 		isAbleToDash = false;
+		dashTimer = 1f;
 		m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, 0f);
 		m_Rigidbody2D.AddForce(new Vector2(dashDistance * direction, 0f), ForceMode2D.Impulse);
 		float gravity = m_Rigidbody2D.gravityScale;

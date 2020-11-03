@@ -162,7 +162,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &137717092
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1907,6 +1907,11 @@ PrefabInstance:
       propertyPath: slider
       value: 
       objectReference: {fileID: 1448266002}
+    - target: {fileID: 6091798533617958306, guid: 8c113c0a15febff468c0beb1c7752b32,
+        type: 3}
+      propertyPath: dashDistance
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 6091798533617958309, guid: 8c113c0a15febff468c0beb1c7752b32,
         type: 3}
       propertyPath: m_Name
