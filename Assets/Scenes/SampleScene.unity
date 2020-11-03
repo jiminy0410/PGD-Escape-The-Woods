@@ -1910,7 +1910,12 @@ PrefabInstance:
     - target: {fileID: 6091798533617958306, guid: 8c113c0a15febff468c0beb1c7752b32,
         type: 3}
       propertyPath: dashDistance
-      value: 150
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 6091798533617958308, guid: 8c113c0a15febff468c0beb1c7752b32,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6091798533617958309, guid: 8c113c0a15febff468c0beb1c7752b32,
         type: 3}
