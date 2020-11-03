@@ -39,25 +39,23 @@ public class FlashMechanic : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+            flashRechargeRate = 0.25f;
+
+        if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
+            flashRechargeRate = 0.20f;
+
         if (flashCharges < maxFlashCharges)
-        {
             flashCharges += flashRechargeRate * Time.deltaTime;
-        }
 
         if (playerVision.pointLightOuterRadius > defaultOuterRadius)
-        {
             playerVision.pointLightOuterRadius -= lightDecay * Time.deltaTime;
-        }
 
         if (flashCharges > 1)
-        {
             flashCharges = 1;
-        }
 
         if (playerVision.pointLightOuterRadius < 2)
-        {
             playerVision.pointLightOuterRadius = 2;
-        }
 
         flashBar.SetCharges(flashCharges);
     }
