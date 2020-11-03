@@ -218,7 +218,7 @@ public class CharacterController2D : MonoBehaviour
 		if (press_Jump)
 		{
 			// If the player should jump, short press short hop and long press long jump...
-			if ((hang_Counter > 0 || Ledge_Grab || jumps_Left > 0) && jump)
+			if ((hang_Counter > 0 || Ledge_Grab || jumps_Left > 0) && jump && !crouch)
 			{
 				Rigidbody2D.velocity = new Vector2(Rigidbody2D.velocity.x, 0f);
 				this.Grounded = false;
