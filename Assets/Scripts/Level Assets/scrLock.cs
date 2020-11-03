@@ -12,12 +12,15 @@ public class scrLock : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && scr.hasKey)
+        if (collision.CompareTag("Player") && scr.hasKeys)
         {
             this.gameObject.SetActive(false);
             scr.kickingDownTheDoor = true;
-            scr.Key.SetActive(false);
-            scr.Key.transform.parent = StateMagine.transform;
+            foreach (GameObject item in scr.keys)
+            {
+                item.SetActive(false);
+                item.transform.parent = StateMagine.transform;
+            }
         }
     }
 }

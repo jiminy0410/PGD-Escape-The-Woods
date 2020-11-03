@@ -546,6 +546,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &746158340 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1315090978921199253, guid: 2e9d1320e22394e4a84809cf905ea8df,
+    type: 3}
+  m_PrefabInstance: {fileID: 1001354189244442413}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &783911054 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1001354187856979477, guid: 2e9d1320e22394e4a84809cf905ea8df,
+    type: 3}
+  m_PrefabInstance: {fileID: 1001354189244442413}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &920000369
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,6 +641,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &923072558 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1001354188029820156, guid: 2e9d1320e22394e4a84809cf905ea8df,
+    type: 3}
+  m_PrefabInstance: {fileID: 1001354189244442413}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1001354189244442413
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -636,6 +654,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 851688933831633556, guid: 2e9d1320e22394e4a84809cf905ea8df,
+        type: 3}
+      propertyPath: StateMagine
+      value: 
+      objectReference: {fileID: 783911054}
     - target: {fileID: 1001354187856979476, guid: 2e9d1320e22394e4a84809cf905ea8df,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -695,6 +718,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: lock and key
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001354187856979479, guid: 2e9d1320e22394e4a84809cf905ea8df,
+        type: 3}
+      propertyPath: keys.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001354187856979479, guid: 2e9d1320e22394e4a84809cf905ea8df,
+        type: 3}
+      propertyPath: keys.Array.data[0]
+      value: 
+      objectReference: {fileID: 923072558}
+    - target: {fileID: 1001354187856979479, guid: 2e9d1320e22394e4a84809cf905ea8df,
+        type: 3}
+      propertyPath: keys.Array.data[1]
+      value: 
+      objectReference: {fileID: 746158340}
+    - target: {fileID: 7331378123471472831, guid: 2e9d1320e22394e4a84809cf905ea8df,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7331378123471472831, guid: 2e9d1320e22394e4a84809cf905ea8df,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.39
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e9d1320e22394e4a84809cf905ea8df, type: 3}

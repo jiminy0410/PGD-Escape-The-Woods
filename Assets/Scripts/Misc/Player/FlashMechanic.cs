@@ -35,12 +35,12 @@ public class FlashMechanic : MonoBehaviour
             }
         }
 
-        Debug.Log(playerVision.pointLightOuterRadius);
+        //Debug.Log(playerVision.pointLightOuterRadius);
         
         if (playerVision.pointLightOuterRadius > defaultOuterRadius)
         {
             playerVision.pointLightOuterRadius -= lightDecay * Time.deltaTime;
-            Debug.Log(lightDecay);
+            //Debug.Log(lightDecay);
         }
         
 

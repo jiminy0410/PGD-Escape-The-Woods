@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class scrKey : MonoBehaviour
 {
     public GameObject StateMagine;
     GameObject player;
     lockAndKey scr;
+    public bool Collected;
     CharacterController2D scrPlayer;
     public void Start()
     {
@@ -21,16 +20,28 @@ public class scrKey : MonoBehaviour
             this.transform.parent = collision.transform;
             if (scrPlayer.m_FacingRight)
             {
-                transform.position = new Vector2(collision.transform.position.x + 0.4f, collision.transform.position.y);
+                for (int i = 0; i < scr.keys.Count; i++)
+                {
+                    if (scr.keys[i] == this.gameObject)
+                    {
+                        transform.position = new Vector2(collision.transform.position.x + 0.4f * i, collision.transform.position.y);
+                    }
+                }
                 Vector3 theScale = transform.localScale;
                 theScale.y *= -1;
                 transform.localScale = theScale;
             }
             else
             {
-                transform.position = new Vector2(collision.transform.position.x - 0.4f, collision.transform.position.y);
+                for (int i = 0; i < scr.keys.Count; i++)
+                {
+                    if (scr.keys[i] == this.gameObject)
+                    {
+                        transform.position = new Vector2(collision.transform.position.x - 0.4f * i, collision.transform.position.y);
+                    }
+                }
             }
-            scr.hasKey = true;
+            Collected = true;
         }
     }
 }
