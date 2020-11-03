@@ -16,6 +16,14 @@ public class Automove : MonoBehaviour
         speed /= -100;
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "player")
+        {
+            Debug.Log("blueh, Im ded");
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -36,11 +44,11 @@ public class Automove : MonoBehaviour
         }
         if (speed>0)
         {
-            pathingRay = Physics2D.Raycast(raypoo.position, Vector2.right, rayLength);
+            pathingRay = Physics2D.Raycast(raypoo.position, Vector2.right, rayLength*1.5f);
         }
         else
         {
-            pathingRay = Physics2D.Raycast(raypoo.position, Vector2.left, rayLength);
+            pathingRay = Physics2D.Raycast(raypoo.position, Vector2.left, rayLength*1.5f);
         }
         
 
