@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class CharacterController2D : MonoBehaviour
@@ -34,8 +35,13 @@ public class CharacterController2D : MonoBehaviour
 	public bool crouch = false;
 
 	public float jump_Counter, jump_Time, hang_Counter, hang_Time;
-
 	public bool crouch_Jump, press_Jump, double_Button_Jump;
+
+	public float dashDistance = 15f;
+	bool isDashing;
+	bool isAbleToDash = true;
+	float doubleTapTime;
+	KeyCode lastKeyCode;
 
 	private void Awake()
 	{
@@ -86,6 +92,31 @@ public class CharacterController2D : MonoBehaviour
 		if (Input.GetButtonUp("Jump") && m_Rigidbody2D.velocity.y > 0 && press_Jump)
 		{
 			m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, m_Rigidbody2D.velocity.y / 4);
+		}
+		//dashing left
+		if (Input.GetKeyDown(KeyCode.A)) { 
+			if ((doubleTapTime > Time.time && lastKeyCode == KeyCode.A)&& isAbleToDash == true)
+            {
+				StartCoroutine(Dash(-1f));
+			}
+			else
+            {
+				doubleTapTime = Time.time + 0.5f;
+            }
+			lastKeyCode = KeyCode.A;
+		}
+		//dashing right
+		if (Input.GetKeyDown(KeyCode.D))
+		{
+			if ((doubleTapTime > Time.time && lastKeyCode == KeyCode.D)&& isAbleToDash == true)
+			{
+				StartCoroutine(Dash(1f));
+			}
+			else
+			{
+				doubleTapTime = Time.time + 0.5f;
+			}
+			lastKeyCode = KeyCode.D;
 		}
 	}
 
@@ -272,6 +303,7 @@ public class CharacterController2D : MonoBehaviour
 	void FixedUpdate()
 	{
 		// Move our character
+		if (!isDashing) m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, m_Rigidbody2D.velocity.y);
 		Move(horizontalMove * Time.fixedDeltaTime, crouch, jump, jump_Short);
 		if (!press_Jump)
 		{
@@ -279,6 +311,8 @@ public class CharacterController2D : MonoBehaviour
 		}
 
 		jump_Short = false;
+		//if (!isDashing)
+
 	}
 
 	private void Flip()
@@ -290,5 +324,17 @@ public class CharacterController2D : MonoBehaviour
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
+	}
+
+	IEnumerator Dash(float direction) {
+		isDashing = true;
+		isAbleToDash = false;
+		m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, 0f);
+		m_Rigidbody2D.AddForce(new Vector2(dashDistance * direction, 0f), ForceMode2D.Impulse);
+		float gravity = m_Rigidbody2D.gravityScale;
+		m_Rigidbody2D.gravityScale = 0;
+		yield return new WaitForSeconds(0.4f);
+		isDashing = false;
+		m_Rigidbody2D.gravityScale = gravity;
 	}
 }
