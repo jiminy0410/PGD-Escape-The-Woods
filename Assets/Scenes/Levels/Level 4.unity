@@ -349,18 +349,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 794107675}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &261940170 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 500968754838323890, guid: 8c113c0a15febff468c0beb1c7752b32,
-    type: 3}
-  m_PrefabInstance: {fileID: 2041554471}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec65be18fc55336498949eb3dbba431e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &300301632
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,8 +678,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d931b67cbf10c2c4b858680947125aa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Flash: {fileID: 0}
-  player: {fileID: 0}
+  player: {fileID: 1801449866}
   respawnPoint: {fileID: 300301633}
 --- !u!4 &998351856 stripped
 Transform:
@@ -1481,30 +1468,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1687775490}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1801449867 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5945640561723757654, guid: 8c113c0a15febff468c0beb1c7752b32,
+--- !u!1 &1801449866 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6091798533617958309, guid: 8c113c0a15febff468c0beb1c7752b32,
     type: 3}
   m_PrefabInstance: {fileID: 2041554471}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1801449868 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8388587301789224547, guid: 8c113c0a15febff468c0beb1c7752b32,
-    type: 3}
-  m_PrefabInstance: {fileID: 2041554471}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 765b24043627cb14da3b5b67682a9e84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1806719362
 GameObject:
   m_ObjectHideFlags: 0
@@ -14311,21 +14280,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 500968754838323890, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: slider
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5945640561723757654, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: m_LightType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6091798533617958306, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6091798533617958306, guid: 8c113c0a15febff468c0beb1c7752b32,
         type: 3}
       propertyPath: crouch_Jump
@@ -14333,7 +14287,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6091798533617958306, guid: 8c113c0a15febff468c0beb1c7752b32,
         type: 3}
-      propertyPath: press_Jump
+      propertyPath: Max_Jumps
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6091798533617958308, guid: 8c113c0a15febff468c0beb1c7752b32,
@@ -14416,50 +14370,10 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8194100450823158164, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194100450823158164, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: flashBar
-      value: 
-      objectReference: {fileID: 1801449868}
-    - target: {fileID: 8194100450823158164, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: playerVision
-      value: 
-      objectReference: {fileID: 1801449867}
-    - target: {fileID: 8194100450823158164, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: flashCharges
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8194100450823158164, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: maxFlashCharges
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8388587301789224547, guid: 8c113c0a15febff468c0beb1c7752b32,
         type: 3}
       propertyPath: slider
       value: 
       objectReference: {fileID: 484901925}
-    - target: {fileID: 8856381814320112219, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8856381814320112219, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: fuelBar
-      value: 
-      objectReference: {fileID: 261940170}
-    - target: {fileID: 8856381814320112219, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: maxFuel
-      value: 1000
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c113c0a15febff468c0beb1c7752b32, type: 3}
