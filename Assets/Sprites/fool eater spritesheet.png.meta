@@ -1,0 +1,512 @@
+fileFormatVersion: 2
+guid: a9f724dc6631987498c627a27294a5aa
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1549113631451402091
+    second: fool eater spritesheet_0
+  - first:
+      213: 6941978076134663647
+    second: fool eater spritesheet_1
+  - first:
+      213: -5887855335767255207
+    second: fool eater spritesheet_2
+  - first:
+      213: 8782583054215883148
+    second: fool eater spritesheet_3
+  - first:
+      213: -3278686734442536031
+    second: fool eater spritesheet_4
+  - first:
+      213: 1259347394098892949
+    second: fool eater spritesheet_5
+  - first:
+      213: -3223863375895475138
+    second: fool eater spritesheet_6
+  - first:
+      213: -9132871649656385368
+    second: fool eater spritesheet_7
+  - first:
+      213: -442364509917616795
+    second: fool eater spritesheet_8
+  - first:
+      213: -8373286478310795083
+    second: fool eater spritesheet_9
+  - first:
+      213: -6238494071404429516
+    second: fool eater spritesheet_10
+  - first:
+      213: -6177082462274819068
+    second: fool eater spritesheet_11
+  - first:
+      213: -2688910612896164341
+    second: fool eater spritesheet_12
+  - first:
+      213: 9188648922779132096
+    second: fool eater spritesheet_13
+  - first:
+      213: 3609062509950617025
+    second: fool eater spritesheet_14
+  - first:
+      213: -1002475053309813830
+    second: fool eater spritesheet_15
+  - first:
+      213: 5900641921020226112
+    second: fool eater spritesheet_16
+  - first:
+      213: -5301458200377648751
+    second: fool eater spritesheet_17
+  - first:
+      213: 4809846300856043284
+    second: fool eater spritesheet_18
+  - first:
+      213: 5516031409059089346
+    second: fool eater spritesheet_19
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: fool eater spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 938
+        width: 407
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 590bf981c51708ae0800000000000000
+      internalID: -1549113631451402091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fool eater spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 938
+        width: 407
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd56e82b74cd65060800000000000000
+      internalID: 6941978076134663647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fool eater spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 938
+        width: 407
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95754be64c22a4ea0800000000000000
+      internalID: -5887855335767255207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fool eater spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 1221
+        y: 938
+        width: 407
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8927e471c002e970800000000000000
+      internalID: 8782583054215883148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fool eater spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 638
+        width: 407
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a364c749c3cf72d0800000000000000
+      internalID: -3278686734442536031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fool eater spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 638
+        width: 407
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 590141a58c91a7110800000000000000
+      internalID: 1259347394098892949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fool eater spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 638
+        width: 411
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3ccb5327598243d0800000000000000
+      internalID: -3223863375895475138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fool eater spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 1225
+        y: 641
+        width: 403
+        height: 296
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a0def66f95814180800000000000000
+      internalID: -9132871649656385368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fool eater spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 338
+        width: 407
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 565ee1d62d76cd9f0800000000000000
+      internalID: -442364509917616795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fool eater spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 338
+        width: 407
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b814b1cf4c1ccb80800000000000000
+      internalID: -8373286478310795083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fool eater spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 338
+        width: 407
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43ffe8ce1ba6c69a0800000000000000
+      internalID: -6238494071404429516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fool eater spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 1221
+        y: 338
+        width: 407
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40c60d76a38964aa0800000000000000
+      internalID: -6177082462274819068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fool eater spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 38
+        width: 407
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b06db854b021faad0800000000000000
+      internalID: -2688910612896164341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fool eater spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 38
+        width: 407
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c0a6000383a48f70800000000000000
+      internalID: 9188648922779132096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fool eater spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 38
+        width: 407
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c549cd2b37f51230800000000000000
+      internalID: 3609062509950617025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fool eater spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 1221
+        y: 38
+        width: 407
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abb1747104e7612f0800000000000000
+      internalID: -1002475053309813830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
