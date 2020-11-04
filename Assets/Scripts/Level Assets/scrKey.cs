@@ -18,7 +18,7 @@ public class scrKey : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             this.transform.parent = collision.transform;
-            if (scrPlayer.m_FacingRight)
+            if (scrPlayer.FacingRight)
             {
                 for (int i = 0; i < scr.keys.Count; i++)
                 {

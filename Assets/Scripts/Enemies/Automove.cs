@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Automove : MonoBehaviour
 {
-    public Transform raypoo;
+    public Transform rayPoint;
     public float rayLength = 0.1f;
 
     public float speed = 1;
@@ -28,7 +28,7 @@ public class Automove : MonoBehaviour
     void Update()
     {
 
-        RaycastHit2D pathingRay = Physics2D.Raycast(raypoo.position, Vector2.down, rayLength);
+        RaycastHit2D pathingRay = Physics2D.Raycast(rayPoint.position, Vector2.down, rayLength);
 
         if (pathingRay.collider != null)
         {
@@ -44,11 +44,11 @@ public class Automove : MonoBehaviour
         }
         if (speed>0)
         {
-            pathingRay = Physics2D.Raycast(raypoo.position, Vector2.right, rayLength*1.5f);
+            pathingRay = Physics2D.Raycast(rayPoint.position, Vector2.right, rayLength*1.5f);
         }
         else
         {
-            pathingRay = Physics2D.Raycast(raypoo.position, Vector2.left, rayLength*1.5f);
+            pathingRay = Physics2D.Raycast(rayPoint.position, Vector2.left, rayLength*1.5f);
         }
         
 

@@ -22,7 +22,7 @@ public class CharacterController2D : MonoBehaviour
 	const float CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
 	public Transform sprite;
 	private Rigidbody2D Rigidbody2D;
-	private bool FacingRight = true;  // For determining which way the player is currently facing.
+	public bool FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 velocity = Vector3.zero;
 
 	public float runSpeed = 20f;

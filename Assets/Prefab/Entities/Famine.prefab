@@ -42,8 +42,8 @@ GameObject:
   - component: {fileID: 2956671555442937685}
   - component: {fileID: 2956671555442937684}
   - component: {fileID: 2956671555442937683}
-  - component: {fileID: 2956671555442937687}
-  - component: {fileID: 2956671555442937688}
+  - component: {fileID: 7255271584794980989}
+  - component: {fileID: 1555374276166250593}
   m_Layer: 0
   m_Name: Famine
   m_TagString: Untagged
@@ -162,8 +162,8 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &2956671555442937687
+  m_Constraints: 4
+--- !u!114 &7255271584794980989
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -175,10 +175,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81d8de74ee1d9a04db38f5755a6e6bf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raypoo: {fileID: 2956671554320160410}
+  rayPoint: {fileID: 2956671554320160410}
   rayLength: 0.1
   speed: 1
---- !u!114 &2956671555442937688
+--- !u!114 &1555374276166250593
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -190,4 +190,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3500e6ba93808de44850b94ec0d7d516, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 4
+  health: 0
