@@ -43,13 +43,11 @@ GameObject:
   - component: {fileID: 6091798533617958305}
   - component: {fileID: 6091798533617958308}
   - component: {fileID: 6091798533617958306}
-  - component: {fileID: 500968754838323890}
-  - component: {fileID: 8856381814320112219}
   - component: {fileID: 8194100450823158164}
   - component: {fileID: 5945640561723757654}
   - component: {fileID: 8388587301789224547}
   m_Layer: 0
-  m_Name: player
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86,7 +84,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.117708996}
+  m_Offset: {x: 0, y: 0.14428312}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -97,7 +95,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.29513127, y: 0.12458202}
+  m_Size: {x: 0.29513127, y: 0.071433775}
   m_EdgeRadius: 0
 --- !u!58 &6091798533617958305
 CircleCollider2D:
@@ -161,51 +159,19 @@ MonoBehaviour:
   CrouchDisableCollider: {fileID: 6091798533617958304}
   Ledge_Grab: 0
   sprite: {fileID: 6091798533899146966}
+  FacingRight: 1
   runSpeed: 20
   jump: 0
   jump_Hold: 0
   crouch: 0
   jumps_Left: 0
-  Max_Jumps: 0
+  Max_Jumps: 1
   jump_Counter: 0
   jump_Time: 0.15
   hang_Counter: 0
   hang_Time: 0.1
   press_Jump: 1
   dashDistance: 75
---- !u!114 &500968754838323890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6091798533617958309}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec65be18fc55336498949eb3dbba431e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 0}
---- !u!114 &8856381814320112219
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6091798533617958309}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a7890ddad593b9449c56d6494c24655, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerVision: {fileID: 5945640561723757654}
-  maxFuel: 1000
-  currentFuel: 0
-  lightDecay: 3
-  lightGrowth: 3
-  minimumOuterRadius: 2
-  enlargedOuterRadius: 10
-  fuelBar: {fileID: 500968754838323890}
 --- !u!114 &8194100450823158164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,16 +179,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6091798533617958309}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c2739ff0c2e7cc42bf6f8a8fc407006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerVision: {fileID: 0}
-  maxFlashCharges: 3
+  playerVision: {fileID: 5945640561723757654}
+  maxFlashCharges: 1
   flashCharges: 0
   flashRechargeRate: 0.2
-  flashBar: {fileID: 0}
+  flashBar: {fileID: 8388587301789224547}
 --- !u!114 &5945640561723757654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,10 +204,10 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9433962, g: 0.48610258, b: 0, a: 1}
   m_Intensity: 1
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 4dbb26af0000000033801e0885c9b459
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0
@@ -374,9 +340,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1356416179
+  m_SortingLayer: -1
+  m_SortingOrder: 20
   m_Sprite: {fileID: 21300000, guid: e52b2326609e38849a7209b8125ab622, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -29,12 +29,11 @@ public class DoorSystems : DoorComponents
                 {
                     if (nextDoor != null)
                     {
-                        player.transform.position = nextDoor.transform.position;
+                        player.transform.position = nextDoor.transform.Find("TransportPoint").position;
                         cooldownCount = Time.time + cooldownTime;
                         nextDoor.gameObject.GetComponent<DoorSystems>().cooldownCount = this.cooldownCount;
 
                         GameObject deathPit = GameObject.Find("DeathPit");
-                        deathPit.GetComponent<DeathPit>().respawnPoint = nextDoor;
                     }
                     else
                     {

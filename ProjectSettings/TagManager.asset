@@ -41,9 +41,15 @@ TagManager:
   - name: Back
     uniqueID: 258392641
     locked: 0
+  - name: PlayerLayer
+    uniqueID: 2938551117
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: PlayerLayer
-    uniqueID: 2938551117
+  - name: Keys
+    uniqueID: 136216627
+    locked: 0
+  - name: Doors
+    uniqueID: 1505020293
     locked: 0

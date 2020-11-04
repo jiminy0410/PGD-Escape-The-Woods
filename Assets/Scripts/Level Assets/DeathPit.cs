@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class DeathPit : MonoBehaviour
 {
-    public GameObject Flash;
+    [HideInInspector]
     public GameObject player = null;
+
     public Transform respawnPoint;
     void Start()
     {
-        player = GameObject.Find("player");
-        Flash = GameObject.Find("PlayerVision");
+        player = GameObject.Find("Player");
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        player.GetComponent<FuelBasedLight>().currentFuel = player.GetComponent<FuelBasedLight>().maxFuel;
+        player.GetComponent<FlashMechanic>().StartCoroutine("Flash");
+        player.GetComponent<FlashMechanic>().flashCharges = player.GetComponent<FlashMechanic>().maxFlashCharges;
         player.transform.position = respawnPoint.position;
-        //Flash.GetComponent<FlashMechanic>().StartCoroutine("Flash");
     }
 }

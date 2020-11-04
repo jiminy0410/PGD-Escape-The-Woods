@@ -13,7 +13,8 @@ public class Checkpoint : MonoBehaviour
             GameObject deathPit = GameObject.Find("DeathPit");
             deathPit.GetComponent<DeathPit>().respawnPoint = resetPoint;
 
-            collision.GetComponent<FuelBasedLight>().currentFuel = collision.GetComponent<FuelBasedLight>().maxFuel;
+            collision.GetComponent<FlashMechanic>().StartCoroutine("Flash");
+            collision.GetComponent<FlashMechanic>().flashCharges = collision.GetComponent<FlashMechanic>().maxFlashCharges;
 
             //if (GetComponent<FlashMechanic>().flashCharges <= GetComponent<FlashMechanic>().maxFlashCharges)
             //{
