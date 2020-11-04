@@ -40600,6 +40600,21 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6091798533899146965, guid: 8c113c0a15febff468c0beb1c7752b32,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.5566038
+      objectReference: {fileID: 0}
+    - target: {fileID: 6091798533899146965, guid: 8c113c0a15febff468c0beb1c7752b32,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.5566038
+      objectReference: {fileID: 0}
+    - target: {fileID: 6091798533899146965, guid: 8c113c0a15febff468c0beb1c7752b32,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.5566038
+      objectReference: {fileID: 0}
     - target: {fileID: 8194100450823158164, guid: 8c113c0a15febff468c0beb1c7752b32,
         type: 3}
       propertyPath: flashRechargeRate
