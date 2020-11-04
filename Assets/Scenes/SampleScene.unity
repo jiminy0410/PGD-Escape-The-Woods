@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81d8de74ee1d9a04db38f5755a6e6bf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raypoo: {fileID: 1264172202}
+  rayPoint: {fileID: 1264172202}
   rayLength: 0.1
   speed: 1
 --- !u!114 &137717096

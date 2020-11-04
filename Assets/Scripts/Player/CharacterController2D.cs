@@ -249,10 +249,14 @@ public class CharacterController2D : MonoBehaviour
 					jump_Counter = 0;
 				}
 			}
-		}
-		if (Input.GetButtonUp("Jump"))
-		{
-			jump_Counter = 0;
+			else
+			{
+				jump_Counter = 0;
+			}
+			if (Input.GetButtonUp("Jump"))
+			{
+				jump_Counter = 0;
+			}
 		}
 	}
 
