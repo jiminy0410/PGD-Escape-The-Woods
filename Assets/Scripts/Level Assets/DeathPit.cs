@@ -10,7 +10,7 @@ public class DeathPit : MonoBehaviour
     public Transform respawnPoint;
     void Start()
     {
-        player = GameObject.Find("player");
+        player = GameObject.Find("Player");
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

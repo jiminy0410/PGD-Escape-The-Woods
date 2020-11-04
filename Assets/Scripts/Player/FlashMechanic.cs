@@ -10,7 +10,7 @@ public class FlashMechanic : MonoBehaviour
     public float maxFlashCharges = 1;
     public float flashCharges;
     public float flashRechargeRate = 0.2f;
-    public static float lightDecay = 3f;
+    public static float lightDecay = 12f;
     public static float defaultOuterRadius = 2;
 
     private static float enlargedOuterRadius = 10;
@@ -39,11 +39,10 @@ public class FlashMechanic : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
-            flashRechargeRate = 0.25f;
-
-        if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
-            flashRechargeRate = 0.20f;
+        if (Input.GetAxisRaw("Horizontal") != 0)
+            flashRechargeRate = 0.5f;
+        else
+            flashRechargeRate = 0.08f;
 
         if (flashCharges < maxFlashCharges)
             flashCharges += flashRechargeRate * Time.deltaTime;
