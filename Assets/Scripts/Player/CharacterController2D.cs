@@ -38,7 +38,7 @@ public class CharacterController2D : MonoBehaviour
 
 	public float dashDistance = 15f;
 	bool isDashing;
-	bool isAbleToDash = true;
+	bool isAbleToDash;
 	float doubleTapTime;
 	float dashTimer;
 	KeyCode lastKeyCode;
@@ -145,7 +145,7 @@ public class CharacterController2D : MonoBehaviour
 			hang_Counter = hang_Time;
 			if (dashTimer <= 0)
 			{
-				isAbleToDash = true;
+				//isAbleToDash = true;
 			}
 			jumps_Left = Max_Jumps;
 		}
