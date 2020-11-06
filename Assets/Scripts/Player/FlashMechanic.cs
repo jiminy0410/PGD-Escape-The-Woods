@@ -22,6 +22,8 @@ public class FlashMechanic : MonoBehaviour
 
     void Start()
     {
+        flashSound = this.GetComponent<AudioSource>();
+
         flashCharges = maxFlashCharges;
         playerVision = GetComponent<Light2D>();
         flashSound = this.GetComponent<AudioSource>();
@@ -61,7 +63,8 @@ public class FlashMechanic : MonoBehaviour
 
     public IEnumerator Flash()
     {
-        //flashSound.Play();
+        flashSound.pitch = Random.Range(2.5f, 3);
+        flashSound.Play();
         playerVision.pointLightOuterRadius = enlargedOuterRadius;
         yield return null;
     }
