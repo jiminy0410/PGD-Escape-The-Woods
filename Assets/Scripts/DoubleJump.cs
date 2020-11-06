@@ -6,6 +6,7 @@ public class DoubleJump : MonoBehaviour
 {
     GameObject player;
     CharacterController2D doubleJumpPlayer;
+    public ParticleSystem acquisitonEffect;
 
     private void Start()
     {
@@ -18,6 +19,8 @@ public class DoubleJump : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             doubleJumpPlayer.Max_Jumps = 1;
+            acquisitonEffect.transform.position = this.transform.position;
+            acquisitonEffect.Play();
             Destroy(gameObject);
         }
     }

@@ -212,6 +212,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resetPoint: {fileID: 1771057196717037576}
+  cooldownCount: 0
+  cooldownTime: 2
 --- !u!61 &1382182023398016722
 BoxCollider2D:
   m_ObjectHideFlags: 0
