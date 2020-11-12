@@ -21,6 +21,7 @@ public class DoubleJump : MonoBehaviour
             doubleJumpPlayer.Max_Jumps = 1;
             acquisitonEffect.transform.position = this.transform.position;
             acquisitonEffect.Play();
+            acquisitonEffect.GetComponent<AudioSource>().Play();
             Destroy(gameObject);
         }
     }
