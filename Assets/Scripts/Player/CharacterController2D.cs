@@ -18,10 +18,11 @@ public class CharacterController2D : MonoBehaviour
 	float GroundedRadius = 0.3f; // Radius of the overlap circle to determine if grounded
 	float CornerRadius = 0.4f; // Radius of the overlap circle to determine if grounded
 	private bool Grounded;            // Whether or not the player is grounded.
-	[SerializeField] private bool Ledge_Grab;            // Whether or not the player is grounded.
+	[SerializeField] private bool Ledge_Grab, Wall_Slide;            // Whether or not the player is grounded.
 	const float CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
 	public Transform sprite;
 	private Rigidbody2D Rigidbody2D;
+	public PhysicsMaterial2D skin;
 	public bool FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 velocity = Vector3.zero;
 
@@ -136,9 +137,49 @@ public class CharacterController2D : MonoBehaviour
 				Ledge_Grab = true;
 			}
 		}
+		if (Wall_Slide)
+		{
+			Ledge_Grab = true;
+		}
+	}
+	public void OnCollisionEnter2D(Collision2D collision)
+	{
+		if (collision.gameObject.layer == 8)
+		{
+			if (Rigidbody2D.velocity.y < -2f)
+			{
+				Rigidbody2D.gravityScale = 1;
+				Rigidbody2D.velocity = new Vector2(Rigidbody2D.velocity.x, 0);
+			}
+		}
+	}
+	public void OnCollisionStay2D(Collision2D collision)
+	{
+		if (collision.gameObject.layer == 8)
+		{
+			if (Rigidbody2D.velocity.y < -2f)
+			{
+				Rigidbody2D.gravityScale = 0;
+				Rigidbody2D.velocity = new Vector2(Rigidbody2D.velocity.x, -3f);
+				Wall_Slide = true;
+			}
+			else
+			{
+				Rigidbody2D.gravityScale = 2;
+				Wall_Slide = false;
+			}
+		}
+	}
+	public void OnCollisionExit2D(Collision2D collision)
+	{
+		if (collision.gameObject.layer == 8)
+		{
+			Rigidbody2D.gravityScale = 2;
+			Wall_Slide = false;
+		}
 	}
 
-	public void Move(float move, bool crouch, bool jump, bool jump_Hold, bool Grounded, bool Ledge_Grab)
+	public void Move(float move, bool crouch, bool jump, bool jump_Hold, bool Grounded, bool Ledge_Grab, bool Wall_Slide)
 	{
 		if (Grounded)
 		{
@@ -269,7 +310,7 @@ public class CharacterController2D : MonoBehaviour
 			Rigidbody2D.velocity = new Vector2(Rigidbody2D.velocity.x, Rigidbody2D.velocity.y);
 		}
 
-		Move(horizontalMove * Time.fixedDeltaTime, crouch, jump, jump_Hold, Grounded, Ledge_Grab);
+		Move(horizontalMove * Time.fixedDeltaTime, crouch, jump, jump_Hold, Grounded, Ledge_Grab, Wall_Slide);
 
 		jump = false;
 
