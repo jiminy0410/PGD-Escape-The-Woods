@@ -13,6 +13,10 @@ public class CharacterController2D : MonoBehaviour
 	[SerializeField] private Transform CornerCheck;                          // A position marking where to check for corners
 	[SerializeField] private Collider2D CrouchDisableCollider;                // A collider that will be disabled when crouching
 
+	[Space]
+
+	[SerializeField] private float wallSlideSpeed;
+
 	//public PlayerMovement controller;
 
 	float GroundedRadius = 0.3f; // Radius of the overlap circle to determine if grounded
@@ -146,7 +150,7 @@ public class CharacterController2D : MonoBehaviour
 	{
 		if (collision.gameObject.layer == 8)
 		{
-			if (Rigidbody2D.velocity.y < -2f)
+			if (Rigidbody2D.velocity.y < -wallSlideSpeed)
 			{
 				Rigidbody2D.gravityScale = 1;
 				Rigidbody2D.velocity = new Vector2(Rigidbody2D.velocity.x, 0);
@@ -157,10 +161,10 @@ public class CharacterController2D : MonoBehaviour
 	{
 		if (collision.gameObject.layer == 8)
 		{
-			if (Rigidbody2D.velocity.y < -2f)
+			if (Rigidbody2D.velocity.y < -wallSlideSpeed)
 			{
 				Rigidbody2D.gravityScale = 0;
-				Rigidbody2D.velocity = new Vector2(Rigidbody2D.velocity.x, -3f);
+				Rigidbody2D.velocity = new Vector2(Rigidbody2D.velocity.x, -wallSlideSpeed);
 				Wall_Slide = true;
 			}
 			else
