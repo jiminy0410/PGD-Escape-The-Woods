@@ -139,7 +139,7 @@ public class CharacterController2D : MonoBehaviour
 		}
 		if (Wall_Slide)
 		{
-			Ledge_Grab = true;
+			//Ledge_Grab = true;
 		}
 	}
 	public void OnCollisionEnter2D(Collision2D collision)
