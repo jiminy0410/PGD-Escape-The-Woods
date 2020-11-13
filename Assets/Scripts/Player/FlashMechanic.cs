@@ -9,7 +9,9 @@ public class FlashMechanic : MonoBehaviour
     public Light2D playerVision;
     public float maxFlashCharges = 1;
     public float flashCharges;
-    public float flashRechargeRate = 0.2f;
+    public float flashRechargeRate;
+    public float flashRechargeStat = 0.08f;
+    public float flashRechargeDyn = 0.5f;
     public static float lightDecay = 12f;
     public static float defaultOuterRadius = 2;
 
@@ -42,9 +44,12 @@ public class FlashMechanic : MonoBehaviour
         }
 
         if (Input.GetAxisRaw("Horizontal") != 0)
-            flashRechargeRate = 0.5f;
+        {
+            flashRechargeRate = flashRechargeDyn;
+
+        }
         else
-            flashRechargeRate = 0.08f;
+            flashRechargeRate = flashRechargeStat;
 
         if (flashCharges < maxFlashCharges)
             flashCharges += flashRechargeRate * Time.deltaTime;
