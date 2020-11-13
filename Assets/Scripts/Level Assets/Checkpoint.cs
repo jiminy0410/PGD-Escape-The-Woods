@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
@@ -17,19 +15,20 @@ public class Checkpoint : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            if(Time.time > cooldownCount)
+            if (Time.time > cooldownCount)
             {
 
 
-            GameObject deathPit = GameObject.Find("DeathPit");
-            deathPit.GetComponent<DeathPit>().respawnPoint = resetPoint;
+                GameObject deathPit = GameObject.Find("DeathPit");
+                deathPit.GetComponent<DeathPit>().respawnPoint = resetPoint;
 
-            collision.GetComponent<FlashMechanic>().StartCoroutine("Flash");
-            collision.GetComponent<FlashMechanic>().flashCharges = collision.GetComponent<FlashMechanic>().maxFlashCharges;
+                collision.GetComponent<FlashMechanic>().StartCoroutine("Flash");
+                collision.GetComponent<FlashMechanic>().flashCharges = collision.GetComponent<FlashMechanic>().maxFlashCharges;
+                collision.GetComponent<FlashMechanic>().standingChargeRate = collision.GetComponent<FlashMechanic>().ChargeMax;
 
-            cooldownCount = Time.time + cooldownTime;
+                cooldownCount = Time.time + cooldownTime;
 
             }
         }

@@ -9,11 +9,13 @@ public class FlashMechanic : MonoBehaviour
     public Light2D playerVision;
     public float maxFlashCharges = 1;
     public float flashCharges;
-    public float flashRechargeRate;
-    public float flashRechargeStat = 0.08f;
-    public float flashRechargeDyn = 0.5f;
+    public float currentFlashRechargeRate = 0.2f;
     public static float lightDecay = 12f;
     public static float defaultOuterRadius = 2;
+    public float standingChargeMin = 0.08f;
+    public float ChargeMax = 0.5f;
+    public float standingChargeReduction = 0.08f;
+    public float standingChargeRate;
 
     private static float enlargedOuterRadius = 10;
 
@@ -25,6 +27,8 @@ public class FlashMechanic : MonoBehaviour
     void Start()
     {
         flashSound = this.GetComponent<AudioSource>();
+
+        standingChargeRate = ChargeMax;
 
         flashCharges = maxFlashCharges;
         playerVision = GetComponent<Light2D>();
@@ -40,19 +44,34 @@ public class FlashMechanic : MonoBehaviour
             {
                 StartCoroutine(Flash());
                 flashCharges--;
+                if (standingChargeRate > standingChargeMin) //when flashing, your next recharge goes slower when standing still
+                {
+                    standingChargeRate -= standingChargeReduction;
+                }
             }
         }
 
-        if (Input.GetAxisRaw("Horizontal") != 0)
+        if(standingChargeRate < standingChargeMin) //make sure the recharge doesn't go TOO slow...
         {
-            flashRechargeRate = flashRechargeDyn;
-
+            standingChargeRate = standingChargeMin;
         }
+
+        if ((flashCharges == maxFlashCharges) && (standingChargeRate < ChargeMax)) //if you wait, you get your charge speed back!
+        {
+            standingChargeRate += 0.0005f; //TODO: make this a variable and tweak it
+        }
+
+
+        if (Input.GetAxisRaw("Horizontal") != 0)
+            currentFlashRechargeRate = ChargeMax;
         else
-            flashRechargeRate = flashRechargeStat;
+        {
+            currentFlashRechargeRate = standingChargeRate;
+        }
+
 
         if (flashCharges < maxFlashCharges)
-            flashCharges += flashRechargeRate * Time.deltaTime;
+            flashCharges += currentFlashRechargeRate * Time.deltaTime;
 
         if (playerVision.pointLightOuterRadius > defaultOuterRadius)
             playerVision.pointLightOuterRadius -= lightDecay * Time.deltaTime;
