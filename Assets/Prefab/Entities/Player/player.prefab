@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 5945640561723757654}
   - component: {fileID: 8388587301789224547}
   - component: {fileID: 2816568770713667604}
+  - component: {fileID: 5912727558358674691}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -192,6 +193,7 @@ MonoBehaviour:
   CeilingCheck: {fileID: 6091798534970310749}
   CornerCheck: {fileID: 6091798533377111978}
   CrouchDisableCollider: {fileID: 6091798533617958304}
+  Grounded: 0
   Ledge_Grab: 0
   Wall_Slide: 0
   sprite: {fileID: 6091798533899146966}
@@ -216,7 +218,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6091798533617958309}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c2739ff0c2e7cc42bf6f8a8fc407006, type: 3}
   m_Name: 
@@ -376,6 +378,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5912727558358674691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6091798533617958309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 348e1af984f3cec4f9902fbd9c983298, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerVision: {fileID: 5945640561723757654}
+  maxFlashCharges: 1
+  flashCharges: 0
+  flashRechargeRate: 0.2
+  isRecharging: 0
+  lastKeyCode: 0
+  flashBar: {fileID: 8388587301789224547}
 --- !u!1 &6091798533705084538
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,7 +17,7 @@ public class CharacterController2D : MonoBehaviour
 
 	float GroundedRadius = 0.3f; // Radius of the overlap circle to determine if grounded
 	float CornerRadius = 0.4f; // Radius of the overlap circle to determine if grounded
-	private bool Grounded;            // Whether or not the player is grounded.
+	public bool Grounded;            // Whether or not the player is grounded.
 	[SerializeField] private bool Ledge_Grab, Wall_Slide;            // Whether or not the player is grounded.
 	const float CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
 	public Transform sprite;
