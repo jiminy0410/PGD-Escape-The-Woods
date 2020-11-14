@@ -19,7 +19,7 @@ public class scrLock : MonoBehaviour
             foreach (GameObject item in scr.keys)
             {
                 item.SetActive(false);
-                item.transform.parent = StateMagine.transform;
+                //item.transform.parent = StateMagine.transform;
             }
         }
     }
