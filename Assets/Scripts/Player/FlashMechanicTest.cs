@@ -16,6 +16,7 @@ public class FlashMechanicTest : MonoBehaviour
     public static float rechargeTapTime;
     public bool isRecharging;
     public KeyCode lastKeyCode;
+    private bool previousKeyPressA = false; 
 
     private static float enlargedOuterRadius = 10;
 
@@ -49,33 +50,52 @@ public class FlashMechanicTest : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.A))
+        if((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D)) && controller.Grounded)
         {
-            if ((rechargeTapTime > Time.time && lastKeyCode == KeyCode.A) && controller.Grounded == true && isRecharging == false)
+            if(!previousKeyPressA && Input.GetKeyDown(KeyCode.A) || previousKeyPressA && Input.GetKeyDown(KeyCode.D))
             {
-                isRecharging = true;
-                StartCoroutine(Recharge());
+                rechargeTapTime = Time.time;
+                GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+                flashRechargeRate = 0.8f;
+
             }
-            else
-            {
-                rechargeTapTime = Time.time + 0.15f;
-            }
-            lastKeyCode = KeyCode.D;
+            previousKeyPressA = Input.GetKeyDown(KeyCode.A);
         }
 
-        if (Input.GetKeyDown(KeyCode.D))
+        if(Time.time > rechargeTapTime + 0.1)
         {
-            if ((rechargeTapTime > Time.time && lastKeyCode == KeyCode.D) && controller.Grounded == true && isRecharging == false)
-            {
-                isRecharging = true;
-                StartCoroutine(Recharge());
-            }
-            else
-            {
-                rechargeTapTime = Time.time + 0.15f;
-            }
-            lastKeyCode = KeyCode.A;
+            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+            flashRechargeRate = 0.2f;
         }
+
+        //if (Input.GetKeyDown(KeyCode.A))
+        //{
+        //    if ((rechargeTapTime > Time.time && lastKeyCode == KeyCode.A) && controller.Grounded == true && isRecharging == false)
+        //    {
+        //        isRecharging = true;
+        //        StartCoroutine(Recharge());
+        //    }
+        //    else
+        //    {
+        //        rechargeTapTime = Time.time + 0.15f;
+        //    }
+        //    lastKeyCode = KeyCode.D;
+        //}
+
+        //if (Input.GetKeyDown(KeyCode.D) && Time.time > rechargeTapTime + 0.2)
+        //{
+        //    rechargeTapTime = Time.time;
+        //    if ((rechargeTapTime > Time.time && lastKeyCode == KeyCode.D) && controller.Grounded == true && isRecharging == false)
+        //    {
+        //        isRecharging = true;
+        //        StartCoroutine(Recharge());
+        //    }
+        //    else
+        //    {
+        //        rechargeTapTime = Time.time + 0.15f;
+        //    }
+        //    lastKeyCode = KeyCode.A;
+        //}
 
         if (flashCharges < maxFlashCharges)
             flashCharges += flashRechargeRate * Time.deltaTime;
