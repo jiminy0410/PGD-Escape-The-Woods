@@ -47777,7 +47777,8 @@ PrefabInstance:
       propertyPath: slider
       value: 
       objectReference: {fileID: 484901925}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5912727558358674691, guid: 8c113c0a15febff468c0beb1c7752b32, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8c113c0a15febff468c0beb1c7752b32, type: 3}
 --- !u!1001 &2042912375
 PrefabInstance:
