@@ -31,9 +31,6 @@ public class levelState : MonoBehaviour
                     itemspassed[i] = true;
                 }
             }
-        }
-        for (int i = 0; i < items.Count; i++)
-        {
             if (items[i].GetComponent<lockAndKey>() != null)
             {
                 if (items[i].GetComponent<lockAndKey>().kickingDownTheDoor == true)
@@ -43,9 +40,6 @@ public class levelState : MonoBehaviour
                     itemspassed[i] = true;
                 }
             }
-        }
-        for (int i = 0; i < items.Count; i++)
-        {
             if (items[i].GetComponent<DoubleJump>() != null)
             {
                 if (items[i].GetComponent<DoubleJump>().Collected == true)
