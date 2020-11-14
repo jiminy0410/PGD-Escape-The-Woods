@@ -625,7 +625,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &150348929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47607,6 +47607,11 @@ PrefabInstance:
       propertyPath: m_Pitch
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5912727558358674691, guid: 8c113c0a15febff468c0beb1c7752b32,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5945640561723757654, guid: 8c113c0a15febff468c0beb1c7752b32,
         type: 3}
       propertyPath: m_ApplyToSortingLayers.Array.size
@@ -47666,6 +47671,11 @@ PrefabInstance:
         type: 3}
       propertyPath: wallSlideSpeed
       value: 3.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6091798533617958306, guid: 8c113c0a15febff468c0beb1c7752b32,
+        type: 3}
+      propertyPath: inputTapInterval
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 6091798533617958309, guid: 8c113c0a15febff468c0beb1c7752b32,
         type: 3}
@@ -47756,6 +47766,11 @@ PrefabInstance:
         type: 3}
       propertyPath: flashRechargeRate
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194100450823158164, guid: 8c113c0a15febff468c0beb1c7752b32,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8388587301789224547, guid: 8c113c0a15febff468c0beb1c7752b32,
         type: 3}
