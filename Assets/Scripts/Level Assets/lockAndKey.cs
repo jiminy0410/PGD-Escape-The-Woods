@@ -24,6 +24,10 @@ public class lockAndKey : MonoBehaviour
         {
             hasKeys = true;
         }
+        else
+        {
+            hasKeys = false;
+        }
 
         for (int i = 0; i < keys.Count; i++)
         {
@@ -32,5 +36,22 @@ public class lockAndKey : MonoBehaviour
                 keyCollected[i] = true;
             }
         }
+    }
+
+    public void Reverd()
+    {
+        for (int i = 0; i < keys.Count; i++)
+        {
+            if (keys[i].GetComponent<scrKey>().Collected == false)
+            {
+                keyCollected[i] = false;
+            }
+            else
+            {
+                keys[i].SetActive(true);
+            }
+        }
+        kickingDownTheDoor = false;
+        this.gameObject.SetActive(true);
     }
 }

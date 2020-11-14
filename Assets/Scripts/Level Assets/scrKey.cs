@@ -3,12 +3,15 @@
 public class scrKey : MonoBehaviour
 {
     public GameObject StateMagine;
+    public Vector2 savePoint;
     GameObject player;
     lockAndKey scr;
     public bool Collected;
     CharacterController2D scrPlayer;
     public void Start()
     {
+        transform.parent = StateMagine.transform;
+        savePoint = transform.position;
         player = GameObject.FindGameObjectWithTag("Player");
         scrPlayer = player.GetComponent<CharacterController2D>();
         scr = StateMagine.GetComponent<lockAndKey>();
@@ -17,6 +20,11 @@ public class scrKey : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            if (!Collected)
+            {
+                savePoint = transform.position;
+            }
+
             this.transform.parent = collision.transform;
             if (scrPlayer.FacingRight)
             {
@@ -43,5 +51,13 @@ public class scrKey : MonoBehaviour
             }
             Collected = true;
         }
+    }
+
+    public void Reverd()
+    {
+        this.transform.parent = StateMagine.transform;
+        transform.position = savePoint;
+        Collected = false;
+        this.gameObject.SetActive(true);
     }
 }
