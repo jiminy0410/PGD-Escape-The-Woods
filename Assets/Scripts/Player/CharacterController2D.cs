@@ -11,6 +11,7 @@ public class CharacterController2D : MonoBehaviour
 	[SerializeField] private Transform GroundCheck;                           // A position marking where to check if the player is grounded.
 	[SerializeField] private Transform CeilingCheck;                          // A position marking where to check for ceilings
 	[SerializeField] private Transform CornerCheck;                          // A position marking where to check for corners
+	[SerializeField] private Transform behindeCheck;                          // A position marking where to check for objects behinde him
 	[SerializeField] private Collider2D CrouchDisableCollider;                // A collider that will be disabled when crouching
 
 	[Space]
@@ -20,7 +21,8 @@ public class CharacterController2D : MonoBehaviour
 	//public PlayerMovement controller;
 
 	float GroundedRadius = 0.3f; // Radius of the overlap circle to determine if grounded
-	float CornerRadius = 0.4f; // Radius of the overlap circle to determine if grounded
+	float CornerRadius = 0.4f; // Radius of the overlap circle to determine if grabbing
+	float BehindeRadius = 0.1f; // Radius of the overlap circle to determine if needs to flip
 	public bool Grounded;            // Whether or not the player is grounded.
 	[SerializeField] private bool Ledge_Grab, Wall_Slide;            // Whether or not the player is grounded.
 	const float CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
@@ -52,7 +54,7 @@ public class CharacterController2D : MonoBehaviour
 	private int previousHorInput = 0;
 	private float lastInputTapTime;
 	public float inputTapInterval;
-	private int wiggleWiggleWiggle;
+	public int wiggleWiggleWiggle;
 
 
 	private void Awake()
@@ -66,6 +68,7 @@ public class CharacterController2D : MonoBehaviour
 		Gizmos.DrawWireSphere(GroundCheck.position, GroundedRadius);
 		Gizmos.DrawWireSphere(CeilingCheck.position, CeilingRadius);
 		Gizmos.DrawWireSphere(CornerCheck.position, CornerRadius);
+		Gizmos.DrawWireSphere(behindeCheck.position, BehindeRadius);
 	}
 
 	void Update()
@@ -152,6 +155,15 @@ public class CharacterController2D : MonoBehaviour
 		if (Wall_Slide)
 		{
 			//Ledge_Grab = true;
+		}
+
+		Collider2D[] backWall = Physics2D.OverlapCircleAll(behindeCheck.position, BehindeRadius, WhatIsGround);
+		for (int i = 0; i < backWall.Length; i++)
+		{
+			if (backWall[i].gameObject != gameObject)
+			{
+				Flip();
+			}
 		}
 
 
@@ -283,18 +295,20 @@ public class CharacterController2D : MonoBehaviour
 				// And then smoothing it out and applying it to the character
 				Rigidbody2D.velocity = Vector3.SmoothDamp(Rigidbody2D.velocity, targetVelocity, ref velocity, MovementSmoothing);
 
-
-			// If the input is moving the player right and the player is facing left...
-			if (move > 0 && !FacingRight)
+			if (wiggleWiggleWiggle == 1)
 			{
-				// ... flip the player.
-				Flip();
-			}
-			// Otherwise if the input is moving the player left and the player is facing right...
-			else if (move < 0 && FacingRight)
-			{
-				// ... flip the player.
-				Flip();
+				// If the input is moving the player right and the player is facing left...
+				if (move > 0 && !FacingRight)
+				{
+					// ... flip the player.
+					Flip();
+				}
+				// Otherwise if the input is moving the player left and the player is facing right...
+				else if (move < 0 && FacingRight)
+				{
+					// ... flip the player.
+					Flip();
+				}
 			}
 		}
 

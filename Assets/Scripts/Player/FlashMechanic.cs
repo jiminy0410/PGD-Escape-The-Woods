@@ -62,7 +62,7 @@ public class FlashMechanic : MonoBehaviour
         }
 
 
-        if (Input.GetAxisRaw("Horizontal") != 0)
+        if (gameObject.GetComponent<CharacterController2D>().wiggleWiggleWiggle == 0)
             currentFlashRechargeRate = ChargeMax;
         else
         {
