@@ -21,7 +21,7 @@ public class FlashBar : MonoBehaviour
         }
         else
         {
-            phill.color = Color.Lerp(emptyColor, halfColor, theFlash.currentFlashRechargeRate / (theFlash.ChargeMax/2));
+            phill.color = Color.Lerp(emptyColor, halfColor, (theFlash.currentFlashRechargeRate - theFlash.standingChargeMin) / ((theFlash.ChargeMax/2) - theFlash.standingChargeMin));
         }
         
         phill.color = new Color(phill.color.r, phill.color.g, phill.color.b, 1);
