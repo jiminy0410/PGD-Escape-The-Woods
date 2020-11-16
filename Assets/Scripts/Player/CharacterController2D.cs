@@ -21,7 +21,7 @@ public class CharacterController2D : MonoBehaviour
 
 	float GroundedRadius = 0.3f; // Radius of the overlap circle to determine if grounded
 	float CornerRadius = 0.4f; // Radius of the overlap circle to determine if grounded
-	private bool Grounded;            // Whether or not the player is grounded.
+	public bool Grounded;            // Whether or not the player is grounded.
 	[SerializeField] private bool Ledge_Grab, Wall_Slide;            // Whether or not the player is grounded.
 	const float CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
 	public Transform sprite;
@@ -48,9 +48,17 @@ public class CharacterController2D : MonoBehaviour
 	float dashTimer;
 	KeyCode lastKeyCode;
 
+
+	private int previousHorInput = 0;
+	private float lastInputTapTime;
+	public float inputTapInterval;
+	private int wiggleWiggleWiggle;
+
+
 	private void Awake()
 	{
 		Rigidbody2D = GetComponent<Rigidbody2D>();
+		lastInputTapTime = Time.time;
 	}
 
 	private void OnDrawGizmosSelected()
@@ -145,6 +153,30 @@ public class CharacterController2D : MonoBehaviour
 		{
 			//Ledge_Grab = true;
 		}
+
+
+
+		///HOLD POSITION MAGGOT!
+		///holds player's position when spamming Left or Right input
+		if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow)) && Grounded)
+		{
+			if (Time.time < lastInputTapTime + inputTapInterval)
+			{
+				if (previousHorInput == (int)-Input.GetAxisRaw("Horizontal"))
+				{
+					wiggleWiggleWiggle = 0;
+				}
+			}
+
+			previousHorInput = (int)Input.GetAxisRaw("Horizontal");
+			lastInputTapTime = Time.time;
+		}
+		else if (Time.time > lastInputTapTime + inputTapInterval)
+		{
+
+			wiggleWiggleWiggle = 1;
+
+		}
 	}
 	public void OnCollisionEnter2D(Collision2D collision)
 	{
@@ -183,7 +215,7 @@ public class CharacterController2D : MonoBehaviour
 		}
 	}
 
-	public void Move(float move, bool crouch, bool jump, bool jump_Hold, bool Grounded, bool Ledge_Grab, bool Wall_Slide)
+	public void Move(float move, bool crouch, bool jump, bool jump_Hold, bool Grounded, bool Ledge_Grab, bool Wall_Slide, int WiggleMeThis)
 	{
 		if (Grounded)
 		{
@@ -222,14 +254,18 @@ public class CharacterController2D : MonoBehaviour
 					sprite.transform.localScale = new Vector2(sprite.transform.localScale.x, 0.7f);
 					// Disable one of the colliders when crouching
 					if (CrouchDisableCollider != null)
+					{
 						CrouchDisableCollider.enabled = false;
+					}
 				}
 				else
 				{
 					sprite.transform.localScale = new Vector2(sprite.transform.localScale.x, 1f);
 					// Enable the collider when not crouching
 					if (CrouchDisableCollider != null)
+					{
 						CrouchDisableCollider.enabled = true;
+					}
 				}
 			}
 			else
@@ -237,13 +273,16 @@ public class CharacterController2D : MonoBehaviour
 				sprite.transform.localScale = new Vector2(sprite.transform.localScale.x, 1f);
 				// Enable the collider when not crouching
 				if (CrouchDisableCollider != null)
+				{
 					CrouchDisableCollider.enabled = true;
+				}
 			}
 
 			// Move the character by finding the target velocity
-			Vector3 targetVelocity = new Vector2(move * 10f, Rigidbody2D.velocity.y);
-			// And then smoothing it out and applying it to the character
-			Rigidbody2D.velocity = Vector3.SmoothDamp(Rigidbody2D.velocity, targetVelocity, ref velocity, MovementSmoothing);
+				Vector3 targetVelocity = new Vector2(move * 10f * WiggleMeThis, Rigidbody2D.velocity.y);
+				// And then smoothing it out and applying it to the character
+				Rigidbody2D.velocity = Vector3.SmoothDamp(Rigidbody2D.velocity, targetVelocity, ref velocity, MovementSmoothing);
+
 
 			// If the input is moving the player right and the player is facing left...
 			if (move > 0 && !FacingRight)
@@ -314,11 +353,12 @@ public class CharacterController2D : MonoBehaviour
 			Rigidbody2D.velocity = new Vector2(Rigidbody2D.velocity.x, Rigidbody2D.velocity.y);
 		}
 
-		Move(horizontalMove * Time.fixedDeltaTime, crouch, jump, jump_Hold, Grounded, Ledge_Grab, Wall_Slide);
+		Move(horizontalMove * Time.fixedDeltaTime, crouch, jump, jump_Hold, Grounded, Ledge_Grab, Wall_Slide, wiggleWiggleWiggle);
 
 		jump = false;
 
 		//if (!isDashing)
+
 	}
 
 	private void Flip()

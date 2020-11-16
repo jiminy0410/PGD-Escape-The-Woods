@@ -6,11 +6,13 @@ public class DeathPit : MonoBehaviour
 {
     [HideInInspector]
     public GameObject player = null;
+    public GameObject levelState;
 
     public Transform respawnPoint;
     void Start()
     {
         player = GameObject.Find("Player");
+        levelState = GameObject.Find("LevelResetter");
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -19,5 +21,6 @@ public class DeathPit : MonoBehaviour
         player.GetComponent<FlashMechanic>().flashCharges = player.GetComponent<FlashMechanic>().maxFlashCharges;
         player.GetComponent<FlashMechanic>().standingChargeRate = player.GetComponent<FlashMechanic>().ChargeMax;
         player.transform.position = respawnPoint.position;
+        levelState.GetComponent<levelState>().Rvert();
     }
 }

@@ -7,6 +7,7 @@ public class DoubleJump : MonoBehaviour
     GameObject player;
     CharacterController2D doubleJumpPlayer;
     public ParticleSystem acquisitonEffect;
+    public bool Collected;
 
     private void Start()
     {
@@ -22,7 +23,14 @@ public class DoubleJump : MonoBehaviour
             acquisitonEffect.transform.position = this.transform.position;
             acquisitonEffect.Play();
             acquisitonEffect.GetComponent<AudioSource>().Play();
-            Destroy(gameObject);
+            this.gameObject.SetActive(false);
+            Collected = true;
         }
+    }
+    public void Reverd()
+    {
+        doubleJumpPlayer.Max_Jumps = 0;
+        this.gameObject.SetActive(true);
+        Collected = false;
     }
 }
