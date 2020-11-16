@@ -49,7 +49,6 @@ GameObject:
   - component: {fileID: 5945640561723757654}
   - component: {fileID: 8388587301789224547}
   - component: {fileID: 2816568770713667604}
-  - component: {fileID: 5912727558358674691}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -72,6 +71,7 @@ Transform:
   - {fileID: 6091798534970310749}
   - {fileID: 6091798533377111978}
   - {fileID: 6091798533899146966}
+  - {fileID: 3286275974685571762}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -192,7 +192,9 @@ MonoBehaviour:
   GroundCheck: {fileID: 6091798533705084537}
   CeilingCheck: {fileID: 6091798534970310749}
   CornerCheck: {fileID: 6091798533377111978}
+  behindeCheck: {fileID: 3286275974685571762}
   CrouchDisableCollider: {fileID: 6091798533617958304}
+  wallSlideSpeed: 0
   Grounded: 0
   Ledge_Grab: 0
   Wall_Slide: 0
@@ -211,6 +213,8 @@ MonoBehaviour:
   hang_Time: 0.1
   press_Jump: 1
   dashDistance: 75
+  inputTapInterval: 0
+  wiggleWiggleWiggle: 0
 --- !u!114 &8194100450823158164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,7 +230,11 @@ MonoBehaviour:
   playerVision: {fileID: 5945640561723757654}
   maxFlashCharges: 1
   flashCharges: 0
-  flashRechargeRate: 0.2
+  currentFlashRechargeRate: 0.2
+  standingChargeMin: 0.08
+  ChargeMax: 0.5
+  standingChargeReduction: 0.08
+  standingChargeRate: 0
   flashBar: {fileID: 8388587301789224547}
 --- !u!114 &5945640561723757654
 MonoBehaviour:
@@ -378,25 +386,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &5912727558358674691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6091798533617958309}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 348e1af984f3cec4f9902fbd9c983298, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerVision: {fileID: 5945640561723757654}
-  maxFlashCharges: 1
-  flashCharges: 0
-  flashRechargeRate: 0.2
-  isRecharging: 0
-  lastKeyCode: 0
-  flashBar: {fileID: 8388587301789224547}
 --- !u!1 &6091798533705084538
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,4 +526,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6091798533617958334}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7256570998453089612
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3286275974685571762}
+  m_Layer: 0
+  m_Name: head back
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3286275974685571762
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7256570998453089612}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.11, y: -0.03, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6091798533617958334}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
