@@ -25,15 +25,9 @@ public class CharacterController2D : MonoBehaviour
 	[SerializeField] private bool Ledge_Grab, Wall_Slide;            // Whether or not the player is grounded.
 	const float CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
 	public Transform sprite;
-	private Animator playerAnim;
 	private Rigidbody2D Rigidbody2D;
-<<<<<<< Updated upstream
-	private bool FacingRight = true;  // For determining which way the player is currently facing.
-=======
-	public ParticleSystem DubbleJumpPS;
 	public PhysicsMaterial2D skin;
 	public bool FacingRight = true;  // For determining which way the player is currently facing.
->>>>>>> Stashed changes
 	private Vector3 velocity = Vector3.zero;
 
 	public float runSpeed = 20f;
@@ -64,11 +58,7 @@ public class CharacterController2D : MonoBehaviour
 	private void Awake()
 	{
 		Rigidbody2D = GetComponent<Rigidbody2D>();
-<<<<<<< Updated upstream
-=======
 		lastInputTapTime = Time.time;
-		playerAnim = sprite.gameObject.GetComponent<Animator>();
->>>>>>> Stashed changes
 	}
 
 	private void OnDrawGizmosSelected()
@@ -136,8 +126,6 @@ public class CharacterController2D : MonoBehaviour
 			}
 			lastKeyCode = KeyCode.D;
 		}
-
-		playerAnim.SetBool("Grounded", false);
 		Grounded = false;
 
 		// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
@@ -147,7 +135,6 @@ public class CharacterController2D : MonoBehaviour
 		{
 			if (colliders[i].gameObject != gameObject)
 			{
-				playerAnim.SetBool("Grounded", true);
 				Grounded = true;
 			}
 		}
@@ -162,16 +149,9 @@ public class CharacterController2D : MonoBehaviour
 				Ledge_Grab = true;
 			}
 		}
-<<<<<<< Updated upstream
-=======
-
-		Collider2D[] backWall = Physics2D.OverlapCircleAll(behindeCheck.position, BehindeRadius, WhatIsGround);
-		for (int i = 0; i < backWall.Length; i++)
+		if (Wall_Slide)
 		{
-			if (backWall[i].gameObject != gameObject)
-			{
-				Flip();
-			}
+			//Ledge_Grab = true;
 		}
 
 
@@ -213,7 +193,7 @@ public class CharacterController2D : MonoBehaviour
 	{
 		if (collision.gameObject.layer == 8)
 		{
-			if (Rigidbody2D.velocity.y < -(wallSlideSpeed-0.1f))
+			if (Rigidbody2D.velocity.y < -wallSlideSpeed)
 			{
 				Rigidbody2D.gravityScale = 0;
 				Rigidbody2D.velocity = new Vector2(Rigidbody2D.velocity.x, -wallSlideSpeed);
@@ -233,23 +213,10 @@ public class CharacterController2D : MonoBehaviour
 			Rigidbody2D.gravityScale = 2;
 			Wall_Slide = false;
 		}
->>>>>>> Stashed changes
 	}
 
 	public void Move(float move, bool crouch, bool jump, bool jump_Hold, bool Grounded, bool Ledge_Grab, bool Wall_Slide, int WiggleMeThis)
 	{
-		if (Rigidbody2D.velocity.y < -0.1 && !Ledge_Grab && !Wall_Slide)
-		{
-			playerAnim.SetTrigger("Faling");
-		}
-		playerAnim.SetBool("Hang", false);
-
-		if (Ledge_Grab || Wall_Slide)
-		{
-			playerAnim.SetBool("Hang", true);
-			//Ledge_Grab = true;
-		}
-
 		if (Grounded)
 		{
 			hang_Counter = hang_Time;
@@ -284,7 +251,7 @@ public class CharacterController2D : MonoBehaviour
 				{
 					// Reduce the speed by the crouchSpeed multiplier
 					move *= CrouchSpeed;
-					sprite.transform.localScale = new Vector2(sprite.transform.localScale.x, 0.38f * 0.7f);
+					sprite.transform.localScale = new Vector2(sprite.transform.localScale.x, 0.7f);
 					// Disable one of the colliders when crouching
 					if (CrouchDisableCollider != null)
 					{
@@ -293,7 +260,7 @@ public class CharacterController2D : MonoBehaviour
 				}
 				else
 				{
-					sprite.transform.localScale = new Vector2(sprite.transform.localScale.x, 0.38f);
+					sprite.transform.localScale = new Vector2(sprite.transform.localScale.x, 1f);
 					// Enable the collider when not crouching
 					if (CrouchDisableCollider != null)
 					{
@@ -303,7 +270,7 @@ public class CharacterController2D : MonoBehaviour
 			}
 			else
 			{
-				sprite.transform.localScale = new Vector2(sprite.transform.localScale.x, 0.38f);
+				sprite.transform.localScale = new Vector2(sprite.transform.localScale.x, 1f);
 				// Enable the collider when not crouching
 				if (CrouchDisableCollider != null)
 				{
@@ -312,29 +279,14 @@ public class CharacterController2D : MonoBehaviour
 			}
 
 			// Move the character by finding the target velocity
-<<<<<<< Updated upstream
-			Vector3 targetVelocity = new Vector2(move * 10f, Rigidbody2D.velocity.y);
-			// And then smoothing it out and applying it to the character
-			Rigidbody2D.velocity = Vector3.SmoothDamp(Rigidbody2D.velocity, targetVelocity, ref velocity, MovementSmoothing);
-=======
-			Vector3 targetVelocity = new Vector2(move * 10f * WiggleMeThis, Rigidbody2D.velocity.y);
-			// And then smoothing it out and applying it to the character
-			Rigidbody2D.velocity = Vector3.SmoothDamp(Rigidbody2D.velocity, targetVelocity, ref velocity, MovementSmoothing);
+				Vector3 targetVelocity = new Vector2(move * 10f * WiggleMeThis, Rigidbody2D.velocity.y);
+				// And then smoothing it out and applying it to the character
+				Rigidbody2D.velocity = Vector3.SmoothDamp(Rigidbody2D.velocity, targetVelocity, ref velocity, MovementSmoothing);
 
-			if (Input.GetAxisRaw("Horizontal") != 0 && Grounded)
-			{
-				playerAnim.SetBool("Moving", true);
-			}
-			else
-			{
-				playerAnim.SetBool("Moving", false);
-			}
->>>>>>> Stashed changes
 
 			// If the input is moving the player right and the player is facing left...
 			if (move > 0 && !FacingRight)
 			{
-<<<<<<< Updated upstream
 				// ... flip the player.
 				Flip();
 			}
@@ -343,25 +295,6 @@ public class CharacterController2D : MonoBehaviour
 			{
 				// ... flip the player.
 				Flip();
-=======
-				// If the input is moving the player right and the player is facing left...
-				if (move > 0 && !FacingRight)
-				{
-					// ... flip the player.
-					Flip();
-				}
-				// Otherwise if the input is moving the player left and the player is facing right...
-				else if (move < 0 && FacingRight)
-				{
-					// ... flip the player.
-					Flip();
-				}
-				playerAnim.SetBool("Shake", false);
-			}
-			else
-			{
-				playerAnim.SetBool("Shake", true);
->>>>>>> Stashed changes
 			}
 		}
 
@@ -377,20 +310,10 @@ public class CharacterController2D : MonoBehaviour
 				jump_Counter = jump_Time;
 				if (hang_Counter < 0)
 				{
-					if (!Ledge_Grab)
-					{
-						playerAnim.SetTrigger("DubbleJump");
-						DubbleJumpPS.Play();
-					}
 					jumps_Left--;
-				}
-				else
-				{
-					playerAnim.SetTrigger("Jump");
 				}
 				if (Ledge_Grab)
 				{
-					playerAnim.SetTrigger("Jump");
 					jump_Counter = 0;
 				}
 				hang_Counter = 0;
