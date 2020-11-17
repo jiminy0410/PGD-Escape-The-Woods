@@ -625,7 +625,11 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
+<<<<<<< HEAD
   m_IsActive: 0
+=======
+  m_IsActive: 1
+>>>>>>> Player_Upgrade
 --- !u!114 &150348929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -831,7 +835,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 192486568}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: 34, y: 27.6, z: 0}
+=======
+  m_LocalPosition: {x: 33.948, y: 27.58, z: 0}
+>>>>>>> Player_Upgrade
   m_LocalScale: {x: 24.25, y: 24.25, z: 20}
   m_Children:
   - {fileID: 668051954}
@@ -47608,6 +47616,24 @@ PrefabInstance:
       propertyPath: m_Pitch
       value: 3
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+=======
+    - target: {fileID: 3275745517370834115, guid: 8c113c0a15febff468c0beb1c7752b32,
+        type: 3}
+      propertyPath: m_Name
+      value: PS_DubbleJumpEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 5460159114449698452, guid: 8c113c0a15febff468c0beb1c7752b32,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 5460159114449698452, guid: 8c113c0a15febff468c0beb1c7752b32,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.176
+      objectReference: {fileID: 0}
+>>>>>>> Player_Upgrade
     - target: {fileID: 5912727558358674691, guid: 8c113c0a15febff468c0beb1c7752b32,
         type: 3}
       propertyPath: m_Enabled
@@ -47663,6 +47689,7 @@ PrefabInstance:
       propertyPath: crouch_Jump
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 6091798533617958306, guid: 8c113c0a15febff468c0beb1c7752b32,
         type: 3}
       propertyPath: Max_Jumps
@@ -47678,6 +47705,8 @@ PrefabInstance:
       propertyPath: inputTapInterval
       value: 0.2
       objectReference: {fileID: 0}
+=======
+>>>>>>> Player_Upgrade
     - target: {fileID: 6091798533617958309, guid: 8c113c0a15febff468c0beb1c7752b32,
         type: 3}
       propertyPath: m_Name
@@ -47778,8 +47807,19 @@ PrefabInstance:
       propertyPath: slider
       value: 
       objectReference: {fileID: 484901925}
+<<<<<<< HEAD
     m_RemovedComponents:
     - {fileID: 5912727558358674691, guid: 8c113c0a15febff468c0beb1c7752b32, type: 3}
+=======
+    - target: {fileID: 8908485096332863589, guid: 8c113c0a15febff468c0beb1c7752b32,
+        type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5912727558358674691, guid: 8c113c0a15febff468c0beb1c7752b32, type: 3}
+    - {fileID: 3126712398975474389, guid: 8c113c0a15febff468c0beb1c7752b32, type: 3}
+>>>>>>> Player_Upgrade
   m_SourcePrefab: {fileID: 100100000, guid: 8c113c0a15febff468c0beb1c7752b32, type: 3}
 --- !u!1001 &2042912375
 PrefabInstance:
