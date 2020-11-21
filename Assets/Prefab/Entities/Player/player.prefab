@@ -41,8 +41,6 @@ GameObject:
   - component: {fileID: 6091798533617958334}
   - component: {fileID: 6091798533617958304}
   - component: {fileID: 6091798533617958305}
-  - component: {fileID: 1771215351125116406}
-  - component: {fileID: 1976234246461056276}
   - component: {fileID: 6091798533617958308}
   - component: {fileID: 6091798533617958306}
   - component: {fileID: 8194100450823158164}
@@ -118,38 +116,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.06}
   serializedVersion: 2
   m_Radius: 0.11828107
---- !u!58 &1771215351125116406
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6091798533617958309}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.06, y: -0.125}
-  serializedVersion: 2
-  m_Radius: 0.05
---- !u!58 &1976234246461056276
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6091798533617958309}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.06, y: -0.125}
-  serializedVersion: 2
-  m_Radius: 0.05
 --- !u!50 &6091798533617958308
 Rigidbody2D:
   serializedVersion: 4
@@ -292,6 +258,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 0}
+  phill: {fileID: 0}
+  theFlash: {fileID: 0}
+  emptyColor: {r: 0, g: 0, b: 0, a: 0}
+  halfColor: {r: 0, g: 0, b: 0, a: 0}
+  fullColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!82 &2816568770713667604
 AudioSource:
   m_ObjectHideFlags: 0

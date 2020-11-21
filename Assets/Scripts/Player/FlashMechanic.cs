@@ -10,14 +10,14 @@ public class FlashMechanic : MonoBehaviour
     public float maxFlashCharges = 1;
     public float flashCharges;
     public float currentFlashRechargeRate = 0.2f;
-    public static float lightDecay = 12f;
+    public static float lightDecay = 13f;
     public static float defaultOuterRadius = 2;
     public float standingChargeMin = 0.08f;
     public float ChargeMax = 0.5f;
     public float standingChargeReduction = 0.08f;
     public float standingChargeRate;
 
-    private static float enlargedOuterRadius = 10;
+    private static float enlargedOuterRadius = 15;
 
     private AudioSource flashSound;
 
