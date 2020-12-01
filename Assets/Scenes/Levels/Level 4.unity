@@ -624,7 +624,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &150348929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6106,6 +6106,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 43768278}
     m_Modifications:
+    - target: {fileID: 2595713296422398850, guid: 6fab5f24c9fbfbf4eb52c2d32b7096cd,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2743124059993387490, guid: 6fab5f24c9fbfbf4eb52c2d32b7096cd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10445,6 +10450,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: dubbelJumpGrass Super (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8230869955262087054, guid: 6fab5f24c9fbfbf4eb52c2d32b7096cd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fab5f24c9fbfbf4eb52c2d32b7096cd, type: 3}

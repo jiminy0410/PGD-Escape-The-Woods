@@ -28,6 +28,12 @@ public class LightUp : MonoBehaviour
             {
                 transform.Find("dubbleJumpGrass").transform.Find("GrassLight").GetComponent<Light2D>().enabled = true;
             }
+
+            if (!transform.Find("Plant Particles").gameObject.activeSelf)
+            {
+                transform.Find("Plant Particles").gameObject.SetActive(true);
+                Debug.Log("These plants particles weren't active. They should be now.");
+            }
             
 
             foreach (Light2D light in transform.Find("dubbleJumpGrass").transform.GetComponentsInChildren<Light2D>())
