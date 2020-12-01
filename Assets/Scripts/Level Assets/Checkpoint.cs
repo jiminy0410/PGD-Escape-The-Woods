@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class Checkpoint : MonoBehaviour
 {
     public Transform resetPoint;
+
+    public bool IsTouched;
 
     [HideInInspector]
     public float cooldownCount;
@@ -21,6 +24,11 @@ public class Checkpoint : MonoBehaviour
         {
             if (Time.time > cooldownCount)
             {
+                if (!IsTouched)
+                {
+                    IsTouched = true;
+                    this.transform.Find("TX Village Props Road Lamp Light On").transform.Find("Point Light 2D").GetComponent<Light2D>().pointLightOuterRadius = 4.5f;
+                }
 
                 levelState.GetComponent<levelState>().pointInTime = levelState.GetComponent<levelState>().currentPointInTime;
                 GameObject deathPit = GameObject.Find("DeathPit");

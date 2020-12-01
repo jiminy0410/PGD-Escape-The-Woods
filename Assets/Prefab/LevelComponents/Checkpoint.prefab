@@ -212,8 +212,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resetPoint: {fileID: 1771057196717037576}
+  IsTouched: 0
   cooldownCount: 0
   cooldownTime: 2
+  levelState: {fileID: 0}
 --- !u!61 &1382182023398016722
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -315,7 +317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LightType: 3
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.5
+  m_FalloffIntensity: 0.8
   m_Color: {r: 1, g: 0.4745098, b: 0, a: 1}
   m_Intensity: 1
   m_LightVolumeOpacity: 0
@@ -328,8 +330,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensity: 0
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 2
+  m_PointLightInnerRadius: 0.5
+  m_PointLightOuterRadius: 1.5
   m_PointLightDistance: 3
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 5
