@@ -90,6 +90,7 @@ public class FlashMechanic : MonoBehaviour
         flashSound.pitch = Random.Range(2.5f, 3);
         flashSound.Play();
         playerVision.pointLightOuterRadius = enlargedOuterRadius;
+        GameObject.Find("SecretTiles").GetComponent<SecretWallSystems>().MakeTransparent();
         yield return null;
     }
 }
