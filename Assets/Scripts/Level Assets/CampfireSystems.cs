@@ -5,6 +5,11 @@ using UnityEngine;
 public class CampfireSystems : CampfireComponents
 {
 
+    public void Start()
+    {
+        acceptablePlayerPos = false;
+    }
+
     void Update()
     {
         if (acceptablePlayerPos && Input.GetAxisRaw("Vertical") > 0)
@@ -24,11 +29,13 @@ public class CampfireSystems : CampfireComponents
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
+        if(collision.CompareTag("Player"))
         acceptablePlayerPos = true;
     }
 
     public void OnTriggerExit2D(Collider2D collision)
     {
-        acceptablePlayerPos = false;
+        if (collision.CompareTag("Player"))
+            acceptablePlayerPos = false;
     }
 }

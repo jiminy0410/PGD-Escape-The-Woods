@@ -466,7 +466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7072864cc53c71442a213573735760dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  finalDoor: 1
+  finalDoor: 0
   nextDoor: {fileID: 0}
   player: {fileID: 0}
   cooldownCount: 0

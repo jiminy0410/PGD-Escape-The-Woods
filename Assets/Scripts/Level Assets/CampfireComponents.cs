@@ -10,7 +10,6 @@ public class CampfireComponents : MonoBehaviour
     public List<GameObject> objectsToActivate;
     public List<BoxCollider2D> wellTriggers;
 
-    [HideInInspector]
     public bool acceptablePlayerPos;
 
 }
