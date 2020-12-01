@@ -6,7 +6,7 @@ public class Checkpoint : MonoBehaviour
 {
     public Transform resetPoint;
 
-    public bool IsTouched;
+    public bool isTouched;
 
     [HideInInspector]
     public float cooldownCount;
@@ -25,18 +25,18 @@ public class Checkpoint : MonoBehaviour
         {
             if (Time.time > cooldownCount)
             {
-                if (!IsTouched)
+                if (!isTouched)
                 {
                     foreach (Checkpoint checkpoint in GameObject.FindObjectsOfType<Checkpoint>())
                     {
-                        if (checkpoint.IsTouched)
+                        if (checkpoint.isTouched)
                         {
-                            checkpoint.IsTouched = false;
+                            checkpoint.isTouched = false;
                             checkpoint.transform.Find("TX Village Props Road Lamp Light On").transform.Find("Point Light 2D").GetComponent<Light2D>().pointLightOuterRadius = 1.5f;
                         }
                     }
                     
-                    IsTouched = true;
+                    isTouched = true;
                     this.transform.Find("TX Village Props Road Lamp Light On").transform.Find("Point Light 2D").GetComponent<Light2D>().pointLightOuterRadius = 4.5f;
                 }
 
