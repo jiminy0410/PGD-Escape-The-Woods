@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
+using System.Linq;
 
 public class Checkpoint : MonoBehaviour
 {
@@ -26,6 +27,15 @@ public class Checkpoint : MonoBehaviour
             {
                 if (!IsTouched)
                 {
+                    foreach (Checkpoint checkpoint in GameObject.FindObjectsOfType<Checkpoint>())
+                    {
+                        if (checkpoint.IsTouched)
+                        {
+                            checkpoint.IsTouched = false;
+                            checkpoint.transform.Find("TX Village Props Road Lamp Light On").transform.Find("Point Light 2D").GetComponent<Light2D>().pointLightOuterRadius = 1.5f;
+                        }
+                    }
+                    
                     IsTouched = true;
                     this.transform.Find("TX Village Props Road Lamp Light On").transform.Find("Point Light 2D").GetComponent<Light2D>().pointLightOuterRadius = 4.5f;
                 }
