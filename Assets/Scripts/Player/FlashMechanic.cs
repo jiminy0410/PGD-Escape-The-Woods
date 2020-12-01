@@ -43,6 +43,8 @@ public class FlashMechanic : MonoBehaviour
             if (flashCharges == maxFlashCharges)
             {
                 StartCoroutine(Flash());
+                GameObject.Find("SecretTiles").GetComponent<SecretWallSystems>().MakeTransparent();
+
                 flashCharges--;
                 if (standingChargeRate > standingChargeMin) //when flashing, your next recharge goes slower when standing still
                 {
@@ -90,7 +92,6 @@ public class FlashMechanic : MonoBehaviour
         flashSound.pitch = Random.Range(2.5f, 3);
         flashSound.Play();
         playerVision.pointLightOuterRadius = enlargedOuterRadius;
-        GameObject.Find("SecretTiles").GetComponent<SecretWallSystems>().MakeTransparent();
         yield return null;
     }
 }
