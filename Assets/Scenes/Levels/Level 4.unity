@@ -4622,6 +4622,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7889921258282494643, guid: 2ef1d5dd48be5414da0ce4e5c1c71671,
+        type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889921258282494643, guid: 2ef1d5dd48be5414da0ce4e5c1c71671,
+        type: 3}
+      propertyPath: m_PointLightInnerRadius
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ef1d5dd48be5414da0ce4e5c1c71671, type: 3}
 --- !u!1 &781691651
@@ -6483,6 +6493,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 43768278}
     m_Modifications:
+    - target: {fileID: 2595713296422398850, guid: 6fab5f24c9fbfbf4eb52c2d32b7096cd,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2743124059993387490, guid: 6fab5f24c9fbfbf4eb52c2d32b7096cd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10823,6 +10838,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: dubbelJumpGrass Super (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8230869955262087054, guid: 6fab5f24c9fbfbf4eb52c2d32b7096cd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fab5f24c9fbfbf4eb52c2d32b7096cd, type: 3}
