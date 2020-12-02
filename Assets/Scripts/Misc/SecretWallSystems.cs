@@ -10,6 +10,7 @@ public class SecretWallSystems : SecretWallComponents
     void Start()
     {
         tileRenderer = this.GetComponent<Tilemap>();
+        tileRenderer.color = new Color(tileRenderer.color.r, tileRenderer.color.g, tileRenderer.color.b, 255f);
     }
 
 
