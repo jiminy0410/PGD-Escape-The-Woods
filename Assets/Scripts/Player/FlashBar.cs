@@ -15,12 +15,15 @@ public class FlashBar : MonoBehaviour
 
     private void Update()
     {
+        //the greater the charge speed, the 'better' the color. changing from red (slow) to green (fast)
         if (theFlash.currentFlashRechargeRate > theFlash.ChargeMax/2)
         {
+            //If the player has more than half of their chargespeed left, the bar will change color between green and yellow.
             phill.color = Color.Lerp(halfColor, fullColor, (theFlash.currentFlashRechargeRate- theFlash.ChargeMax / 2) / (theFlash.ChargeMax - theFlash.ChargeMax / 2));
         }
         else
         {
+            //Otherwise, they must have less than half of their charge speed left. so,the bar color will change betweeen yellow and red.
             phill.color = Color.Lerp(emptyColor, halfColor, (theFlash.currentFlashRechargeRate - theFlash.standingChargeMin) / ((theFlash.ChargeMax/2) - theFlash.standingChargeMin));
         }
         

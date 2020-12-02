@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class LifetimeDim : MonoBehaviour
 {
+    //this is some code Yves made for another game. basically, the object this is assigned to, now has a timer.
+    //depending on a couple of settings, you can change how long the timer lasts, how many times it will blink during the timer and what colors it wil have during the change
     private float tint = 0;
     public float lifeTime;
 
@@ -41,7 +43,6 @@ public class LifetimeDim : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         

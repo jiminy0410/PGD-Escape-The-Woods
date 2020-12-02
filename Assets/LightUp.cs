@@ -14,6 +14,7 @@ public class LightUp : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && !isTouched)
         {
+            //this code is run the first time the player touches this. then, the update part should be able to run.
             isTouched = true;
             glowGrow = true;
         }
@@ -23,7 +24,7 @@ public class LightUp : MonoBehaviour
     {
         if (glowGrow)
         {
-            //the plants glow starts to grow
+            //the plants glow starts to grow.
             if (!transform.Find("dubbleJumpGrass").transform.Find("GrassLight").GetComponent<Light2D>().enabled)
             {
                 transform.Find("dubbleJumpGrass").transform.Find("GrassLight").GetComponent<Light2D>().enabled = true;
