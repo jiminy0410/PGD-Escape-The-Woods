@@ -20,6 +20,7 @@ public class Automove : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
+            GameObject.Find("DeathPit").GetComponent<DeathPit>().Death();
             Debug.Log("blueh, Im ded");
         }
     }
