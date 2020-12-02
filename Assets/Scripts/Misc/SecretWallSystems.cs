@@ -6,10 +6,10 @@ using UnityEngine.Tilemaps;
 
 public class SecretWallSystems : SecretWallComponents
 {
- 
+
     void Start()
     {
-        tileRenderer = this.GetComponent<Tilemap>();
+        tileRenderer = GetComponent<Tilemap>();
         tileRenderer.color = new Color(tileRenderer.color.r, tileRenderer.color.g, tileRenderer.color.b, 255f);
     }
 
@@ -24,14 +24,9 @@ public class SecretWallSystems : SecretWallComponents
         {
             tileAlpha = 0.0255f * playerCollisionOpacity;
         }
-     
-
-
-
-
 
         tileRenderer.color = new Color(tileRenderer.color.r, tileRenderer.color.g, tileRenderer.color.b, tileAlpha);
-        
+
     }
 
     public void MakeTransparent()
@@ -43,20 +38,18 @@ public class SecretWallSystems : SecretWallComponents
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Player") && collision == GameObject.Find("Player").GetComponent<BoxCollider2D>())
+        if (collision.gameObject.CompareTag("Player") && collision == GameObject.Find("Player").GetComponent<BoxCollider2D>())
         {
             collidingWithPlayer = true;
-            Debug.Log("lol");
         }
-        
 
-
-        
     }
 
     public void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
+        {
             collidingWithPlayer = false;
+        }
     }
 }
