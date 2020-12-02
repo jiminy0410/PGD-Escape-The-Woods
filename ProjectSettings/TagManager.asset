@@ -53,3 +53,6 @@ TagManager:
   - name: Doors
     uniqueID: 1505020293
     locked: 0
+  - name: SecretTiles
+    uniqueID: 4186485699
+    locked: 0

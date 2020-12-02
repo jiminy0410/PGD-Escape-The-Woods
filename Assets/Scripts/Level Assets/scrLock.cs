@@ -8,6 +8,7 @@ public class scrLock : MonoBehaviour
     public lockAndKey scr;
     public void Start()
     {
+        StateMagine = this.gameObject;
         scr = StateMagine.GetComponent<lockAndKey>();
     }
     private void OnTriggerEnter2D(Collider2D collision)

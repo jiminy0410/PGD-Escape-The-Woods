@@ -737,7 +737,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 258392641
-  m_SortingLayer: -2
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 916a82305a812f74f955c0d34cfbbafe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1526,8 +1526,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: af566846b2e46bb4391ffdc3a02c9845, type: 3}
 --- !u!4 &333413329 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 4302019359782450170, guid: af566846b2e46bb4391ffdc3a02c9845,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 333413328}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &337080734 stripped
@@ -3261,7 +3260,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 258392641
-  m_SortingLayer: -2
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 916a82305a812f74f955c0d34cfbbafe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -8757,7 +8756,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 258392641
-  m_SortingLayer: -2
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 916a82305a812f74f955c0d34cfbbafe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -10432,7 +10431,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 258392641
-  m_SortingLayer: -2
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 916a82305a812f74f955c0d34cfbbafe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -12136,15 +12135,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 7192099075931133621, guid: 16997f9c4c29c8a4e9782591bcfa92f4,
+    - target: {fileID: 671841811269856717, guid: 16997f9c4c29c8a4e9782591bcfa92f4,
         type: 3}
-      propertyPath: m_AnchorMax.x
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7192099075931133621, guid: 16997f9c4c29c8a4e9782591bcfa92f4,
         type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192099075931133621, guid: 16997f9c4c29c8a4e9782591bcfa92f4,
+        type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16997f9c4c29c8a4e9782591bcfa92f4, type: 3}
@@ -12214,6 +12218,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Global Light 2D
+      objectReference: {fileID: 0}
+    - target: {fileID: 1048210873684301575, guid: 8df0289cb9560e249ba2054f91bb2491,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8df0289cb9560e249ba2054f91bb2491, type: 3}
