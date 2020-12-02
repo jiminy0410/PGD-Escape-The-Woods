@@ -31,7 +31,7 @@ public class Automove : MonoBehaviour
 
         RaycastHit2D pathingRay = Physics2D.Raycast(rayPoint.position, Vector2.down, rayLength);
 
-        if (pathingRay.collider != null && pathingRay.collider != GameObject.Find("Player"))
+        if (pathingRay.collider != null)
         {
             //moveboi
             transform.position += new Vector3(speed, 0, 0);
@@ -53,7 +53,7 @@ public class Automove : MonoBehaviour
         }
         
 
-        if (pathingRay.collider != null && pathingRay.collider != GameObject.Find("Player"))
+        if (pathingRay.collider != null)
         {
             Vector3 lol = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
             //turn around and walk away

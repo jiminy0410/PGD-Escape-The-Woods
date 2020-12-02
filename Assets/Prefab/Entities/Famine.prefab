@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2956671554320160410}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 2956671555442937683}
   - component: {fileID: 7255271584794980989}
   - component: {fileID: 1555374276166250593}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Famine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,6 +178,9 @@ MonoBehaviour:
   rayPoint: {fileID: 2956671554320160410}
   rayLength: 0.1
   speed: 5
+  turningMask:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!114 &1555374276166250593
 MonoBehaviour:
   m_ObjectHideFlags: 0

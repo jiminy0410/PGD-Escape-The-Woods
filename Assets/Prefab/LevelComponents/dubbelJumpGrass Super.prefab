@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2202708710048204401}
   - component: {fileID: 2595713296422398850}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GrassLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ GameObject:
   m_Component:
   - component: {fileID: 70409907435194390}
   - component: {fileID: 7444442779594463401}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BlueTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3763739656137551}
   - component: {fileID: 1816414916990663682}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BlueTip (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,7 +227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3132031834339261747}
   - component: {fileID: 8314323671785526361}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: TX Village Props Grass D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -308,7 +308,7 @@ GameObject:
   m_Component:
   - component: {fileID: 528154457689205703}
   - component: {fileID: 6740632101834442397}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BlueTip (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -380,7 +380,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4644397695632872357}
   - component: {fileID: 2295881068719543634}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BlueTip (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -452,7 +452,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6933031845214593093}
   - component: {fileID: 2593557525783151871}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BlueTip (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -525,7 +525,7 @@ GameObject:
   - component: {fileID: 2743124059993387490}
   - component: {fileID: 1211420312698730299}
   - component: {fileID: 1889966266223426079}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: dubbelJumpGrass Super
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -598,7 +598,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7463824097791772160}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: dubbleJumpGrass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -697,6 +697,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3451793827430085432, guid: e952cd89620dc3948a62e547649d7d11,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e952cd89620dc3948a62e547649d7d11, type: 3}
