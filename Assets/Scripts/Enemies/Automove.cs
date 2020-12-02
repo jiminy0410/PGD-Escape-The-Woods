@@ -18,7 +18,7 @@ public class Automove : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "player")
+        if (collision.gameObject.name == "Player")
         {
             Debug.Log("blueh, Im ded");
         }
@@ -30,7 +30,7 @@ public class Automove : MonoBehaviour
 
         RaycastHit2D pathingRay = Physics2D.Raycast(rayPoint.position, Vector2.down, rayLength);
 
-        if (pathingRay.collider != null)
+        if (pathingRay.collider != null && pathingRay.collider != GameObject.Find("Player"))
         {
             //moveboi
             transform.position += new Vector3(speed, 0, 0);
@@ -52,7 +52,7 @@ public class Automove : MonoBehaviour
         }
         
 
-        if (pathingRay.collider != null)
+        if (pathingRay.collider != null && pathingRay.collider != GameObject.Find("Player"))
         {
             Vector3 lol = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
             //turn around and walk away
