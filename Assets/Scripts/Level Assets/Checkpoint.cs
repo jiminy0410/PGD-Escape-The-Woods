@@ -25,17 +25,18 @@ public class Checkpoint : MonoBehaviour
         {
             if (Time.time > cooldownCount)
             {
-                if (!isTouched)
+                if (!isTouched) //this part of the code is here to turn the corresponding lantern 'on'.
                 {
                     foreach (Checkpoint checkpoint in GameObject.FindObjectsOfType<Checkpoint>())
                     {
                         if (checkpoint.isTouched)
                         {
+                            //here, all checkpoints lanterns are turned off.
                             checkpoint.isTouched = false;
                             checkpoint.transform.Find("TX Village Props Road Lamp Light On").transform.Find("Point Light 2D").GetComponent<Light2D>().pointLightOuterRadius = 1.5f;
                         }
                     }
-                    
+                    //then, here, the light that's part of this scripts parent, will be turned 'on'
                     isTouched = true;
                     this.transform.Find("TX Village Props Road Lamp Light On").transform.Find("Point Light 2D").GetComponent<Light2D>().pointLightOuterRadius = 4.5f;
                 }
