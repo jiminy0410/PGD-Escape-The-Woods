@@ -17,7 +17,7 @@ TagManager:
   - deathPit
   - Enemies
   - Plants (Traps and otherwise)
-  - 
+  - Additional UI
   - 
   - 
   - 
@@ -53,6 +53,12 @@ TagManager:
   - name: Doors
     uniqueID: 1505020293
     locked: 0
+  - name: Enemies
+    uniqueID: 1586729821
+    locked: 0
   - name: SecretTiles
     uniqueID: 4186485699
+    locked: 0
+  - name: UI
+    uniqueID: 1999120429
     locked: 0

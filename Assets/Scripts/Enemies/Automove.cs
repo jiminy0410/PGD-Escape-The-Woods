@@ -20,7 +20,7 @@ public class Automove : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
-            GameObject.Find("DeathPit").GetComponent<DeathPit>().Death();
+            //GameObject.Find("DeathPit").GetComponent<DeathPit>().Death();
             Debug.Log("blueh, Im ded");
         }
     }
@@ -51,18 +51,6 @@ public class Automove : MonoBehaviour
         {
             pathingRay = Physics2D.Raycast(rayPoint.position, Vector2.left, rayLength*1.5f);
         }
-        
-
-        if (pathingRay.collider != null)
-        {
-            Vector3 lol = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-            //turn around and walk away
-            transform.localScale = lol;
-            speed *= -1;
-        }
-        else
-        {
-            
-        }
+      
     }
 }

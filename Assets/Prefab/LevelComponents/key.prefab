@@ -129,6 +129,9 @@ MonoBehaviour:
   StateMagine: {fileID: 0}
   savePoint: {x: 0, y: 0}
   Collected: 0
+  keysUIElement: {fileID: 0}
+  lightIntensityUI: 1
+  lightIntensityGeneral: 0.1
 --- !u!114 &307246541561760500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,7 +150,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 0.2
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 41c2660f000000004dbb26af33801e08c3b388f9
+  m_ApplyToSortingLayers: 41c2660f000000004dbb26af33801e08c3b388f95d93935e
   m_LightCookieSprite: {fileID: 21300064, guid: 7810966f0f690954c87305933cabf2b0,
     type: 3}
   m_UseNormalMap: 0

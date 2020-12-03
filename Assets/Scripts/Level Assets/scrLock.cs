@@ -9,7 +9,7 @@ public class scrLock : MonoBehaviour
     public void Start()
     {
         StateMagine = this.gameObject;
-        scr = StateMagine.GetComponent<lockAndKey>();
+        scr = this.GetComponent<lockAndKey>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -17,9 +17,11 @@ public class scrLock : MonoBehaviour
         {
             this.gameObject.SetActive(false);
             scr.kickingDownTheDoor = true;
+
             foreach (GameObject item in scr.keys)
             {
                 item.SetActive(false);
+                GameObject.Find("KeysUI").GetComponent<KeyUISystems>().keys.Remove(item);
                 GameObject.Find("LevelResetter").GetComponent<levelState>().AddItemToList(this.gameObject);
 
                 //item.transform.parent = StateMagine.transform;
