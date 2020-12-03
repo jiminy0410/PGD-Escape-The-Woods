@@ -11348,12 +11348,12 @@ PrefabInstance:
     - target: {fileID: 5492172409034114654, guid: af278e7841b6ad04bb017d6d04b10dcd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.22
+      value: -4.6
       objectReference: {fileID: 0}
     - target: {fileID: 5492172409034114654, guid: af278e7841b6ad04bb017d6d04b10dcd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.39
+      value: -4.5
       objectReference: {fileID: 0}
     - target: {fileID: 5492172409034114654, guid: af278e7841b6ad04bb017d6d04b10dcd,
         type: 3}
@@ -30706,12 +30706,12 @@ PrefabInstance:
     - target: {fileID: 3318207911309514865, guid: a561ab777b73ce24aa6f79cb20ea01e9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.22
+      value: -4.6
       objectReference: {fileID: 0}
     - target: {fileID: 3318207911309514865, guid: a561ab777b73ce24aa6f79cb20ea01e9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.39
+      value: -4.5
       objectReference: {fileID: 0}
     - target: {fileID: 3318207911309514865, guid: a561ab777b73ce24aa6f79cb20ea01e9,
         type: 3}
@@ -47383,7 +47383,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileAlpha: 0
   opacityRecovery: 0.75
-  playerCollisionOpacity: 20
+  playerCollisionOpacity: 15
   tileRenderer: {fileID: 0}
   collidingWithPlayer: 0
 --- !u!1 &6641373677941646379

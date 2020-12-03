@@ -25,7 +25,7 @@ public class DeathPit : MonoBehaviour
         player.GetComponent<FlashMechanic>().StartCoroutine("Flash");
         player.GetComponent<FlashMechanic>().flashCharges = player.GetComponent<FlashMechanic>().maxFlashCharges;
         player.GetComponent<FlashMechanic>().standingChargeRate = player.GetComponent<FlashMechanic>().ChargeMax;
-        player.transform.position = respawnPoint.position;
         levelState.GetComponent<levelState>().Rvert();
+        player.transform.position = respawnPoint.position;
     }
 }

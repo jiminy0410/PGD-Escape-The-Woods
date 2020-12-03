@@ -61,7 +61,7 @@ public class LifetimeDim : MonoBehaviour
 
             if (biteable)
             {
-                player.transform.position = GameObject.Find("DeathPit").GetComponent<DeathPit>().respawnPoint.position;
+                GameObject.Find("DeathPit").GetComponent<DeathPit>().Death();
             }
             
             counter = blinks;

@@ -10,7 +10,7 @@ public class levelState : MonoBehaviour
     public int currentPointInTime;
 
     [SerializeField]
-    private int itemsAtThisPointInTime;
+    private int itemsAtThisPointInTime = 0;
     [SerializeField]
     private bool newPointInTime = false;
 
@@ -22,39 +22,6 @@ public class levelState : MonoBehaviour
 
     void Update()
     {
-
-        //for (int i = 0; i < items.Count; i++)
-        //{
-        //    if (items[i].GetComponent<scrKey>() != null)
-        //    {
-        //        if (items[i].GetComponent<scrKey>().Collected == true)
-        //        {
-        //            if (!itemspassed[i])
-        //                currentPointInTime++;
-        //            itemspassed[i] = true;
-        //        }
-        //    }
-        //    if (items[i].GetComponent<lockAndKey>() != null)
-        //    {
-        //        if (items[i].GetComponent<lockAndKey>().kickingDownTheDoor == true)
-        //        {
-        //            if (!itemspassed[i])
-        //                currentPointInTime++;
-        //            itemspassed[i] = true;
-        //        }
-        //    }
-        //    if (items[i].GetComponent<DoubleJump>() != null)
-        //    {
-        //        if (items[i].GetComponent<DoubleJump>().Collected == true)
-        //        {
-        //            if (!itemspassed[i])
-        //                currentPointInTime++;
-        //            itemspassed[i] = true;
-        //        }
-        //    }
-        //}
-
-
 
         if(items.Count > itemsAtThisPointInTime && !newPointInTime)
         {
@@ -68,14 +35,12 @@ public class levelState : MonoBehaviour
     {
         for (int i = 0; i < items.Count; i++)
         {
-            if (i >= pointInTime)
+            if (i >= itemsAtThisPointInTime)
             {
                 itemspassed[i] = false;
             }
 
         }
-
-        ResetPointInTime();
 
         for (int i = 0; i < items.Count; i++)
         {
@@ -95,7 +60,8 @@ public class levelState : MonoBehaviour
                 }
             }
         }
-        currentPointInTime = pointInTime;
+
+        ResetPointInTime();
 
         ClearTheList();
     }
@@ -108,13 +74,13 @@ public class levelState : MonoBehaviour
 
     public void ClearTheList()
     {
-        for (int i = items.Count - 1; i >= itemsAtThisPointInTime; i--)
+        for (int i = items.Count - 1; i >= 0; i--)
         {
             if (itemspassed[i] == false)
             {
                 itemspassed.RemoveAt(i);
                 items.Remove(items[i]);
-                ClearTheList();
+                itemsAtThisPointInTime = items.Count;
             }
         }
     }
@@ -129,7 +95,6 @@ public class levelState : MonoBehaviour
     public void ResetPointInTime()
     {
         currentPointInTime = pointInTime;
-        itemsAtThisPointInTime = items.Count;
         newPointInTime = false;
     }
 }
