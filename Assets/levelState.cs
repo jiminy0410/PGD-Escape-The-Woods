@@ -9,47 +9,59 @@ public class levelState : MonoBehaviour
     public int pointInTime;
     public int currentPointInTime;
 
+    [SerializeField]
+    private int itemsAtThisPointInTime;
+    [SerializeField]
+    private bool newPointInTime = false;
+
     void Start()
     {
-        for (int i = 0; i < items.Count; i++)
-        {
-            itemspassed.Add(false);
-        }
+
     }
 
 
     void Update()
     {
-        for (int i = 0; i < items.Count; i++)
+
+        //for (int i = 0; i < items.Count; i++)
+        //{
+        //    if (items[i].GetComponent<scrKey>() != null)
+        //    {
+        //        if (items[i].GetComponent<scrKey>().Collected == true)
+        //        {
+        //            if (!itemspassed[i])
+        //                currentPointInTime++;
+        //            itemspassed[i] = true;
+        //        }
+        //    }
+        //    if (items[i].GetComponent<lockAndKey>() != null)
+        //    {
+        //        if (items[i].GetComponent<lockAndKey>().kickingDownTheDoor == true)
+        //        {
+        //            if (!itemspassed[i])
+        //                currentPointInTime++;
+        //            itemspassed[i] = true;
+        //        }
+        //    }
+        //    if (items[i].GetComponent<DoubleJump>() != null)
+        //    {
+        //        if (items[i].GetComponent<DoubleJump>().Collected == true)
+        //        {
+        //            if (!itemspassed[i])
+        //                currentPointInTime++;
+        //            itemspassed[i] = true;
+        //        }
+        //    }
+        //}
+
+
+
+        if(items.Count > itemsAtThisPointInTime && !newPointInTime)
         {
-            if (items[i].GetComponent<scrKey>() != null)
-            {
-                if (items[i].GetComponent<scrKey>().Collected == true)
-                {
-                    if (!itemspassed[i])
-                        currentPointInTime++;
-                    itemspassed[i] = true;
-                }
-            }
-            if (items[i].GetComponent<lockAndKey>() != null)
-            {
-                if (items[i].GetComponent<lockAndKey>().kickingDownTheDoor == true)
-                {
-                    if (!itemspassed[i])
-                        currentPointInTime++;
-                    itemspassed[i] = true;
-                }
-            }
-            if (items[i].GetComponent<DoubleJump>() != null)
-            {
-                if (items[i].GetComponent<DoubleJump>().Collected == true)
-                {
-                    if (!itemspassed[i])
-                        currentPointInTime++;
-                    itemspassed[i] = true;
-                }
-            }
+            currentPointInTime++;
+            newPointInTime = true;
         }
+
     }
 
     public void Rvert()
@@ -60,7 +72,10 @@ public class levelState : MonoBehaviour
             {
                 itemspassed[i] = false;
             }
+
         }
+
+        ResetPointInTime();
 
         for (int i = 0; i < items.Count; i++)
         {
@@ -81,5 +96,40 @@ public class levelState : MonoBehaviour
             }
         }
         currentPointInTime = pointInTime;
+
+        ClearTheList();
+    }
+
+    public void AddItemToList(GameObject item)
+    {
+        items.Add(item);
+        itemspassed.Add(true);
+    }
+
+    public void ClearTheList()
+    {
+        for (int i = items.Count - 1; i >= itemsAtThisPointInTime; i--)
+        {
+            if (itemspassed[i] == false)
+            {
+                itemspassed.RemoveAt(i);
+                items.Remove(items[i]);
+                ClearTheList();
+            }
+        }
+    }
+
+    public void SavePointInTime()
+    {
+        pointInTime = currentPointInTime;
+        itemsAtThisPointInTime = items.Count;
+        newPointInTime = false;
+    }
+
+    public void ResetPointInTime()
+    {
+        currentPointInTime = pointInTime;
+        itemsAtThisPointInTime = items.Count;
+        newPointInTime = false;
     }
 }

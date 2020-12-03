@@ -20,8 +20,11 @@ public class scrLock : MonoBehaviour
             foreach (GameObject item in scr.keys)
             {
                 item.SetActive(false);
+                GameObject.Find("LevelResetter").GetComponent<levelState>().AddItemToList(this.gameObject);
+
                 //item.transform.parent = StateMagine.transform;
             }
+
         }
     }
 }

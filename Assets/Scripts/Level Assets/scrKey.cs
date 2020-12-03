@@ -50,6 +50,7 @@ public class scrKey : MonoBehaviour
                 }
             }
             Collected = true;
+            GameObject.Find("LevelResetter").GetComponent<levelState>().AddItemToList(this.gameObject);
         }
     }
 

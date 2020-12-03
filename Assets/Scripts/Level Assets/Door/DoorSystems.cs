@@ -16,7 +16,7 @@ public class DoorSystems : DoorComponents
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            if (Input.GetAxisRaw("Vertical") > 0 && Time.time > cooldownCount)
+            if (Input.GetAxisRaw("Vertical") < 0 && Time.time > cooldownCount)
             {
                 Debug.Log("PLAYER IS PRESSING W");
 

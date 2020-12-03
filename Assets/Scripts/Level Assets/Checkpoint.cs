@@ -41,7 +41,7 @@ public class Checkpoint : MonoBehaviour
                     this.transform.Find("TX Village Props Road Lamp Light On").transform.Find("Point Light 2D").GetComponent<Light2D>().pointLightOuterRadius = 4.5f;
                 }
 
-                levelState.GetComponent<levelState>().pointInTime = levelState.GetComponent<levelState>().currentPointInTime;
+                levelState.GetComponent<levelState>().SavePointInTime();
                 GameObject deathPit = GameObject.Find("DeathPit");
                 deathPit.GetComponent<DeathPit>().respawnPoint = resetPoint;
 

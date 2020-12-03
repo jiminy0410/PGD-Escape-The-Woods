@@ -31,10 +31,7 @@ public class lockAndKey : MonoBehaviour
 
         for (int i = 0; i < keys.Count; i++)
         {
-            if (keys[i].GetComponent<scrKey>().Collected == true)
-            {
-                keyCollected[i] = true;
-            }
+                keyCollected[i] = keys[i].GetComponent<scrKey>().Collected;
         }
     }
 
@@ -54,4 +51,5 @@ public class lockAndKey : MonoBehaviour
         kickingDownTheDoor = false;
         this.gameObject.SetActive(true);
     }
+
 }
