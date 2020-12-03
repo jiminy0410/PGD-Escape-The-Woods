@@ -23,7 +23,7 @@ public class levelState : MonoBehaviour
     void Update()
     {
 
-        if(items.Count > itemsAtThisPointInTime && !newPointInTime)
+        if (items.Count > itemsAtThisPointInTime && !newPointInTime)
         {
             currentPointInTime++;
             newPointInTime = true;
