@@ -18,7 +18,4 @@ public class SecretWallComponents : MonoBehaviour
     [HideInInspector]
     public bool collidingWithPlayer;
 
-
-
-
 }

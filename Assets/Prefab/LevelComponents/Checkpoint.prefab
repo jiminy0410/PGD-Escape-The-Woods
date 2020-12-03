@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resetPoint: {fileID: 1771057196717037576}
-  IsTouched: 0
+  isTouched: 0
   cooldownCount: 0
   cooldownTime: 2
   levelState: {fileID: 0}
@@ -321,7 +321,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 0.4745098, b: 0, a: 1}
   m_Intensity: 1
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 41c2660f4dbb26af0000000033801e0885c9b459
+  m_ApplyToSortingLayers: 41c2660f000000004dbb26af33801e0885c9b459c3b388f9
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0

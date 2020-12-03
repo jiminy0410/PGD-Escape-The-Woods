@@ -16,11 +16,6 @@ public class DoorSystems : DoorComponents
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            //if (GetComponent<FlashMechanic>().flashCharges <= GetComponent<FlashMechanic>().maxFlashCharges)
-            //{
-            //    GetComponent<FlashMechanic>().flashCharges = GetComponent<FlashMechanic>().maxFlashCharges;
-            //}
-
             if (Input.GetAxisRaw("Vertical") > 0 && Time.time > cooldownCount)
             {
                 Debug.Log("PLAYER IS PRESSING W");

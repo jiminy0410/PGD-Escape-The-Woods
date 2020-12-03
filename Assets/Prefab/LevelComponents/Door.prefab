@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 0.4745098, b: 0, a: 1}
   m_Intensity: 1
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 41c2660f4dbb26af0000000033801e0885c9b459
+  m_ApplyToSortingLayers: 41c2660f000000004dbb26af33801e0885c9b459c3b388f9
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0
@@ -317,7 +317,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 0.4745098, b: 0, a: 1}
   m_Intensity: 1
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 41c2660f4dbb26af0000000033801e0885c9b459
+  m_ApplyToSortingLayers: 41c2660f000000004dbb26af33801e0885c9b459c3b388f9
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0
@@ -415,7 +415,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1505020293
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300066, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -466,7 +466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7072864cc53c71442a213573735760dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  finalDoor: 1
+  finalDoor: 0
   nextDoor: {fileID: 0}
   player: {fileID: 0}
   cooldownCount: 0

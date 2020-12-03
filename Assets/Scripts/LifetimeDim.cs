@@ -24,12 +24,12 @@ public class LifetimeDim : MonoBehaviour
     {
         counter = blinks;
         colorIntensity = colorIntensity / 100;
-        player = GameObject.Find("player");
+        player = GameObject.Find("Player");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "player")
+        if (collision.gameObject.name == "Player")
         {
             enabled = true;
         }
@@ -37,7 +37,7 @@ public class LifetimeDim : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "player")
+        if (collision.gameObject.name == "Player")
         {
             biteable = true;
         }
@@ -57,11 +57,11 @@ public class LifetimeDim : MonoBehaviour
         }
         if (counter == 0)
         {
-            player.GetComponent<FuelBasedLight>().currentFuel = player.GetComponent<FuelBasedLight>().maxFuel;
+            //player.GetComponent<FuelBasedLight>().currentFuel = player.GetComponent<FuelBasedLight>().maxFuel;
 
             if (biteable)
             {
-                player.transform.position = respawnPoint.position;
+                player.transform.position = GameObject.Find("DeathPit").GetComponent<DeathPit>().respawnPoint.position;
             }
             
             counter = blinks;

@@ -17,6 +17,11 @@ public class DeathPit : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Death();
+    }
+
+    public void Death()
+    {
         player.GetComponent<FlashMechanic>().StartCoroutine("Flash");
         player.GetComponent<FlashMechanic>().flashCharges = player.GetComponent<FlashMechanic>().maxFlashCharges;
         player.GetComponent<FlashMechanic>().standingChargeRate = player.GetComponent<FlashMechanic>().ChargeMax;

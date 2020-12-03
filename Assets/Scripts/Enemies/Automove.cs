@@ -18,8 +18,9 @@ public class Automove : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "player")
+        if (collision.gameObject.name == "Player")
         {
+            GameObject.Find("DeathPit").GetComponent<DeathPit>().Death();
             Debug.Log("blueh, Im ded");
         }
     }
