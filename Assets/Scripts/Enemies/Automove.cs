@@ -12,6 +12,7 @@ public class Automove : MonoBehaviour
     public float speed = 2f;
 
     private Vector2 deltaDist;
+    RaycastHit2D pathingRay;
 
     // Start is called before the first frame update
     // make sure to set speed before running the script
@@ -30,9 +31,9 @@ public class Automove : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if(Vector2.Distance(deltaDist, this.transform.position) < 0.01f)
+        if(Vector2.Distance(deltaDist, this.transform.position) < 0.001f)
         {
             Vector3 lol = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
             //turn around and walk away
@@ -41,7 +42,7 @@ public class Automove : MonoBehaviour
         }
         deltaDist = this.transform.position;
 
-        RaycastHit2D pathingRay = Physics2D.Raycast(rayPoint.position, Vector2.down, rayLength, collisionMask);
+        pathingRay = Physics2D.Raycast(rayPoint.position, Vector2.down, rayLength, collisionMask);
 
         if (pathingRay.collider != null)
         {
@@ -64,19 +65,5 @@ public class Automove : MonoBehaviour
             transform.localScale = lol;
             speed *= -1;
         }
-
-
-        //if (speed > 0)
-        //{
-        //    pathingRay = Physics2D.Raycast(rayPoint.position, Vector2.right, rayLength * 1.5f, collisionMask);
-        //}
-        //else
-        //{
-        //    pathingRay = Physics2D.Raycast(rayPoint.position, Vector2.left, rayLength * 1.5f, collisionMask);
-        //}
-
-
-
-
     }
 }
