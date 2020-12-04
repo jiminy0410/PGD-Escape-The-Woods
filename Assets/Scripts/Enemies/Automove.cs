@@ -7,13 +7,17 @@ public class Automove : MonoBehaviour
     public Transform rayPoint;
     public float rayLength = 0.1f;
 
-    public float speed = 1;
+    public LayerMask collisionMask;
+
+    public float speed = 2f;
+
+    private Vector2 deltaDist;
 
     // Start is called before the first frame update
     // make sure to set speed before running the script
     void Start()
     {
-        speed /= -100;
+        speed /= -1;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -28,13 +32,30 @@ public class Automove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Vector2.Distance(deltaDist, this.transform.position) < 0.01f)
+        {
+            Vector3 lol = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+            //turn around and walk away
+            transform.localScale = lol;
+            speed *= -1;
+        }
+        deltaDist = this.transform.position;
 
-        RaycastHit2D pathingRay = Physics2D.Raycast(rayPoint.position, Vector2.down, rayLength);
+        RaycastHit2D pathingRay = Physics2D.Raycast(rayPoint.position, Vector2.down, rayLength, collisionMask);
 
         if (pathingRay.collider != null)
         {
             //moveboi
-            transform.position += new Vector3(speed, 0, 0);
+            Debug.Log(pathingRay.collider.name);
+            this.GetComponent<Rigidbody2D>().velocity = new Vector2(speed, 0);
+
+            //if(this.GetComponent<Rigidbody2D>().velocity.x < 0.001f && this.GetComponent<Rigidbody2D>().velocity.x > -0.001f)
+            //{
+            //    Vector3 lol = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+            //    //turn around and walk away
+            //    transform.localScale = lol;
+            //    speed *= -1;
+            //}
         }
         else
         {
@@ -43,14 +64,19 @@ public class Automove : MonoBehaviour
             transform.localScale = lol;
             speed *= -1;
         }
-        if (speed>0)
-        {
-            pathingRay = Physics2D.Raycast(rayPoint.position, Vector2.right, rayLength*1.5f);
-        }
-        else
-        {
-            pathingRay = Physics2D.Raycast(rayPoint.position, Vector2.left, rayLength*1.5f);
-        }
-      
+
+
+        //if (speed > 0)
+        //{
+        //    pathingRay = Physics2D.Raycast(rayPoint.position, Vector2.right, rayLength * 1.5f, collisionMask);
+        //}
+        //else
+        //{
+        //    pathingRay = Physics2D.Raycast(rayPoint.position, Vector2.left, rayLength * 1.5f, collisionMask);
+        //}
+
+
+
+
     }
 }

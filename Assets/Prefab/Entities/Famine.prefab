@@ -180,7 +180,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rayPoint: {fileID: 2956671554320160410}
   rayLength: 0.1
-  speed: 3
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 257
+  speed: 2
 --- !u!114 &1555374276166250593
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -700,7 +700,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &150348929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10485,7 +10485,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1404131232}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.77, y: -4.47, z: -10}
+  m_LocalPosition: {x: 240.8, y: 26.3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 471957643}
@@ -50522,6 +50522,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1380671797135514947, guid: 8c113c0a15febff468c0beb1c7752b32,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 2816568770713667604, guid: 8c113c0a15febff468c0beb1c7752b32,
         type: 3}
       propertyPath: Loop
@@ -50546,6 +50551,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PS_DubbleJumpEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 3275745517370834115, guid: 8c113c0a15febff468c0beb1c7752b32,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 5460159114449698452, guid: 8c113c0a15febff468c0beb1c7752b32,
         type: 3}
@@ -50607,6 +50617,11 @@ PrefabInstance:
       propertyPath: m_ApplyToSortingLayers.Array.data[3]
       value: 136216627
       objectReference: {fileID: 0}
+    - target: {fileID: 6091798533377111979, guid: 8c113c0a15febff468c0beb1c7752b32,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 6091798533617958306, guid: 8c113c0a15febff468c0beb1c7752b32,
         type: 3}
       propertyPath: crouch_Jump
@@ -50617,15 +50632,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6091798533617958309, guid: 8c113c0a15febff468c0beb1c7752b32,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 6091798533617958334, guid: 8c113c0a15febff468c0beb1c7752b32,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.77
+      value: 240.8
       objectReference: {fileID: 0}
     - target: {fileID: 6091798533617958334, guid: 8c113c0a15febff468c0beb1c7752b32,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.47
+      value: 26.3
       objectReference: {fileID: 0}
     - target: {fileID: 6091798533617958334, guid: 8c113c0a15febff468c0beb1c7752b32,
         type: 3}
@@ -50677,6 +50697,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.087
       objectReference: {fileID: 0}
+    - target: {fileID: 6091798533705084538, guid: 8c113c0a15febff468c0beb1c7752b32,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 6091798533899146965, guid: 8c113c0a15febff468c0beb1c7752b32,
         type: 3}
       propertyPath: m_SortingOrder
@@ -50696,6 +50721,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 0.5566038
+      objectReference: {fileID: 0}
+    - target: {fileID: 6091798534970310750, guid: 8c113c0a15febff468c0beb1c7752b32,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7256570998453089612, guid: 8c113c0a15febff468c0beb1c7752b32,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8194100450823158164, guid: 8c113c0a15febff468c0beb1c7752b32,
         type: 3}
