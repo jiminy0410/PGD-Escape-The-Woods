@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 public class SecretWallComponents : MonoBehaviour
 {
 
-    [HideInInspector]
+    
     public float tileAlpha;
 
     public float opacityRecovery;

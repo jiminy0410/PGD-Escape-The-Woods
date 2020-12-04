@@ -22,23 +22,24 @@ public class SecretWallSystems : SecretWallComponents
         }
         else
         {
-            tileAlpha = 0.0255f * playerCollisionOpacity;
+            tileAlpha -= 0.0255f * opacityRecovery;
+        }
+
+        if (tileAlpha < 0.0255f * playerCollisionOpacity)
+            tileAlpha =  0.0255f * playerCollisionOpacity;
+        else if(tileAlpha > 1)
+        {
+            tileAlpha = 1;
         }
 
         tileRenderer.color = new Color(tileRenderer.color.r, tileRenderer.color.g, tileRenderer.color.b, tileAlpha);
 
     }
 
-    public void MakeTransparent()
-    {
-        tileAlpha = 0f;
-    }
-
-
-
+    // && collision == GameObject.Find("Player").GetComponent<BoxCollider2D>()
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && collision == GameObject.Find("Player").GetComponent<BoxCollider2D>())
+        if (collision.gameObject.CompareTag("Player"))
         {
             collidingWithPlayer = true;
         }
