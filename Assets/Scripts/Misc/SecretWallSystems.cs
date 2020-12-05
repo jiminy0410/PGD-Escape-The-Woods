@@ -39,7 +39,7 @@ public class SecretWallSystems : SecretWallComponents
     // && collision == GameObject.Find("Player").GetComponent<BoxCollider2D>()
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision == GameObject.Find("Player").GetComponent<CircleCollider2D>())
         {
             collidingWithPlayer = true;
         }
