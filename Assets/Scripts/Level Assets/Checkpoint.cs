@@ -21,7 +21,7 @@ public class Checkpoint : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision == GameObject.Find("Player").GetComponent<CircleCollider2D>())
         {
             if (Time.time > cooldownCount)
             {

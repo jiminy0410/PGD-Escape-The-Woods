@@ -586,10 +586,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -19.550001
       objectReference: {fileID: 0}
+    - target: {fileID: 9055164529483633608, guid: c463c24e10eef984cbb3612bcd9ef1e0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9056032541420528084, guid: c463c24e10eef984cbb3612bcd9ef1e0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9056330833196392626, guid: c463c24e10eef984cbb3612bcd9ef1e0,
         type: 3}
       propertyPath: m_Name
       value: PF FX Torch Fire w_o Spark
+      objectReference: {fileID: 0}
+    - target: {fileID: 9056330833196392626, guid: c463c24e10eef984cbb3612bcd9ef1e0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c463c24e10eef984cbb3612bcd9ef1e0, type: 3}
@@ -661,10 +676,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -19.550001
       objectReference: {fileID: 0}
+    - target: {fileID: 9055164529483633608, guid: c463c24e10eef984cbb3612bcd9ef1e0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9056032541420528084, guid: c463c24e10eef984cbb3612bcd9ef1e0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9056330833196392626, guid: c463c24e10eef984cbb3612bcd9ef1e0,
         type: 3}
       propertyPath: m_Name
       value: PF FX Torch Fire w_o Spark
+      objectReference: {fileID: 0}
+    - target: {fileID: 9056330833196392626, guid: c463c24e10eef984cbb3612bcd9ef1e0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c463c24e10eef984cbb3612bcd9ef1e0, type: 3}
