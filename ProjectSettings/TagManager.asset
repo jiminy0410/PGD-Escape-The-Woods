@@ -44,20 +44,20 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Enemies
+    uniqueID: 1586729821
+    locked: 0
   - name: PlayerLayer
     uniqueID: 2938551117
-    locked: 0
-  - name: Keys
-    uniqueID: 136216627
     locked: 0
   - name: Doors
     uniqueID: 1505020293
     locked: 0
-  - name: Enemies
-    uniqueID: 1586729821
-    locked: 0
   - name: SecretTiles
     uniqueID: 4186485699
+    locked: 0
+  - name: Keys
+    uniqueID: 136216627
     locked: 0
   - name: UI
     uniqueID: 1999120429
