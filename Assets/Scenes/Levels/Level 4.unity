@@ -700,7 +700,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &150348929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10341,6 +10341,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4856555648166189739, guid: eaef226f9ba4575489570d76451124b6,
+        type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4856555648166189739, guid: eaef226f9ba4575489570d76451124b6,
+        type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[5]
+      value: 1586729821
+      objectReference: {fileID: 0}
+    - target: {fileID: 8501041987024030513, guid: eaef226f9ba4575489570d76451124b6,
+        type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8501041987024030513, guid: eaef226f9ba4575489570d76451124b6,
+        type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[5]
+      value: 1586729821
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eaef226f9ba4575489570d76451124b6, type: 3}
@@ -50680,7 +50700,7 @@ PrefabInstance:
     - target: {fileID: 5945640561723757654, guid: 8c113c0a15febff468c0beb1c7752b32,
         type: 3}
       propertyPath: m_ApplyToSortingLayers.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5945640561723757654, guid: 8c113c0a15febff468c0beb1c7752b32,
         type: 3}
@@ -50721,6 +50741,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ApplyToSortingLayers.Array.data[3]
       value: 136216627
+      objectReference: {fileID: 0}
+    - target: {fileID: 5945640561723757654, guid: 8c113c0a15febff468c0beb1c7752b32,
+        type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[5]
+      value: 1586729821
       objectReference: {fileID: 0}
     - target: {fileID: 6091798533377111979, guid: 8c113c0a15febff468c0beb1c7752b32,
         type: 3}
@@ -52188,6 +52213,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1557095964116467793, guid: 7ebe7e696fd41074c9d21883f5a9e0ed,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4201346438737888229, guid: 7ebe7e696fd41074c9d21883f5a9e0ed,
         type: 3}
       propertyPath: m_LocalPosition.x
