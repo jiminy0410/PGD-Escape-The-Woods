@@ -106,8 +106,9 @@ public class CharacterController2D : MonoBehaviour
 			crouch = false;
 		}
 
-		//dashing left
-		if (Input.GetKeyDown(KeyCode.A))
+        #region DashCode
+        //dashing left
+        if (Input.GetKeyDown(KeyCode.A))
 		{
 			if ((doubleTapTime > Time.time && lastKeyCode == KeyCode.A) && isAbleToDash)
 			{
@@ -132,8 +133,9 @@ public class CharacterController2D : MonoBehaviour
 			}
 			lastKeyCode = KeyCode.D;
 		}
+        #endregion
 
-		playerAnim.SetBool("Grounded", false);
+        playerAnim.SetBool("Grounded", false);
 		Grounded = false;
 
 		// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
