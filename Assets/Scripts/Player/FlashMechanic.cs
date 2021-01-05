@@ -1,6 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 
@@ -20,6 +18,8 @@ public class FlashMechanic : MonoBehaviour
     private static float enlargedOuterRadius = 15;
 
     private AudioSource flashSound;
+    public GameObject onLightning;
+    public GameObject offLightning;
 
     public FlashBar flashBar;
 
@@ -52,7 +52,7 @@ public class FlashMechanic : MonoBehaviour
             }
         }
 
-        if(standingChargeRate < standingChargeMin) //make sure the recharge doesn't go TOO slow...
+        if (standingChargeRate < standingChargeMin) //make sure the recharge doesn't go TOO slow...
         {
             standingChargeRate = standingChargeMin;
         }
@@ -64,10 +64,16 @@ public class FlashMechanic : MonoBehaviour
 
 
         if (gameObject.GetComponent<CharacterController2D>().wiggleWiggleWiggle == 0)
+        {
+            offLightning.SetActive(false);
             currentFlashRechargeRate = ChargeMax;
+            onLightning.SetActive(true);
+        }
         else
         {
+            offLightning.SetActive(true);
             currentFlashRechargeRate = standingChargeRate;
+            onLightning.SetActive(false);
         }
 
 
