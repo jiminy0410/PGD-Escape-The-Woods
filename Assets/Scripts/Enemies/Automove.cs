@@ -47,7 +47,7 @@ public class Automove : MonoBehaviour
         if (pathingRay.collider != null)
         {
             //moveboi
-            Debug.Log(pathingRay.collider.name);
+            //Debug.Log(pathingRay.collider.name);
             this.GetComponent<Rigidbody2D>().velocity = new Vector2(speed, 0);
 
             //if(this.GetComponent<Rigidbody2D>().velocity.x < 0.001f && this.GetComponent<Rigidbody2D>().velocity.x > -0.001f)
