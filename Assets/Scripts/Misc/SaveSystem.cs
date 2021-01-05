@@ -23,7 +23,23 @@ public static class SaveSystem
 
     }
 
-    public static PlayerData loadPlayer() //this is to load the position of the player back in again.
+    public static void SaveObjects(levelState things)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/objects" + dataType;
+
+        Debug.Log("Packing things...");
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        ObjectData data = new ObjectData(things);
+
+        formatter.Serialize(stream, data);
+        stream.Close();
+
+        Debug.Log("Objects saved!");
+    }
+
+    public static PlayerData LoadPosition() //this is to load the position of the player back in again.
     {
         string path = Application.persistentDataPath + "/player" + dataType;
         if (File.Exists(path))
@@ -42,7 +58,31 @@ public static class SaveSystem
         }
         else
         {
-            Debug.LogError("save file not found. there's no such thing as: " + path);
+            Debug.LogError("No idea where you're trying to go. No save file found at: " + path);
+            return null;
+        }
+    }
+
+    public static ObjectData LoadObjects()
+    {
+        string path = Application.persistentDataPath + "/objects" + dataType;
+        if (File.Exists(path))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+
+            Debug.Log("Checking backpack...");
+
+            FileStream stream = new FileStream(path, FileMode.Open);
+
+            ObjectData data = (ObjectData)formatter.Deserialize(stream);
+            stream.Close();
+
+            Debug.Log("Objects loaded!");
+            return data;
+        }
+        else
+        {
+            Debug.LogError("Looks like we lost our stuff. No save file found at: " + path);
             return null;
         }
     }

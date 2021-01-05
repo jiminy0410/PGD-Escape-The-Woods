@@ -70,7 +70,7 @@ public class CharacterController2D : MonoBehaviour
 
 	public void loadPosition()
 	{
-		PlayerData data = SaveSystem.loadPlayer();
+		PlayerData data = SaveSystem.LoadPosition();
 
         if (data == null)
         {

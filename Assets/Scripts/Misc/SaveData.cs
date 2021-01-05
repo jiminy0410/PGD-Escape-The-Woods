@@ -24,16 +24,13 @@ public class PlayerData
         position[1] = checkpoint.resetPoint.position.y;
         position[2] = checkpoint.resetPoint.position.z;
     }
-
-    
-
-
 }
 
+[System.Serializable]
 public class ObjectData
 {
     public string[] objects; // this will be a list of names of objects the player has collected.
-    public void objectsCollected(levelState things) //save the names for all the things the player has collected (and the trees he has destroyed) here
+    public ObjectData(levelState things) //save the names for all the things the player has collected (and the trees he has destroyed) here
     {
         objects = new string[things.items.Count];
         for (int i = 0; i < things.items.Count; i++)
