@@ -7,15 +7,15 @@ public class FlashMechanic : MonoBehaviour
     public Light2D playerVision;
     public float maxFlashCharges = 1;
     public float flashCharges;
-    public float currentFlashRechargeRate = 0.2f;
-    public static float lightDecay = 13f;
-    public static float defaultOuterRadius = 2;
-    public float standingChargeMin = 0.08f;
-    public float ChargeMax = 0.5f;
-    public float standingChargeReduction = 0.08f;
+    public float currentFlashRechargeRate;
+    public static float lightDecay;
+    public static float defaultOuterRadius;
+    public float standingChargeMin;
+    public float ChargeMax;
+    public float standingChargeReduction;
     public float standingChargeRate;
 
-    private static float enlargedOuterRadius = 15;
+    private static float enlargedOuterRadius;
 
     private AudioSource flashSound;
     public GameObject onLightning;
@@ -23,6 +23,14 @@ public class FlashMechanic : MonoBehaviour
 
     public FlashBar flashBar;
 
+    public static Difficulty selectedDifficulty;
+
+    public enum Difficulty
+    {
+        Easy,
+        Medium,
+        Hard
+    }
 
     void Start()
     {
@@ -34,10 +42,43 @@ public class FlashMechanic : MonoBehaviour
         playerVision = GetComponent<Light2D>();
         flashSound = this.GetComponent<AudioSource>();
         flashBar.SetMaxCharges(maxFlashCharges);
+
+        switch(selectedDifficulty)
+        {
+            case Difficulty.Easy:
+                ChargeMax = 0.75f;
+                currentFlashRechargeRate = 0.25f;
+                lightDecay = 10f;
+                defaultOuterRadius = 3f;
+                enlargedOuterRadius = 18;
+                standingChargeMin = 0.008f;
+                standingChargeReduction = 0.008f;
+                break;
+            case Difficulty.Medium:
+                ChargeMax = 0.5f;
+                currentFlashRechargeRate = 0.2f;
+                lightDecay = 13f;
+                defaultOuterRadius = 2f;
+                enlargedOuterRadius = 15;
+                standingChargeMin = 0.008f;
+                standingChargeReduction = 0.008f;
+                break;
+            case Difficulty.Hard:
+                ChargeMax = 0.25f;
+                currentFlashRechargeRate = 0.15f;
+                lightDecay = 16f;
+                defaultOuterRadius = 1.5f;
+                enlargedOuterRadius = 12.5f;
+                standingChargeMin = 0.008f;
+                standingChargeReduction = 0.008f;
+                break;
+        }
     }
 
     void Update()
     {
+        Debug.Log(selectedDifficulty);
+
         if (Input.GetKeyDown(KeyCode.Q))
         {
             if (flashCharges == maxFlashCharges)
