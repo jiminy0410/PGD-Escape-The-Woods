@@ -28,18 +28,22 @@ public class Automove : MonoBehaviour
             //GameObject.Find("DeathPit").GetComponent<DeathPit>().Death();
             Debug.Log("blueh, Im ded");
         }
+
+        if(collision.gameObject.layer == 10)
+        {
+            Flip();
+        }
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(Vector2.Distance(deltaDist, this.transform.position) < 0.001f)
+        if(Vector2.Distance(deltaDist, this.transform.position) < 0.0001f)
         {
-            Vector3 lol = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
             //turn around and walk away
-            transform.localScale = lol;
-            speed *= -1;
+            Flip();
         }
+
         deltaDist = this.transform.position;
 
         pathingRay = Physics2D.Raycast(rayPoint.position, Vector2.down, rayLength, collisionMask);
@@ -60,10 +64,15 @@ public class Automove : MonoBehaviour
         }
         else
         {
-            Vector3 lol = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
             //turn around and walk away
-            transform.localScale = lol;
-            speed *= -1;
+            Flip();
         }
+    }
+
+    void Flip()
+    {
+        Vector3 lol = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+        transform.localScale = lol;
+        speed *= -1;
     }
 }
