@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2956671554320160409}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.597, y: -0.5, z: 0}
+  m_LocalPosition: {x: -0.66, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2956671555442937686}
@@ -59,7 +59,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2956671555442937682}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.81, y: -1.26, z: -1.6386719}
+  m_LocalPosition: {x: 7.81, y: -1.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2956671554320160410}
@@ -108,7 +108,7 @@ SpriteRenderer:
   m_SortingLayerID: 1586729821
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3ad8af0145504a5409e73e7e46d70a56, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c27626ba3278d424e80967490b8d2e18, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -132,18 +132,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.005311489, y: -0.040720344}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.91, y: 1.12}
+    pivot: {x: 0.49777344, y: 0.5723671}
+    oldSize: {x: 1.2571429, y: 1.2571429}
     newSize: {x: 0.52, y: 0.09}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.91, y: 1.12}
+  m_Size: {x: 1.2215996, y: 1.0385593}
   m_EdgeRadius: 0
 --- !u!50 &2956671555442937683
 Rigidbody2D:
@@ -222,7 +222,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4094973131080814451}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.064, y: 0.379, z: 0}
+  m_LocalPosition: {x: -0.223, y: -0.335, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2956671555442937686}
@@ -243,7 +243,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.7584009, b: 0, a: 1}
   m_Intensity: 0.35
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 41c2660f000000004dbb26af33801e0885c9b459c3b388f95d93935e
@@ -255,8 +255,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensity: 0
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 0.25
+  m_PointLightInnerRadius: 0.06
+  m_PointLightOuterRadius: 0.15
   m_PointLightDistance: 3
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 5
@@ -294,8 +294,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5665690053484121293}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.009, y: 0.458, z: 0}
+  m_LocalScale: {x: 1.3617188, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2956671555442937686}
   m_RootOrder: 3
@@ -351,7 +351,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8039245504802657737}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.207, y: 0.337, z: 0}
+  m_LocalPosition: {x: -0.068, y: -0.325, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2956671555442937686}
@@ -371,8 +371,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LightType: 3
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_FalloffIntensity: 0.613
+  m_Color: {r: 1, g: 0.7584009, b: 0, a: 1}
   m_Intensity: 0.35
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 41c2660f000000004dbb26af33801e0885c9b459c3b388f95d93935e
@@ -384,8 +384,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensity: 0
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 0.25
+  m_PointLightInnerRadius: 0.06
+  m_PointLightOuterRadius: 0.15
   m_PointLightDistance: 3
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 5
