@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using UnityEngine.SceneManagement;
 
 public static class SaveSystem
 {
     private static string dataType = ".lol";
+    public static bool allowLoading = false;
 
     public static void SavePosition(Checkpoint checkpoint) //this is to save the postion of the player, so we can load it back up later
     {
@@ -37,6 +39,22 @@ public static class SaveSystem
         stream.Close();
 
         Debug.Log("Objects saved!");
+    }
+
+    public static void SaveScene()
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/scene" + dataType;
+
+        Debug.Log("Memorizing dimension...");
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        string data = SceneManager.GetActiveScene().name;
+
+        formatter.Serialize(stream, data);
+        stream.Close();
+
+        Debug.Log("Scene saved!");
     }
 
     public static PlayerData LoadPosition() //this is to load the position of the player back in again.
@@ -84,6 +102,62 @@ public static class SaveSystem
         {
             Debug.LogError("Looks like we lost our stuff. No save file found at: " + path);
             return null;
+        }
+    }
+
+    public static string LoadScene()
+    {
+        string path = Application.persistentDataPath + "/scene" + dataType;
+        if (File.Exists(path))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+
+            Debug.Log("Remembering Dimension");
+
+            FileStream stream = new FileStream(path, FileMode.Open);
+
+            string data = (string)formatter.Deserialize(stream);
+            stream.Close();
+
+            Debug.Log("Scene loaded!");
+            Debug.Log("going to scene: " + data);
+            return data;
+        }
+        else
+        {
+            Debug.LogError("No idea where you're trying to go. No save file found at: " + path);
+            return null;
+        }
+    }
+
+    public static void EraseData()
+    {
+        string path = Application.persistentDataPath + "/player" + dataType;
+
+        // check if file exists
+        if (!File.Exists(path))
+        {
+            Debug.LogError("can't delete nothing. No save file found at: " + path);
+        }
+        else
+        {
+            Debug.Log("Found file! Deleting" + path);
+
+            File.Delete(path);
+        }
+
+        path = Application.persistentDataPath + "/objects" + dataType;
+
+        // check if file exists
+        if (!File.Exists(path))
+        {
+            Debug.LogError("can't delete nothing. No save file found at: " + path);
+        }
+        else
+        {
+            Debug.Log("Found file! Deleting" + path);
+
+            File.Delete(path);
         }
     }
 }

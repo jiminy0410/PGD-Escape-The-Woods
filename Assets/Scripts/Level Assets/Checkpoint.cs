@@ -51,7 +51,7 @@ public class Checkpoint : MonoBehaviour
                 collision.GetComponent<FlashMechanic>().standingChargeRate = collision.GetComponent<FlashMechanic>().ChargeMax;
 
                 SaveSystem.SavePosition(this);
-
+                SaveSystem.SaveScene();
             cooldownCount = Time.time + cooldownTime;
 
             }

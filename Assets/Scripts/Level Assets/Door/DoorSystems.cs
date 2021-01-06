@@ -32,6 +32,8 @@ public class DoorSystems : DoorComponents
                     }
                     else
                     {
+                        //load the next scene.
+                        SaveSystem.EraseData();
                         levelManager.GetComponent<LevelManager>().LoadNextLevel();
                     }
                 }

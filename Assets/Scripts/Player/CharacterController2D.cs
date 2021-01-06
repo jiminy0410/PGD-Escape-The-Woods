@@ -68,6 +68,8 @@ public class CharacterController2D : MonoBehaviour
 		loadPosition();
 	}
 
+	
+
 	public void loadPosition()
 	{
 		PlayerData data = SaveSystem.LoadPosition();

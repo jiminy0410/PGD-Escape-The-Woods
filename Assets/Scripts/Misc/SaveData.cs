@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 //stuff we want to save:
-//the player position/checkpoint (basically the same): Float array of 3 floats
-//the stuff collected
-//trees destroyed? (same as stuff collected?)
+//the player position/checkpoint (basically the same): Float array of 3 floats DONE
+//the stuff collected DONE
+//trees destroyed? (same as stuff collected?) DONE
 //double jump or not: bool
+//campfires lit
 //the plants that have been turned on? :bools
 
 [System.Serializable]
@@ -41,4 +43,15 @@ public class ObjectData
     }
 }
 
-//todo: plant data, double jump data
+[System.Serializable]
+public class SceneData
+{
+    public string currentScene;
+
+    public SceneData()
+    {
+        currentScene = SceneManager.GetActiveScene().name;
+    }
+}
+
+//todo: campfire data, double jump data, scene data
