@@ -14,49 +14,60 @@ public class levelState : MonoBehaviour
     [SerializeField]
     private bool newPointInTime = false;
 
+    bool first;
+
+    private void LateUpdate()
+    {
+        if (!first)
+        {
+            ObjectData data = SaveSystem.LoadObjects();
+
+            if (data == null)
+            {
+                Debug.Log("I don't have anything...");
+                return;
+            }
+
+            Debug.Log("Reorganizing stuff...");
+            for (int i = 0; i < data.objects.Length; i++)
+            {
+                AddItemToList(GameObject.Find(data.objects[i]));
+            }
+
+            Debug.Log("Looks like I have:");
+            for (int i = 0; i < items.Count; i++)
+            {
+                if (items[i].GetComponent<scrLock>() != null)
+                {
+                    Debug.Log("destroyed this tree: " + items[i].name);
+                    items[i].GetComponent<scrLock>().useKey();
+                }
+                if (items[i].GetComponent<scrKey>() != null)
+                {
+                    Debug.Log("got this key: " + items[i].name);
+                    items[i].GetComponent<scrKey>().collect();
+                }
+                if (items[i].GetComponent<DoubleJump>() != null)
+                {
+                    Debug.Log("got this power" + items[i].name);
+                    items[i].GetComponent<DoubleJump>().Collect();
+                }
+                if (items[i].GetComponent<CampfireSystems>() != null)
+                {
+                    Debug.Log("turned on this fire " + items[i].name);
+                    items[i].GetComponent<CampfireSystems>().ToggleOTA();
+                    items[i].GetComponent<CampfireSystems>().playerCanToggle = false;
+                }
+
+            }
+            Debug.Log("and that's all my stuff.");
+
+            first = true;
+        }
+    }
     void Start()
     {
-        ObjectData data = SaveSystem.LoadObjects();
-
-        if (data == null)
-        {
-            Debug.Log("I don't have anything...");
-            return;
-        }
-
-        Debug.Log("Reorganizing stuff...");
-        for (int i = 0; i < data.objects.Length; i++)
-        {
-            AddItemToList(GameObject.Find(data.objects[i]));
-        }
-
-        Debug.Log("Looks like I have:");
-        for (int i = 0; i < items.Count; i++)
-        {
-            if (items[i].GetComponent<scrLock>() != null)
-            {
-                Debug.Log("destroyed this tree: " + items[i].name);
-                items[i].GetComponent<scrLock>().useKey();
-            }
-            if (items[i].GetComponent<scrKey>() != null)
-            {
-                Debug.Log("got this key: " + items[i].name);
-                items[i].GetComponent<scrKey>().collect();
-            }
-            if (items[i].GetComponent<DoubleJump>() != null)
-            {
-                Debug.Log("got this power" + items[i].name);
-                items[i].GetComponent<DoubleJump>().Collect();
-            }
-            if (items[i].GetComponent<CampfireSystems>() != null)
-            {
-                Debug.Log("turned on this fire " + items[i].name);
-                items[i].GetComponent<CampfireSystems>().ToggleOTA();
-                items[i].GetComponent<CampfireSystems>().playerCanToggle = false;
-            }
-
-        }
-        Debug.Log("and that's all my stuff.");
+        
     }
 
 
