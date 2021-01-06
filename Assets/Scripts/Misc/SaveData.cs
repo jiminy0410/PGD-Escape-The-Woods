@@ -7,9 +7,9 @@ using UnityEngine.SceneManagement;
 //the player position/checkpoint (basically the same): Float array of 3 floats DONE
 //the stuff collected DONE
 //trees destroyed? (same as stuff collected?) DONE
-//double jump or not: bool
-//campfires lit
-//the plants that have been turned on? :bools
+//double jump or not DONE
+//campfires lit DONE
+//the plants that have been turned on?
 
 [System.Serializable]
 public class PlayerData
@@ -53,5 +53,3 @@ public class SceneData
         currentScene = SceneManager.GetActiveScene().name;
     }
 }
-
-//todo: campfire data, double jump data, scene data
