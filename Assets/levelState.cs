@@ -43,6 +43,18 @@ public class levelState : MonoBehaviour
                 Debug.Log("got this key: " + items[i].name);
                 items[i].GetComponent<scrKey>().collect();
             }
+            if (items[i].GetComponent<DoubleJump>() != null)
+            {
+                Debug.Log("got this power" + items[i].name);
+                items[i].GetComponent<DoubleJump>().Collect();
+            }
+            if (items[i].GetComponent<CampfireSystems>() != null)
+            {
+                Debug.Log("turned on this fire " + items[i].name);
+                items[i].GetComponent<CampfireSystems>().ToggleOTA();
+                items[i].GetComponent<CampfireSystems>().playerCanToggle = false;
+            }
+
         }
         Debug.Log("and that's all my stuff.");
     }

@@ -19,14 +19,19 @@ public class DoubleJump : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            doubleJumpPlayer.Max_Jumps = 1;
+            Collect();
             acquisitonEffect.transform.position = this.transform.position;
             acquisitonEffect.Play();
             acquisitonEffect.GetComponent<AudioSource>().Play();
-            this.gameObject.SetActive(false);
-            Collected = true;
             GameObject.Find("LevelResetter").GetComponent<levelState>().AddItemToList(this.gameObject);
         }
+    }
+
+    public void Collect()
+    {
+        doubleJumpPlayer.Max_Jumps = 1;
+        this.gameObject.SetActive(false);
+        Collected = true;
     }
     public void Reverd()
     {

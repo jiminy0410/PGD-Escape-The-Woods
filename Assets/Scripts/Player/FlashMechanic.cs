@@ -80,7 +80,7 @@ public class FlashMechanic : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(selectedDifficulty);
+        //Debug.Log(selectedDifficulty);
 
         if (Input.GetKeyDown(KeyCode.Q))
         {

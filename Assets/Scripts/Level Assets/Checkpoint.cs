@@ -15,7 +15,7 @@ public class Checkpoint : MonoBehaviour
 
     private void Start()
     {
-        cooldownCount = Time.time + cooldownTime;
+        //cooldownCount = Time.time + cooldownTime;
         levelState = GameObject.Find("LevelResetter");
     }
 
