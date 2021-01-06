@@ -11,5 +11,6 @@ public class CampfireComponents : MonoBehaviour
     public List<BoxCollider2D> wellTriggers;
 
     public bool acceptablePlayerPos;
+    public bool playerCanToggle;
 
 }

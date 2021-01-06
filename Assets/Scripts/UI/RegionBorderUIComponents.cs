@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RegionBorderUIComponents : MonoBehaviour
 {
-    public int revealForSeconds;
+    public float revealTime;
     public float revealSpeed;
     public Color regionColor;
 

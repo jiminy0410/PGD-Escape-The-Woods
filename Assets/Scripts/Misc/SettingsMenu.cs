@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class SettingsMenu : MonoBehaviour
 {
-
     public AudioMixer audioMixer;
 
     Resolution[] resolutions;
@@ -35,6 +34,27 @@ public class SettingsMenu : MonoBehaviour
 
         resolutionDropdown.AddOptions(options);
     }
+
+    public void HandleInputData(int val)
+    {
+        if (val == 0)
+        {
+            FlashMechanic.selectedDifficulty = FlashMechanic.Difficulty.Easy;
+        }
+
+        if (val == 1)
+        {
+            FlashMechanic.selectedDifficulty = FlashMechanic.Difficulty.Medium;
+        }
+
+        if (val == 2)
+        {
+            FlashMechanic.selectedDifficulty = FlashMechanic.Difficulty.Hard;
+        }
+        Debug.Log(FlashMechanic.selectedDifficulty);
+    }
+
+
 
     public void SetResolution (int resolutionIndex)
     {

@@ -48,7 +48,7 @@ public class SecretWallSystems : SecretWallComponents
 
     public void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision == GameObject.Find("Player").GetComponent<CircleCollider2D>())
         {
             collidingWithPlayer = false;
         }

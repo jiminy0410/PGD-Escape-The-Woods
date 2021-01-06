@@ -25,6 +25,7 @@ public class DoubleJump : MonoBehaviour
             acquisitonEffect.GetComponent<AudioSource>().Play();
             this.gameObject.SetActive(false);
             Collected = true;
+            GameObject.Find("LevelResetter").GetComponent<levelState>().AddItemToList(this.gameObject);
         }
     }
     public void Reverd()

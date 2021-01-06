@@ -8,21 +8,16 @@ public class CampfireSystems : CampfireComponents
     public void Start()
     {
         acceptablePlayerPos = false;
+        playerCanToggle = true;
     }
 
     void Update()
     {
-        if (acceptablePlayerPos && Input.GetAxisRaw("Vertical") > 0)
+        if (acceptablePlayerPos && Input.GetAxisRaw("Vertical") > 0 && playerCanToggle)
         {
-            foreach (GameObject oTA in objectsToActivate)
-            {
-                oTA.SetActive(true);
-            }
-
-            foreach (BoxCollider2D wellTrigger in wellTriggers)
-            {
-                wellTrigger.enabled = true;
-            }
+            GameObject.Find("LevelResetter").GetComponent<levelState>().AddItemToList(this.gameObject);
+            ToggleOTA();
+            playerCanToggle = false;
         }
 
     }
@@ -37,5 +32,20 @@ public class CampfireSystems : CampfireComponents
     {
         if (collision.CompareTag("Player"))
             acceptablePlayerPos = false;
+    }
+
+    public void ToggleOTA()
+    {
+        foreach (GameObject oTA in objectsToActivate)
+        {
+            oTA.SetActive(!oTA.activeSelf);
+        }
+
+        foreach (BoxCollider2D wellTrigger in wellTriggers)
+        {
+            wellTrigger.enabled = !wellTrigger.enabled;
+        }
+
+        playerCanToggle = true;
     }
 }

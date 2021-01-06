@@ -8,8 +8,7 @@ public class RegionBorderUISystems : RegionBorderUIComponents
 {
     void Start()
     {
-        regionNameAlpha = 0f;
-        revealing = false;
+        revealing = true;
     }
 
     void Update()
@@ -33,7 +32,7 @@ public class RegionBorderUISystems : RegionBorderUIComponents
         if (revealing)
         {
 
-            regionNameAlpha = Mathf.Lerp(regionColor.a, 1.5f, revealSpeed * Time.deltaTime);
+            regionNameAlpha = Mathf.Lerp(regionColor.a, revealTime, revealSpeed * Time.deltaTime);
         }
         else
         {

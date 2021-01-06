@@ -1,6 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 
@@ -9,35 +7,81 @@ public class FlashMechanic : MonoBehaviour
     public Light2D playerVision;
     public float maxFlashCharges = 1;
     public float flashCharges;
-    public float currentFlashRechargeRate = 0.2f;
-    public static float lightDecay = 13f;
-    public static float defaultOuterRadius = 2;
-    public float standingChargeMin = 0.08f;
-    public float ChargeMax = 0.5f;
-    public float standingChargeReduction = 0.08f;
+    public float currentFlashRechargeRate;
+    public static float lightDecay;
+    public static float defaultOuterRadius;
+    public float standingChargeMin;
+    public float ChargeMax, WiggleChargeMax;
+    public float standingChargeReduction;
     public float standingChargeRate;
+    public float chargeRateRecovery;
 
-    private static float enlargedOuterRadius = 15;
+    private static float enlargedOuterRadius;
 
     private AudioSource flashSound;
+    public GameObject onLightning;
+    public GameObject offLightning;
 
     public FlashBar flashBar;
 
+    public static Difficulty selectedDifficulty;
+
+    public enum Difficulty
+    {
+        Easy,
+        Medium,
+        Hard
+    }
 
     void Start()
     {
         flashSound = this.GetComponent<AudioSource>();
 
+        ChargeMax = 0.5f;
         standingChargeRate = ChargeMax;
 
         flashCharges = maxFlashCharges;
         playerVision = GetComponent<Light2D>();
         flashSound = this.GetComponent<AudioSource>();
         flashBar.SetMaxCharges(maxFlashCharges);
+
+
+        switch (selectedDifficulty)
+        {
+            case Difficulty.Easy:
+                WiggleChargeMax = 0.7f;
+                chargeRateRecovery = 0.0005f;
+                lightDecay = 10f;
+                defaultOuterRadius = 3f;
+                enlargedOuterRadius = 20;
+                standingChargeMin = 0.08f;
+                standingChargeReduction = 0f;
+                break;
+            case Difficulty.Medium:
+                WiggleChargeMax = 0.5f;
+                chargeRateRecovery = 0.0005f;
+                lightDecay = 13f;
+                defaultOuterRadius = 2f;
+                enlargedOuterRadius = 15;
+                standingChargeMin = 0.08f;
+                standingChargeReduction = 0.08f;
+                break;
+            case Difficulty.Hard:
+                WiggleChargeMax = 0.5f;
+                chargeRateRecovery = 0.001f;
+                lightDecay = 16f;
+                defaultOuterRadius = 2f;
+                enlargedOuterRadius = 15f;
+                standingChargeMin = 0.08f;
+                standingChargeReduction = 0.12f;
+                break;
+        }
     }
 
     void Update()
     {
+        Debug.Log(selectedDifficulty);
+
         if (Input.GetKeyDown(KeyCode.Q))
         {
             if (flashCharges == maxFlashCharges)
@@ -52,22 +96,28 @@ public class FlashMechanic : MonoBehaviour
             }
         }
 
-        if(standingChargeRate < standingChargeMin) //make sure the recharge doesn't go TOO slow...
+        if (standingChargeRate < standingChargeMin) //make sure the recharge doesn't go TOO slow...
         {
             standingChargeRate = standingChargeMin;
         }
 
         if ((flashCharges == maxFlashCharges) && (standingChargeRate < ChargeMax)) //if you wait, you get your charge speed back!
         {
-            standingChargeRate += 0.0005f; //TODO: make this a variable and tweak it
+            standingChargeRate += chargeRateRecovery; //TODO: make this a variable and tweak it
         }
 
 
         if (gameObject.GetComponent<CharacterController2D>().wiggleWiggleWiggle == 0)
-            currentFlashRechargeRate = ChargeMax;
+        {
+            offLightning.SetActive(false);
+            currentFlashRechargeRate = WiggleChargeMax;
+            onLightning.SetActive(true);
+        }
         else
         {
+            offLightning.SetActive(true);
             currentFlashRechargeRate = standingChargeRate;
+            onLightning.SetActive(false);
         }
 
 
