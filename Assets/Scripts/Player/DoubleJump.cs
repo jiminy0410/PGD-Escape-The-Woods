@@ -9,12 +9,6 @@ public class DoubleJump : MonoBehaviour
     public ParticleSystem acquisitonEffect;
     public bool Collected;
 
-    private void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player");
-        doubleJumpPlayer = player.GetComponent<CharacterController2D>();
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -29,13 +23,13 @@ public class DoubleJump : MonoBehaviour
 
     public void Collect()
     {
-        doubleJumpPlayer.Max_Jumps = 1;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController2D>().Max_Jumps = 1;
         this.gameObject.SetActive(false);
         Collected = true;
     }
     public void Reverd()
     {
-        doubleJumpPlayer.Max_Jumps = 0;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController2D>().Max_Jumps = 0;
         this.gameObject.SetActive(true);
         Collected = false;
     }
