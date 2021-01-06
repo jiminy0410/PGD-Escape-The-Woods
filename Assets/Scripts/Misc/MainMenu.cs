@@ -8,7 +8,20 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        loadScene();
+    }
+
+    public void loadScene()
+    {
+        string sceneName = SaveSystem.LoadScene();
+        if (sceneName == null)
+        {
+            Debug.Log("no save data found. starting in level 1...");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            return;
+        }
+
+        SceneManager.LoadScene(sceneName);
     }
 
     public void QuitGame()

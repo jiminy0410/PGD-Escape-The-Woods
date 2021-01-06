@@ -64,6 +64,27 @@ public class CharacterController2D : MonoBehaviour
 		Rigidbody2D = GetComponent<Rigidbody2D>();
 		lastInputTapTime = Time.time;
 		playerAnim = sprite.gameObject.GetComponent<Animator>();
+
+		loadPosition();
+	}
+
+	
+
+	public void loadPosition()
+	{
+		PlayerData data = SaveSystem.LoadPosition();
+
+        if (data == null)
+        {
+			return;
+        }
+
+		Vector3 position;
+		position.x = data.position[0];
+		position.y = data.position[1];
+		position.z = data.position[2];
+
+		transform.position = position;
 	}
 
 	private void OnDrawGizmosSelected()

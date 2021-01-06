@@ -13,6 +13,7 @@ public class scrKey : MonoBehaviour
     public Transform keysUIElement;
     [SerializeField]
     private float lightIntensityUI, lightIntensityGeneral;
+    public bool manual = false;
 
     public void Start()
     {
@@ -27,41 +28,53 @@ public class scrKey : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if (!Collected)
-            {
-                savePoint = transform.position;
-            }
+            manual = true;
+            collect();
+        }
+    }
 
-            this.transform.parent = keysUIElement;
-            this.GetComponent<BoxCollider2D>().enabled = false;
-            if (scrPlayer.FacingRight)
+    public void collect()
+    {
+        if (!Collected)
+        {
+            savePoint = transform.position;
+        }
+
+        this.transform.parent = keysUIElement;
+        this.GetComponent<BoxCollider2D>().enabled = false;
+        /*
+        if (scrPlayer.FacingRight)
+        {
+            for (int i = 0; i < scr.keys.Count; i++)
             {
-                for (int i = 0; i < scr.keys.Count; i++)
+                if (scr.keys[i] == this.gameObject)
                 {
-                    if (scr.keys[i] == this.gameObject)
-                    {
-                        transform.position = new Vector2(collision.transform.position.x + 0.4f * i, collision.transform.position.y);
-                    }
-                }
-                Vector3 theScale = transform.localScale;
-                theScale.y *= -1;
-                transform.localScale = theScale;
-            }
-            else
-            {
-                for (int i = 0; i < scr.keys.Count; i++)
-                {
-                    if (scr.keys[i] == this.gameObject)
-                    {
-                        transform.position = new Vector2(collision.transform.position.x - 0.4f * i, collision.transform.position.y);
-                    }
+                    transform.position = new Vector2(collision.transform.position.x + 0.4f * i, collision.transform.position.y);
                 }
             }
-            Collected = true;
-            GameObject.Find("KeysUI").GetComponent<KeyUISystems>().keys.Add(this.gameObject);
-            this.GetComponent<Light2D>().intensity = lightIntensityUI;
+            Vector3 theScale = transform.localScale;
+            theScale.y *= -1;
+            transform.localScale = theScale;
+        }
+        else
+        {
+            for (int i = 0; i < scr.keys.Count; i++)
+            {
+                if (scr.keys[i] == this.gameObject)
+                {
+                    transform.position = new Vector2(collision.transform.position.x - 0.4f * i, collision.transform.position.y);
+                }
+            }
+        }
+        */
+        Collected = true;
+        GameObject.Find("KeysUI").GetComponent<KeyUISystems>().keys.Add(this.gameObject);
+        this.GetComponent<Light2D>().intensity = lightIntensityUI;
+        if (manual)
+        {
             GameObject.Find("LevelResetter").GetComponent<levelState>().AddItemToList(this.gameObject);
         }
+        
     }
 
     public void Reverd()

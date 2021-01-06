@@ -32,12 +32,15 @@ public class DoorSystems : DoorComponents
                     }
                     else
                     {
+                        //load the next scene.
+                        SaveSystem.EraseData();
                         levelManager.GetComponent<LevelManager>().LoadNextLevel();
                     }
                 }
                 else
                 {
                     //NOT THE FINAL RESULT, CHANGE THIS TO THE VICTORY SCREEN OR SOMETHING
+                    SaveSystem.EraseData();
                     Application.Quit();
                 }
             }
