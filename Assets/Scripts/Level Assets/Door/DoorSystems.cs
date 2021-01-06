@@ -40,6 +40,7 @@ public class DoorSystems : DoorComponents
                 else
                 {
                     //NOT THE FINAL RESULT, CHANGE THIS TO THE VICTORY SCREEN OR SOMETHING
+                    SaveSystem.EraseData();
                     Application.Quit();
                 }
             }

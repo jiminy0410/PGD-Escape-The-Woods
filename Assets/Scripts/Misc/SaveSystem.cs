@@ -159,5 +159,19 @@ public static class SaveSystem
 
             File.Delete(path);
         }
+
+        path = Application.persistentDataPath + "/scene" + dataType;
+
+        // check if file exists
+        if (!File.Exists(path))
+        {
+            Debug.LogError("can't delete nothing. No save file found at: " + path);
+        }
+        else
+        {
+            Debug.Log("Found file! Deleting" + path);
+
+            File.Delete(path);
+        }
     }
 }
