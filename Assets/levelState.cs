@@ -58,6 +58,10 @@ public class levelState : MonoBehaviour
                 {
                     items[i].GetComponent<DoubleJump>().Reverd();
                 }
+                if (items[i].GetComponent<CampfireSystems>() != null)
+                {
+                    items[i].GetComponent<CampfireSystems>().ToggleOTA();
+                }
             }
         }
 

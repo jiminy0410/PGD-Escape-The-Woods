@@ -12214,6 +12214,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &694143991 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3371448412434247233, guid: 7ebe7e696fd41074c9d21883f5a9e0ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 694143988}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &694143992 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1839602229308728536, guid: 7ebe7e696fd41074c9d21883f5a9e0ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 694143988}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &696398059
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12563,6 +12575,16 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 7567522071321477748, guid: af278e7841b6ad04bb017d6d04b10dcd,
+        type: 3}
+      propertyPath: onLightning
+      value: 
+      objectReference: {fileID: 694143992}
+    - target: {fileID: 7567522071321477748, guid: af278e7841b6ad04bb017d6d04b10dcd,
+        type: 3}
+      propertyPath: offLightning
+      value: 
+      objectReference: {fileID: 694143991}
     - target: {fileID: 7843098449692784003, guid: af278e7841b6ad04bb017d6d04b10dcd,
         type: 3}
       propertyPath: phill
@@ -23447,7 +23469,7 @@ PrefabInstance:
     - target: {fileID: 2122975581486935080, guid: 7623592e2de74054c8b0146cffe058f6,
         type: 3}
       propertyPath: m_Name
-      value: Campfire
+      value: Campfire_03
       objectReference: {fileID: 0}
     - target: {fileID: 2122975581486935087, guid: 7623592e2de74054c8b0146cffe058f6,
         type: 3}
@@ -28212,7 +28234,7 @@ PrefabInstance:
     - target: {fileID: 2122975581486935080, guid: 7623592e2de74054c8b0146cffe058f6,
         type: 3}
       propertyPath: m_Name
-      value: Campfire
+      value: Campfire_04
       objectReference: {fileID: 0}
     - target: {fileID: 2122975581486935087, guid: 7623592e2de74054c8b0146cffe058f6,
         type: 3}
@@ -31605,7 +31627,7 @@ PrefabInstance:
     - target: {fileID: 2122975581486935080, guid: 7623592e2de74054c8b0146cffe058f6,
         type: 3}
       propertyPath: m_Name
-      value: Campfire
+      value: Campfire_01
       objectReference: {fileID: 0}
     - target: {fileID: 2122975581486935087, guid: 7623592e2de74054c8b0146cffe058f6,
         type: 3}
@@ -34292,7 +34314,7 @@ PrefabInstance:
     - target: {fileID: 2122975581486935080, guid: 7623592e2de74054c8b0146cffe058f6,
         type: 3}
       propertyPath: m_Name
-      value: Campfire
+      value: Campfire_00
       objectReference: {fileID: 0}
     - target: {fileID: 2122975581486935087, guid: 7623592e2de74054c8b0146cffe058f6,
         type: 3}
@@ -34978,7 +35000,7 @@ PrefabInstance:
     - target: {fileID: 1048210873684301575, guid: 8df0289cb9560e249ba2054f91bb2491,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8df0289cb9560e249ba2054f91bb2491, type: 3}

@@ -24,10 +24,12 @@ public class ADSpamSystems : ADSpamComponents
         if (playerCC.wiggleWiggleWiggle == 0)
         {
             adSpamSlider.value += chargeSpeed;
+            lightningBolt.SetActive(true);
         }
         else
         {
             adSpamSlider.value -= decaySpeed;
+            lightningBolt.SetActive(false);
         }
 
         if (Time.time > indicatorTime + indicatorSpeed)

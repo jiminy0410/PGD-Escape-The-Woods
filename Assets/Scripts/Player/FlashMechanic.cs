@@ -11,9 +11,10 @@ public class FlashMechanic : MonoBehaviour
     public static float lightDecay;
     public static float defaultOuterRadius;
     public float standingChargeMin;
-    public float ChargeMax;
+    public float ChargeMax, WiggleChargeMax;
     public float standingChargeReduction;
     public float standingChargeRate;
+    public float chargeRateRecovery;
 
     private static float enlargedOuterRadius;
 
@@ -36,6 +37,7 @@ public class FlashMechanic : MonoBehaviour
     {
         flashSound = this.GetComponent<AudioSource>();
 
+        ChargeMax = 0.5f;
         standingChargeRate = ChargeMax;
 
         flashCharges = maxFlashCharges;
@@ -43,34 +45,35 @@ public class FlashMechanic : MonoBehaviour
         flashSound = this.GetComponent<AudioSource>();
         flashBar.SetMaxCharges(maxFlashCharges);
 
-        switch(selectedDifficulty)
+
+        switch (selectedDifficulty)
         {
             case Difficulty.Easy:
-                ChargeMax = 0.75f;
-                currentFlashRechargeRate = 0.25f;
+                WiggleChargeMax = 0.7f;
+                chargeRateRecovery = 0.0005f;
                 lightDecay = 10f;
                 defaultOuterRadius = 3f;
-                enlargedOuterRadius = 18;
-                standingChargeMin = 0.008f;
-                standingChargeReduction = 0.008f;
+                enlargedOuterRadius = 20;
+                standingChargeMin = 0.08f;
+                standingChargeReduction = 0f;
                 break;
             case Difficulty.Medium:
-                ChargeMax = 0.5f;
-                currentFlashRechargeRate = 0.2f;
+                WiggleChargeMax = 0.5f;
+                chargeRateRecovery = 0.0005f;
                 lightDecay = 13f;
                 defaultOuterRadius = 2f;
                 enlargedOuterRadius = 15;
-                standingChargeMin = 0.008f;
-                standingChargeReduction = 0.008f;
+                standingChargeMin = 0.08f;
+                standingChargeReduction = 0.08f;
                 break;
             case Difficulty.Hard:
-                ChargeMax = 0.25f;
-                currentFlashRechargeRate = 0.15f;
+                WiggleChargeMax = 0.5f;
+                chargeRateRecovery = 0.001f;
                 lightDecay = 16f;
-                defaultOuterRadius = 1.5f;
-                enlargedOuterRadius = 12.5f;
-                standingChargeMin = 0.008f;
-                standingChargeReduction = 0.008f;
+                defaultOuterRadius = 2f;
+                enlargedOuterRadius = 15f;
+                standingChargeMin = 0.08f;
+                standingChargeReduction = 0.12f;
                 break;
         }
     }
@@ -100,14 +103,14 @@ public class FlashMechanic : MonoBehaviour
 
         if ((flashCharges == maxFlashCharges) && (standingChargeRate < ChargeMax)) //if you wait, you get your charge speed back!
         {
-            standingChargeRate += 0.0005f; //TODO: make this a variable and tweak it
+            standingChargeRate += chargeRateRecovery; //TODO: make this a variable and tweak it
         }
 
 
         if (gameObject.GetComponent<CharacterController2D>().wiggleWiggleWiggle == 0)
         {
             offLightning.SetActive(false);
-            currentFlashRechargeRate = ChargeMax;
+            currentFlashRechargeRate = WiggleChargeMax;
             onLightning.SetActive(true);
         }
         else

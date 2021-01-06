@@ -13,6 +13,7 @@ public class ADSpamComponents : MonoBehaviour
     public int letterIndex;
 
     public Slider adSpamSlider;
+    public GameObject lightningBolt;
 
     [HideInInspector]
     public CharacterController2D playerCC;
