@@ -11,6 +11,21 @@ public class MainMenu : MonoBehaviour
         loadScene();
     }
 
+    public void NewGame()
+    {
+        SaveSystem.EraseData();
+
+        string sceneName = SaveSystem.LoadScene();
+        if (sceneName == null)
+        {
+            Debug.Log("no save data found. starting in level 1...");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            return;
+        }
+
+        SceneManager.LoadScene(sceneName);
+    }
+
     public void loadScene()
     {
         string sceneName = SaveSystem.LoadScene();
