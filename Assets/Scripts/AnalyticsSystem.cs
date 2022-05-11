@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Analytics;
 using UnityEngine.SceneManagement;
+using Unity.Services.Core;
+using Unity.Services.Analytics;
 
 public class AnalyticsSystem : MonoBehaviour
 {
@@ -11,27 +13,40 @@ public class AnalyticsSystem : MonoBehaviour
     public float timePlayed;
 
 
-    void Start()
+    async void Start()
     {
-        AnalyticsEvent.GameStart();
+        try
+        {
+            await UnityServices.InitializeAsync();
+            List<string> consentIdentifiers = await AnalyticsService.Instance.CheckForRequiredConsents();
+        }
+        catch (ConsentCheckException e)
+        {
+            // Something went wrong when checking the GeoIP, check the e.Reason and handle appropriately
+        }
     }
 
 
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.O))
+        {
+            SendAnalytics();
+        }
     }
 
     public void SendAnalytics()
     {
+
         timePlayed = Time.time;
 
         Dictionary<string, object> analyticsValues = new Dictionary<string, object>
         {
-            {"TimePlayed", timePlayed},
-            {"DeathCount", deathCount}
+            {"timeElapsed", timePlayed},
+            {"deathCount", deathCount}
         };
 
-        AnalyticsEvent.Custom("Testing Metrics", analyticsValues);
+        AnalyticsService.Instance.CustomData("analyticsValues", analyticsValues);
+        AnalyticsService.Instance.Flush();
     }
 }
