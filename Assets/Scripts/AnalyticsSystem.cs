@@ -11,6 +11,8 @@ public class AnalyticsSystem : MonoBehaviour
 
     public int deathCount;
     public float timePlayed;
+    public int flashGround;
+    public int flashAir;
 
 
     async void Start()
@@ -32,6 +34,7 @@ public class AnalyticsSystem : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.O))
         {
             SendAnalytics();
+            Debug.Log("send shit");
         }
     }
 
@@ -43,7 +46,9 @@ public class AnalyticsSystem : MonoBehaviour
         Dictionary<string, object> analyticsValues = new Dictionary<string, object>
         {
             {"timeElapsed", timePlayed},
-            {"deathCount", deathCount}
+            {"deathCount", deathCount},
+            {"flashGround", flashGround},
+            {"flashAir", flashAir}
         };
 
         AnalyticsService.Instance.CustomData("analyticsValues", analyticsValues);

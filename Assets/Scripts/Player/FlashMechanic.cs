@@ -21,6 +21,7 @@ public class FlashMechanic : MonoBehaviour
     private AudioSource flashSound;
     public GameObject onLightning;
     public GameObject offLightning;
+    private GameObject anal;
 
     public FlashBar flashBar;
 
@@ -44,6 +45,7 @@ public class FlashMechanic : MonoBehaviour
         playerVision = GetComponent<Light2D>();
         flashSound = this.GetComponent<AudioSource>();
         flashBar.SetMaxCharges(maxFlashCharges);
+        anal = GameObject.Find("AnalyticsObject");
 
 
         switch (selectedDifficulty)
@@ -87,6 +89,14 @@ public class FlashMechanic : MonoBehaviour
             if (flashCharges == maxFlashCharges)
             {
                 StartCoroutine(Flash());
+                if (gameObject.GetComponent<CharacterController2D>().Grounded == true)
+                {
+                    anal.GetComponent<AnalyticsSystem>().flashGround++;
+                }
+                else if (gameObject.GetComponent<CharacterController2D>().Grounded == false)
+                {
+                    anal.GetComponent<AnalyticsSystem>().flashAir++;
+                }
 
                 flashCharges--;
                 if (standingChargeRate > standingChargeMin) //when flashing, your next recharge goes slower when standing still
