@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    AnalyticsSystem analytic;
+    [HideInInspector]
+    public AnalyticsSystem analytic;
     private void Start()
     {
         if (SaveSystem.LoadTestData() != null)
@@ -32,8 +33,17 @@ public class MainMenu : MonoBehaviour
 
     public void NewGame()
     {
+
+        if (SaveSystem.LoadTestData() != null)
+        {
+            analytic.resetVariables();
+            Debug.Log("RESETTING VARIABLES");
+        }
+
+
         SaveSystem.EraseData();
-        analytic.resetVariables();
+
+
 
         string sceneName = SaveSystem.LoadScene();
         if (sceneName == null)

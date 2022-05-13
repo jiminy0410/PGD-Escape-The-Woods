@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class AnalyticsSystem : MonoBehaviour
 {
+    [HideInInspector]
+    public float levelStartTime;
 
     public int deathCount;
     public float timePlayedThisLevel;
@@ -85,5 +87,6 @@ public class AnalyticsSystem : MonoBehaviour
     {
         deathCount = flashAir = flashGround = checkpointTouch = 0;
         timePlayedThisLevel = 0;
+        levelStartTime = 0;
     }
 }
