@@ -34,6 +34,10 @@ public class AnalyticsSystem : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.O))
         {
+            //this is kinda sad :(
+            //dit is om aan te geven dat het level is gehaald. niet doen tenzij het level klaar is. anders wordt de data nogal niet goed.
+            //AnalyticsEvent.LevelComplete(SceneManager.GetActiveScene().name, SceneManager.GetActiveScene().buildIndex);
+            //haha, nee. het doet precies niets. moeten we nog ff naar kijken.
             SendAnalytics();
             Debug.Log("send shit");
         }
@@ -52,7 +56,9 @@ public class AnalyticsSystem : MonoBehaviour
             {"deathCount", deathCount},
             {"flashGround", flashGround},
             {"flashAir", flashAir},
-            {"checkpointTouched", checkpointTouch}
+            {"checkpointTouched", checkpointTouch},
+            {"levelCompleted", SceneManager.GetActiveScene().name}
+
 
         };
 
