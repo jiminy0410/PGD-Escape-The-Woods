@@ -1,23 +1,40 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Analytics;
-using UnityEngine.SceneManagement;
-using Unity.Services.Core;
+﻿using System.Collections.Generic;
 using Unity.Services.Analytics;
+using Unity.Services.Core;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AnalyticsSystem : MonoBehaviour
 {
 
     public int deathCount;
-    public float timePlayed;
+    public float timePlayedThisLevel;
     public int flashGround;
     public int flashAir;
     public int checkpointTouch;
 
+    private static AnalyticsSystem instance;
+
+    void Awake()
+    {
+        DontDestroyOnLoad(this);
+
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
 
     async void Start()
     {
+
+       
+
+
         try
         {
             await UnityServices.InitializeAsync();
@@ -32,7 +49,7 @@ public class AnalyticsSystem : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.O))
         {
             //this is kinda sad :(
             //dit is om aan te geven dat het level is gehaald. niet doen tenzij het level klaar is. anders wordt de data nogal niet goed.
@@ -46,13 +63,12 @@ public class AnalyticsSystem : MonoBehaviour
     public void SendAnalytics()
     {
 
-        timePlayed = Time.time;
 
         Debug.Log("doing the dictionary");
 
         Dictionary<string, object> analyticsValues = new Dictionary<string, object>
         {
-            {"timeElapsed", timePlayed},
+            {"timeElapsed", timePlayedThisLevel},
             {"deathCount", deathCount},
             {"flashGround", flashGround},
             {"flashAir", flashAir},
@@ -64,5 +80,7 @@ public class AnalyticsSystem : MonoBehaviour
 
         AnalyticsService.Instance.CustomData("analyticsValues", analyticsValues);
         AnalyticsService.Instance.Flush();
+
+        Debug.Log("Analytics have been sent!");
     }
 }

@@ -9,8 +9,11 @@ public class DeathPit : MonoBehaviour
     public GameObject levelState;
 
     public Transform respawnPoint;
+
+    private AnalyticsSystem analSys;
     void Start()
     {
+        analSys = GameObject.Find("AnalyticsObject").GetComponent<AnalyticsSystem>();
         player = GameObject.Find("Player");
         levelState = GameObject.Find("LevelResetter");
     }
@@ -22,6 +25,8 @@ public class DeathPit : MonoBehaviour
 
     public void Death()
     {
+        analSys.deathCount++;
+
         player.GetComponent<FlashMechanic>().StartCoroutine("Flash");
         player.GetComponent<FlashMechanic>().flashCharges = player.GetComponent<FlashMechanic>().maxFlashCharges;
         player.GetComponent<FlashMechanic>().standingChargeRate = player.GetComponent<FlashMechanic>().ChargeMax;
