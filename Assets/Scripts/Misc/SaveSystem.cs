@@ -13,7 +13,7 @@ public static class SaveSystem
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/player" + dataType;
 
-        Debug.Log("Finding landmark...");
+        Debug.Log("Remembering landmark...");
         FileStream stream = new FileStream(path, FileMode.Create);
 
         PlayerData data = new PlayerData(checkpoint);
@@ -54,7 +54,7 @@ public static class SaveSystem
         formatter.Serialize(stream, data);
         stream.Close();
 
-        Debug.Log("Scene saved!");
+        Debug.Log("Scene saved! (The level you're in)");
     }
 
     public static PlayerData LoadPosition() //this is to load the position of the player back in again.
@@ -76,7 +76,7 @@ public static class SaveSystem
         }
         else
         {
-            Debug.LogError("No idea where you're trying to go. No save file found at: " + path);
+            Debug.LogError("No idea where you're trying to go. No save data found at: " + path);
             return null;
         }
     }
@@ -100,7 +100,7 @@ public static class SaveSystem
         }
         else
         {
-            Debug.LogError("Looks like we lost our stuff. No save file found at: " + path);
+            Debug.LogError("Looks like we lost our stuff. No save data found at: " + path);
             return null;
         }
     }
@@ -125,13 +125,14 @@ public static class SaveSystem
         }
         else
         {
-            Debug.LogError("No idea where you're trying to go. No save file found at: " + path);
+            Debug.LogError("No idea where you're trying to go. No save data found at: " + path);
             return null;
         }
     }
 
     public static void EraseData()
     {
+        Debug.Log("Starting save data removal...");
         string path = Application.persistentDataPath + "/player" + dataType;
 
         // check if file exists

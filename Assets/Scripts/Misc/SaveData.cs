@@ -32,7 +32,7 @@ public class PlayerData
 public class ObjectData
 {
     public string[] objects; // this will be a list of names of objects the player has collected.
-    public ObjectData(levelState things) //save the names for all the things the player has collected (and the trees he has destroyed) here
+    public ObjectData(levelState things) //save the names for all the things the player has collected (and the trees they have destroyed) here
     {
         objects = new string[things.items.Count];
         for (int i = 0; i < things.items.Count; i++)

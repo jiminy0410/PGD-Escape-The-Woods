@@ -13,6 +13,7 @@ public class AnalyticsSystem : MonoBehaviour
     public float timePlayed;
     public int flashGround;
     public int flashAir;
+    public int checkpointTouch;
 
 
     async void Start()
@@ -24,7 +25,7 @@ public class AnalyticsSystem : MonoBehaviour
         }
         catch (ConsentCheckException e)
         {
-            // Something went wrong when checking the GeoIP, check the e.Reason and handle appropriately
+            Debug.Log("Something went wrong when checking the GeoIP, check the e.Reason and handle appropriately");
         }
     }
 
@@ -43,12 +44,16 @@ public class AnalyticsSystem : MonoBehaviour
 
         timePlayed = Time.time;
 
+        Debug.Log("doing the dictionary");
+
         Dictionary<string, object> analyticsValues = new Dictionary<string, object>
         {
             {"timeElapsed", timePlayed},
             {"deathCount", deathCount},
             {"flashGround", flashGround},
-            {"flashAir", flashAir}
+            {"flashAir", flashAir},
+            {"checkpointTouched", checkpointTouch}
+
         };
 
         AnalyticsService.Instance.CustomData("analyticsValues", analyticsValues);
