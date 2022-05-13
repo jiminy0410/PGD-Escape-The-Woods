@@ -32,9 +32,6 @@ public class AnalyticsSystem : MonoBehaviour
     async void Start()
     {
 
-       
-
-
         try
         {
             await UnityServices.InitializeAsync();
@@ -55,8 +52,8 @@ public class AnalyticsSystem : MonoBehaviour
             //dit is om aan te geven dat het level is gehaald. niet doen tenzij het level klaar is. anders wordt de data nogal niet goed.
             //AnalyticsEvent.LevelComplete(SceneManager.GetActiveScene().name, SceneManager.GetActiveScene().buildIndex);
             //haha, nee. het doet precies niets. moeten we nog ff naar kijken.
-            SendAnalytics();
             Debug.Log("send shit");
+            SendAnalytics();
         }
     }
 
@@ -82,5 +79,11 @@ public class AnalyticsSystem : MonoBehaviour
         AnalyticsService.Instance.Flush();
 
         Debug.Log("Analytics have been sent!");
+    }
+
+    public void resetVariables()
+    {
+        deathCount = flashAir = flashGround = checkpointTouch = 0;
+        timePlayedThisLevel = 0;
     }
 }

@@ -57,6 +57,22 @@ public static class SaveSystem
         Debug.Log("Scene saved! (The level you're in)");
     }
 
+    public static void SaveTestData(AnalyticsSystem analyticsObject)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/testData" + dataType;
+
+        Debug.Log("Taking notes...");
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        TestData data = new TestData(analyticsObject);
+
+        formatter.Serialize(stream, data);
+        stream.Close();
+
+        Debug.Log("Research gathered!");
+    }
+
     public static PlayerData LoadPosition() //this is to load the position of the player back in again.
     {
         string path = Application.persistentDataPath + "/player" + dataType;
@@ -125,7 +141,31 @@ public static class SaveSystem
         }
         else
         {
-            Debug.LogError("No idea where you're trying to go. No save data found at: " + path);
+            Debug.LogError("Multiverse coördinates non-existant! No save data found at: " + path);
+            return null;
+        }
+    }
+
+    public static TestData LoadTestData()
+    {
+        string path = Application.persistentDataPath + "/testData" + dataType;
+        if (File.Exists(path))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+
+            Debug.Log("Going through notes...");
+
+            FileStream stream = new FileStream(path, FileMode.Open);
+
+            TestData data = (TestData)formatter.Deserialize(stream);
+            stream.Close();
+
+            Debug.Log("Research recovered!");
+            return data;
+        }
+        else
+        {
+            Debug.LogWarning("Some devs might get a little sad. test data not found at: " + path);
             return null;
         }
     }
@@ -162,6 +202,20 @@ public static class SaveSystem
         }
 
         path = Application.persistentDataPath + "/scene" + dataType;
+
+        // check if file exists
+        if (!File.Exists(path))
+        {
+            Debug.LogError("can't delete nothing. No save file found at: " + path);
+        }
+        else
+        {
+            Debug.Log("Found file! Deleting" + path);
+
+            File.Delete(path);
+        }
+
+        path = Application.persistentDataPath + "/testData" + dataType;
 
         // check if file exists
         if (!File.Exists(path))

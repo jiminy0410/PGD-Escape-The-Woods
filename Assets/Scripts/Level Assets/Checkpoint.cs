@@ -58,6 +58,7 @@ public class Checkpoint : MonoBehaviour
 
                 //this is here to keep track of the amount of checkpoint touches. for the analytics system
                 analytics.GetComponent<AnalyticsSystem>().checkpointTouch++;
+                SaveSystem.SaveTestData(analytics.GetComponent<AnalyticsSystem>());
 
             }
         }

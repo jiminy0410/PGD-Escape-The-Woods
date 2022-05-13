@@ -53,3 +53,22 @@ public class SceneData
         currentScene = SceneManager.GetActiveScene().name;
     }
 }
+
+[System.Serializable]
+public class TestData
+{
+    public int deathCount;
+    public float timePlayedThisLevel;
+    public int flashGround;
+    public int flashAir;
+    public int checkpointTouch;
+
+    public TestData(AnalyticsSystem analyticsObject) //collect the test data collected thus far
+    {
+        deathCount = analyticsObject.deathCount;
+        timePlayedThisLevel = analyticsObject.timePlayedThisLevel;
+        flashGround = analyticsObject.flashGround;
+        flashAir = analyticsObject.flashAir;
+        checkpointTouch = analyticsObject.checkpointTouch;
+    }
+}
