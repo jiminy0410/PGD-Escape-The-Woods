@@ -5,6 +5,8 @@ using UnityEngine;
 public class DoorSystems : DoorComponents
 {
 
+    public AnalyticsSystem analSys;
+
     void Start()
     {
         player = GameObject.Find("Player");
@@ -12,6 +14,7 @@ public class DoorSystems : DoorComponents
 
         levelManager = GameObject.Find("LevelManager");
 
+        analSys = GameObject.Find("AnalyticsObject").GetComponent<AnalyticsSystem>();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -34,19 +37,29 @@ public class DoorSystems : DoorComponents
                     }
                     else
                     {
+                        analSys.timePlayedThisLevel += Time.time - analSys.levelStartTime;
 
                         //load the next scene.
-                        SaveSystem.EraseData();
                         GameObject.Find("AnalyticsObject").GetComponent<AnalyticsSystem>().SendAnalytics();
+
+                        analSys.resetVariables();
+
+                        SaveSystem.EraseData();
+
                         levelManager.GetComponent<LevelManager>().LoadNextLevel();
                     }
                 }
                 else
                 {
 
+                    analSys.timePlayedThisLevel += Time.time - analSys.levelStartTime;
+
                     //NOT THE FINAL RESULT, CHANGE THIS TO THE VICTORY SCREEN OR SOMETHING
-                    SaveSystem.EraseData();
                     GameObject.Find("AnalyticObject").GetComponent<AnalyticsSystem>().SendAnalytics();
+
+                    analSys.resetVariables();
+
+                    SaveSystem.EraseData();
                     Application.Quit();
                 }
             }
