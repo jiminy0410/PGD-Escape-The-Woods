@@ -13,9 +13,8 @@ public class MainMenu : MonoBehaviour
         {
             analytic = GameObject.Find("AnalyticsObject").GetComponent<AnalyticsSystem>();
             analytic.deathCount = SaveSystem.LoadTestData().deathCount;
-            analytic.timePlayedThisLevel = SaveSystem.LoadTestData().timePlayedThisLevel;
-            analytic.flashAir = SaveSystem.LoadTestData().flashAir;
-            analytic.flashGround = SaveSystem.LoadTestData().flashGround;
+            analytic.timePlayedThisLevel = (int) SaveSystem.LoadTestData().timePlayedThisLevel;
+            analytic.flashesUsed = SaveSystem.LoadTestData().flashesUsed;
             analytic.checkpointTouch = SaveSystem.LoadTestData().checkpointTouch;
         }
         else

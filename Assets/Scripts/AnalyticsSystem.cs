@@ -1,19 +1,21 @@
 ﻿using System.Collections.Generic;
 using Unity.Services.Analytics;
 using Unity.Services.Core;
+using Unity.Services.Core.Environments;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class AnalyticsSystem : MonoBehaviour
 {
     [HideInInspector]
-    public float levelStartTime;
+    public int levelStartTime;
 
     public int deathCount;
-    public float timePlayedThisLevel;
-    public int flashGround;
-    public int flashAir;
+    public int timePlayedThisLevel;
+    public int flashesUsed;
+
     public int checkpointTouch;
+
 
     private static AnalyticsSystem instance;
 
@@ -36,7 +38,10 @@ public class AnalyticsSystem : MonoBehaviour
 
         try
         {
-            await UnityServices.InitializeAsync();
+            var options = new InitializationOptions();
+            options.SetEnvironmentName("testing_escapethewoods");
+
+            await UnityServices.InitializeAsync(options);
             List<string> consentIdentifiers = await AnalyticsService.Instance.CheckForRequiredConsents();
         }
         catch (ConsentCheckException e)
@@ -48,44 +53,95 @@ public class AnalyticsSystem : MonoBehaviour
 
     void Update()
     {
+
+        //Test function to check if data is being sent. Not inteded for persistant use.
         if (Input.GetKeyDown(KeyCode.O))
         {
-            //this is kinda sad :(
-            //dit is om aan te geven dat het level is gehaald. niet doen tenzij het level klaar is. anders wordt de data nogal niet goed.
-            //AnalyticsEvent.LevelComplete(SceneManager.GetActiveScene().name, SceneManager.GetActiveScene().buildIndex);
-            //haha, nee. het doet precies niets. moeten we nog ff naar kijken.
-            Debug.Log("send shit");
-            SendAnalytics();
+            //Debug.Log("send shit");
+            //SendAnalytics();
         }
     }
 
-    public void SendAnalytics()
+    //public void SendAnalytics()
+    //{
+
+    //    Dictionary<string, object> analyticsValues = new Dictionary<string, object>
+    //    {
+    //        {"timePassed", timePlayedThisLevel},
+    //        {"deathCount", deathCount},
+    //        {"flashGround", flashGround},
+    //        {"flashAir", flashAir},
+    //        {"checkpointTouched", checkpointTouch},
+    //        {"levelCompleted", SceneManager.GetActiveScene().name}
+
+
+    //    };
+
+    //    AnalyticsService.Instance.CustomData("analyticsValues", analyticsValues);
+    //    AnalyticsService.Instance.Flush();
+
+    //    Debug.Log("Analytics have been sent!");
+    //}
+
+    public void SendFlashEvent(bool aerialFlash)
     {
-
-
-        Debug.Log("doing the dictionary");
-
-        Dictionary<string, object> analyticsValues = new Dictionary<string, object>
+        Dictionary<string, object> flashEvents = new Dictionary<string, object>
         {
-            {"timeElapsed", timePlayedThisLevel},
-            {"deathCount", deathCount},
-            {"flashGround", flashGround},
-            {"flashAir", flashAir},
-            {"checkpointTouched", checkpointTouch},
-            {"levelCompleted", SceneManager.GetActiveScene().name}
-
-
+            {"flashesUsed", flashesUsed},
+            {"Flash_Aerial", aerialFlash},
+            {"timePassed", timePlayedThisLevel},
+            {"currentLevel", SceneManager.GetActiveScene().name}
         };
 
-        AnalyticsService.Instance.CustomData("analyticsValues", analyticsValues);
+        AnalyticsService.Instance.CustomData("FlashEvents", flashEvents);
         AnalyticsService.Instance.Flush();
+    }
 
-        Debug.Log("Analytics have been sent!");
+    public void SendDeathEvent()
+    {
+        Dictionary<string, object> deathEvent = new Dictionary<string, object>
+        {
+            {"deathCount", deathCount},
+            {"timePassed", timePlayedThisLevel},
+            {"currentLevel", SceneManager.GetActiveScene().name}
+        };
+
+        AnalyticsService.Instance.CustomData("DeathEvent", deathEvent);
+        AnalyticsService.Instance.Flush();
+    }
+
+    public void SendLevelCompletionEvent()
+    {
+        Dictionary<string, object> levelCompletionEvent = new Dictionary<string, object>
+        {
+            {"deathCount", deathCount},
+            {"timePassed", timePlayedThisLevel},
+            {"flashesUsed", flashesUsed},
+            {"checkpointTouched", checkpointTouch},
+            {"currentLevel", SceneManager.GetActiveScene().name}
+        };
+
+        AnalyticsService.Instance.CustomData("LevelCompletionEvent", levelCompletionEvent);
+        AnalyticsService.Instance.Flush();
+    }
+
+    public void SendCheckpointEvent(int checkpointID)
+    {
+        Dictionary<string, object> checkpointEvent = new Dictionary<string, object>
+        {
+            {"checkpointTouched", checkpointTouch},
+            {"checkpointID", checkpointID},
+            {"timePassed", timePlayedThisLevel},
+            {"currentLevel", SceneManager.GetActiveScene().name}
+        };
+
+        AnalyticsService.Instance.CustomData("CheckpointEvent", checkpointEvent);
+        AnalyticsService.Instance.Flush();
     }
 
     public void resetVariables()
     {
-        deathCount = flashAir = flashGround = checkpointTouch = 0;
+        deathCount = flashesUsed = checkpointTouch = 0;
         timePlayedThisLevel = 0;
         levelStartTime = 0;
     }

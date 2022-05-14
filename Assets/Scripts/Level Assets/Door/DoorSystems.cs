@@ -37,10 +37,10 @@ public class DoorSystems : DoorComponents
                     }
                     else
                     {
-                        analSys.timePlayedThisLevel += Time.time - analSys.levelStartTime;
+                        analSys.timePlayedThisLevel += (int)Time.time - analSys.levelStartTime;
 
                         //load the next scene.
-                        GameObject.Find("AnalyticsObject").GetComponent<AnalyticsSystem>().SendAnalytics();
+                        GameObject.Find("AnalyticsObject").GetComponent<AnalyticsSystem>().SendLevelCompletionEvent();
 
                         analSys.resetVariables();
 
@@ -52,10 +52,10 @@ public class DoorSystems : DoorComponents
                 else
                 {
 
-                    analSys.timePlayedThisLevel += Time.time - analSys.levelStartTime;
+                    analSys.timePlayedThisLevel += (int) Time.time - analSys.levelStartTime;
 
                     //NOT THE FINAL RESULT, CHANGE THIS TO THE VICTORY SCREEN OR SOMETHING
-                    GameObject.Find("AnalyticObject").GetComponent<AnalyticsSystem>().SendAnalytics();
+                    analSys.SendLevelCompletionEvent();
 
                     analSys.resetVariables();
 

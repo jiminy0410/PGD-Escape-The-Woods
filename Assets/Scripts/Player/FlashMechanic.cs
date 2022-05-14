@@ -21,7 +21,7 @@ public class FlashMechanic : MonoBehaviour
     private AudioSource flashSound;
     public GameObject onLightning;
     public GameObject offLightning;
-    private GameObject anal;
+    private AnalyticsSystem anal;
 
     public FlashBar flashBar;
 
@@ -45,7 +45,7 @@ public class FlashMechanic : MonoBehaviour
         playerVision = GetComponent<Light2D>();
         flashSound = this.GetComponent<AudioSource>();
         flashBar.SetMaxCharges(maxFlashCharges);
-        anal = GameObject.Find("AnalyticsObject");
+        anal = GameObject.Find("AnalyticsObject").GetComponent<AnalyticsSystem>();
 
 
         switch (selectedDifficulty)
@@ -91,11 +91,13 @@ public class FlashMechanic : MonoBehaviour
                 StartCoroutine(Flash());
                 if (gameObject.GetComponent<CharacterController2D>().Grounded == true)
                 {
-                    anal.GetComponent<AnalyticsSystem>().flashGround++;
+                    anal.flashesUsed++;
+                    anal.SendFlashEvent(false);
                 }
                 else if (gameObject.GetComponent<CharacterController2D>().Grounded == false)
                 {
-                    anal.GetComponent<AnalyticsSystem>().flashAir++;
+                    anal.flashesUsed++;
+                    anal.SendFlashEvent(true);
                 }
 
                 flashCharges--;

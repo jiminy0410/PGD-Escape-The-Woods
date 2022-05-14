@@ -26,11 +26,15 @@ public class DeathPit : MonoBehaviour
     public void Death()
     {
         analSys.deathCount++;
-
         player.GetComponent<FlashMechanic>().StartCoroutine("Flash");
+
+        analSys.SendDeathEvent();
+
         player.GetComponent<FlashMechanic>().flashCharges = player.GetComponent<FlashMechanic>().maxFlashCharges;
         player.GetComponent<FlashMechanic>().standingChargeRate = player.GetComponent<FlashMechanic>().ChargeMax;
+
         levelState.GetComponent<levelState>().Rvert();
+
         player.transform.position = respawnPoint.position;
     }
 }
