@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class levelState : MonoBehaviour
@@ -17,6 +16,7 @@ public class levelState : MonoBehaviour
     void Start()
     {
         ObjectData data = SaveSystem.LoadObjects();
+        items = new List<GameObject>();
 
         if (data == null)
         {
@@ -33,7 +33,7 @@ public class levelState : MonoBehaviour
         Debug.Log("Looks like I have:");
         for (int i = 0; i < items.Count; i++)
         {
-            if (items[i].GetComponent<scrLock>() != null)
+            if (items[i].GetComponent<scrLock>() != null && items.Count > 0)
             {
                 Debug.Log("destroyed this tree: " + items[i].name);
                 items[i].GetComponent<scrLock>().useKey();
@@ -84,7 +84,7 @@ public class levelState : MonoBehaviour
 
         for (int i = 0; i < items.Count; i++)
         {
-            if (itemspassed[i] == false)
+            if (itemspassed[i] == false && items.Count > 0)
             {
                 if (items[i].GetComponent<lockAndKey>() != null)
                 {

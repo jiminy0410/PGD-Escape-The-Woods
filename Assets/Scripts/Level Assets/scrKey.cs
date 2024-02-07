@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
+
 
 public class scrKey : MonoBehaviour
 {
@@ -17,7 +17,7 @@ public class scrKey : MonoBehaviour
 
     public void Start()
     {
-        this.GetComponent<Light2D>().intensity = lightIntensityGeneral;
+        this.GetComponent<UnityEngine.Rendering.Universal.Light2D>().intensity = lightIntensityGeneral;
         transform.parent = StateMagine.transform;
         savePoint = transform.position;
         player = GameObject.FindGameObjectWithTag("Player");
@@ -69,7 +69,7 @@ public class scrKey : MonoBehaviour
         */
         Collected = true;
         GameObject.Find("KeysUI").GetComponent<KeyUISystems>().keys.Add(this.gameObject);
-        this.GetComponent<Light2D>().intensity = lightIntensityUI;
+        this.GetComponent<UnityEngine.Rendering.Universal.Light2D>().intensity = lightIntensityUI;
         if (manual)
         {
             GameObject.Find("LevelResetter").GetComponent<levelState>().AddItemToList(this.gameObject);
@@ -79,7 +79,7 @@ public class scrKey : MonoBehaviour
 
     public void Reverd()
     {
-        this.GetComponent<Light2D>().intensity = lightIntensityGeneral;
+        this.GetComponent<UnityEngine.Rendering.Universal.Light2D>().intensity = lightIntensityGeneral;
         GameObject.Find("KeysUI").GetComponent<KeyUISystems>().keys.Remove(this.gameObject);
         this.transform.parent = StateMagine.transform;
         transform.position = savePoint;

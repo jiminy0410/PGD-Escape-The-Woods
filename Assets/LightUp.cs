@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
+
 
 public class LightUp : MonoBehaviour
 {
@@ -25,9 +25,9 @@ public class LightUp : MonoBehaviour
         if (glowGrow)
         {
             //the plants glow starts to grow.
-            if (!transform.Find("dubbleJumpGrass").transform.Find("GrassLight").GetComponent<Light2D>().enabled)
+            if (!transform.Find("dubbleJumpGrass").transform.Find("GrassLight").GetComponent<UnityEngine.Rendering.Universal.Light2D>().enabled)
             {
-                transform.Find("dubbleJumpGrass").transform.Find("GrassLight").GetComponent<Light2D>().enabled = true;
+                transform.Find("dubbleJumpGrass").transform.Find("GrassLight").GetComponent<UnityEngine.Rendering.Universal.Light2D>().enabled = true;
             }
 
             if (!transform.Find("Plant Particles").gameObject.activeSelf)
@@ -37,9 +37,9 @@ public class LightUp : MonoBehaviour
             }
             
 
-            foreach (Light2D light in transform.Find("dubbleJumpGrass").transform.GetComponentsInChildren<Light2D>())
+            foreach (UnityEngine.Rendering.Universal.Light2D light in transform.Find("dubbleJumpGrass").transform.GetComponentsInChildren<UnityEngine.Rendering.Universal.Light2D>())
             {
-                if ((light.lightType == Light2D.LightType.Point) && (light.pointLightOuterRadius <= 0.09))
+                if ((light.lightType == UnityEngine.Rendering.Universal.Light2D.LightType.Point) && (light.pointLightOuterRadius <= 0.09))
                 {
                     light.pointLightOuterRadius += 0.0001f;
                 }

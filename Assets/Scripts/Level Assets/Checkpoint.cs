@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
+
 using System.Linq;
 
 public class Checkpoint : MonoBehaviour
@@ -39,12 +39,12 @@ public class Checkpoint : MonoBehaviour
                         {
                             //here, all checkpoints lanterns are turned off.
                             checkpoint.isTouched = false;
-                            checkpoint.transform.Find("TX Village Props Road Lamp Light On").transform.Find("Point Light 2D").GetComponent<Light2D>().pointLightOuterRadius = 1.5f;
+                            checkpoint.transform.Find("TX Village Props Road Lamp Light On").transform.Find("Point Light 2D").GetComponent<UnityEngine.Rendering.Universal.Light2D>().pointLightOuterRadius = 1.5f;
                         }
                     }
                     //then, here, the light that's part of this scripts parent, will be turned 'on'
                     isTouched = true;
-                    this.transform.Find("TX Village Props Road Lamp Light On").transform.Find("Point Light 2D").GetComponent<Light2D>().pointLightOuterRadius = 4.5f;
+                    this.transform.Find("TX Village Props Road Lamp Light On").transform.Find("Point Light 2D").GetComponent<UnityEngine.Rendering.Universal.Light2D>().pointLightOuterRadius = 4.5f;
                 }
 
                 levelState.GetComponent<levelState>().SavePointInTime();

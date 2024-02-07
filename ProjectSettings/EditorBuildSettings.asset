@@ -9,11 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: f2c2e9d6cc9c43b48ac706bda19d166c
   - enabled: 1
-    path: Assets/Scenes/Levels/Sprint Review Level.unity
-    guid: 4d30203cb83e9684da1c9fa7f6d5fef8
-  - enabled: 1
     path: Assets/Scenes/Levels/Level 4.unity
     guid: a5e4a27400a3dcb4ca3d60faf837aa05
+  - enabled: 1
+    path: Assets/Scenes/Levels/Sprint Review Level.unity
+    guid: 4d30203cb83e9684da1c9fa7f6d5fef8
   - enabled: 1
     path: Assets/Scenes/Levels/Level X.unity
     guid: ffca22d868b8d9649872151d4828a203

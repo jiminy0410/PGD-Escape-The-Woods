@@ -345,7 +345,7 @@ TextureImporter:
       213: -1395224134509619096
     second: TX Village Props - Copy_113
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -362,9 +362,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -374,8 +377,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -396,10 +399,15 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -411,6 +419,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -423,6 +432,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -435,6 +445,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -447,6 +458,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -459,6 +471,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -471,6 +484,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -2817,9 +2844,120 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      TX Village Props - Copy_0: 2732750669639194227
+      TX Village Props - Copy_1: -4618041700765024444
+      TX Village Props - Copy_10: -8805618129638922215
+      TX Village Props - Copy_100: -7340020427048619868
+      TX Village Props - Copy_101: 7007152404527019111
+      TX Village Props - Copy_102: -7483314444956867706
+      TX Village Props - Copy_103: -8864185368611113560
+      TX Village Props - Copy_104: 8964588445574242265
+      TX Village Props - Copy_105: 3484506061608511282
+      TX Village Props - Copy_106: 8714170251383997433
+      TX Village Props - Copy_107: 6094315399931295637
+      TX Village Props - Copy_108: -4776800965218086417
+      TX Village Props - Copy_109: 731697358547843797
+      TX Village Props - Copy_11: -4629967324496315783
+      TX Village Props - Copy_110: -6898409802815843267
+      TX Village Props - Copy_111: -5047504862680249960
+      TX Village Props - Copy_112: -3092615245429663060
+      TX Village Props - Copy_113: -1395224134509619096
+      TX Village Props - Copy_12: 4625967998075683819
+      TX Village Props - Copy_13: 2013999543097047048
+      TX Village Props - Copy_14: -4495317850258849062
+      TX Village Props - Copy_15: 7910225475829716808
+      TX Village Props - Copy_16: -6717071413027933627
+      TX Village Props - Copy_17: -6326088091796868539
+      TX Village Props - Copy_18: -7593209267962171946
+      TX Village Props - Copy_19: 5453935698889855471
+      TX Village Props - Copy_2: -7806703539676854165
+      TX Village Props - Copy_20: 8269562006372277528
+      TX Village Props - Copy_21: -5857987194433723185
+      TX Village Props - Copy_22: -2034197141580915566
+      TX Village Props - Copy_23: 8356789221778870636
+      TX Village Props - Copy_24: -5385441387815300392
+      TX Village Props - Copy_25: 2616198563966000269
+      TX Village Props - Copy_26: 4375909626213769232
+      TX Village Props - Copy_27: -8997338586388379401
+      TX Village Props - Copy_28: -6138794379187545517
+      TX Village Props - Copy_29: -5177926229537662600
+      TX Village Props - Copy_3: -9082260043490371181
+      TX Village Props - Copy_30: 2990622499581544940
+      TX Village Props - Copy_31: 4890757675820397063
+      TX Village Props - Copy_32: -212402101032645895
+      TX Village Props - Copy_33: -1632291433549194537
+      TX Village Props - Copy_34: 7969805533490451393
+      TX Village Props - Copy_35: 2418635019152478050
+      TX Village Props - Copy_36: 8646826330833626976
+      TX Village Props - Copy_37: -1673508215098036696
+      TX Village Props - Copy_38: 7273332936274105662
+      TX Village Props - Copy_39: 5057412038876990828
+      TX Village Props - Copy_4: -379135900244601127
+      TX Village Props - Copy_40: -4451923018831114953
+      TX Village Props - Copy_41: -1168651935690200774
+      TX Village Props - Copy_42: -5883741876876172584
+      TX Village Props - Copy_43: 5156122789284786049
+      TX Village Props - Copy_44: -4512928828711165751
+      TX Village Props - Copy_45: -1578719845756345316
+      TX Village Props - Copy_46: 3729536333909396530
+      TX Village Props - Copy_47: 6129053321138586960
+      TX Village Props - Copy_48: 8845917237593303960
+      TX Village Props - Copy_49: -5267745387084518951
+      TX Village Props - Copy_5: 625156100761164704
+      TX Village Props - Copy_50: -8722121248600838081
+      TX Village Props - Copy_51: -7605133255831104815
+      TX Village Props - Copy_52: 3955467378038829274
+      TX Village Props - Copy_53: 6311490480369511384
+      TX Village Props - Copy_54: 7182687025671701295
+      TX Village Props - Copy_55: -219452474762354385
+      TX Village Props - Copy_58: -5782600825153187391
+      TX Village Props - Copy_59: 4840176945769989122
+      TX Village Props - Copy_6: 5851214546921240063
+      TX Village Props - Copy_61: 2185699787821236518
+      TX Village Props - Copy_62: 5761428955443572771
+      TX Village Props - Copy_63: -7615346326773338490
+      TX Village Props - Copy_64: 8343462154498654547
+      TX Village Props - Copy_65: 9042129803004123487
+      TX Village Props - Copy_66: 5526456287441675769
+      TX Village Props - Copy_67: 7461822776929976703
+      TX Village Props - Copy_68: -5562520465210971623
+      TX Village Props - Copy_69: -6859079937404873715
+      TX Village Props - Copy_7: 6698034411291772915
+      TX Village Props - Copy_70: -4067401720165545346
+      TX Village Props - Copy_71: 5365477549291688967
+      TX Village Props - Copy_72: -3324833332707126540
+      TX Village Props - Copy_73: 8122462961200776138
+      TX Village Props - Copy_74: -1481137137148119104
+      TX Village Props - Copy_75: -789805773338238875
+      TX Village Props - Copy_76: -4101533406745431765
+      TX Village Props - Copy_77: -6449292474890702695
+      TX Village Props - Copy_78: 2014560144748074126
+      TX Village Props - Copy_79: 3537977977542522991
+      TX Village Props - Copy_8: 6546969565669166553
+      TX Village Props - Copy_80: 5755659418280303964
+      TX Village Props - Copy_81: -6335468850673014600
+      TX Village Props - Copy_82: 4694951778813850006
+      TX Village Props - Copy_83: 2505504408918794658
+      TX Village Props - Copy_84: -9207936357344844587
+      TX Village Props - Copy_85: 5878460917227001195
+      TX Village Props - Copy_86: 7736521091245493509
+      TX Village Props - Copy_87: -684509386006714474
+      TX Village Props - Copy_88: -4355710752561525269
+      TX Village Props - Copy_89: -8524616495123968430
+      TX Village Props - Copy_9: -1525701753114581105
+      TX Village Props - Copy_90: -7856564661190467247
+      TX Village Props - Copy_91: 6530392986072203040
+      TX Village Props - Copy_92: 7493165528771844165
+      TX Village Props - Copy_93: -5978698902647673248
+      TX Village Props - Copy_94: -6868328047016442015
+      TX Village Props - Copy_95: 1294701736321429111
+      TX Village Props - Copy_96: 7513715495599360874
+      TX Village Props - Copy_97: -3259571900534793682
+      TX Village Props - Copy_98: 3506934215880907202
+      TX Village Props - Copy_99: -3683857915311208212
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
+
 
 public class FlashMechanic : MonoBehaviour
 {
-    public Light2D playerVision;
+    public UnityEngine.Rendering.Universal.Light2D playerVision;
     public float maxFlashCharges = 1;
     public float flashCharges;
     public float currentFlashRechargeRate;
@@ -42,7 +42,7 @@ public class FlashMechanic : MonoBehaviour
         standingChargeRate = ChargeMax;
 
         flashCharges = maxFlashCharges;
-        playerVision = GetComponent<Light2D>();
+        playerVision = GetComponent<UnityEngine.Rendering.Universal.Light2D>();
         flashSound = this.GetComponent<AudioSource>();
         flashBar.SetMaxCharges(maxFlashCharges);
         anal = GameObject.Find("AnalyticsObject").GetComponent<AnalyticsSystem>();

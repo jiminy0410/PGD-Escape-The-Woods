@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
+
 
 public class FuelBasedLight : MonoBehaviour
 {
-    public Light2D playerVision;
+    public UnityEngine.Rendering.Universal.Light2D playerVision;
 
     public float maxFuel = 3;
     public float currentFuel;
@@ -26,7 +26,7 @@ public class FuelBasedLight : MonoBehaviour
     void Start()
     {
         currentFuel = maxFuel;
-        playerVision = GetComponent<Light2D>();
+        playerVision = GetComponent<UnityEngine.Rendering.Universal.Light2D>();
         flashSound = this.GetComponent<AudioSource>();
         fuelBar.SetMaxFuel(maxFuel);
     }
