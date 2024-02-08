@@ -8773,6 +8773,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8844867145598215044, guid: a668add4337a43642aaf7633f303e121,
+        type: 3}
+      propertyPath: m_Text
+      value: Q
+      objectReference: {fileID: 0}
     - target: {fileID: 8993173198001058091, guid: a668add4337a43642aaf7633f303e121,
         type: 3}
       propertyPath: m_Name
@@ -15254,61 +15259,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2041554471}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1801449870 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8194100450823158164, guid: 8c113c0a15febff468c0beb1c7752b32,
-    type: 3}
-  m_PrefabInstance: {fileID: 2041554471}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1801449866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c2739ff0c2e7cc42bf6f8a8fc407006, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!66 &1801449877
-CompositeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1801449866}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_GeometryType: 1
-  m_GenerationType: 0
-  m_EdgeRadius: 0
-  m_ColliderPaths: []
-  m_CompositePaths:
-    m_Paths: []
-  m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.00005
-  m_UseDelaunayMesh: 0
-  m_CompositeGameObject: {fileID: 1801449866}
 --- !u!114 &1805943985 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5824151316479867038, guid: 7ebe7e696fd41074c9d21883f5a9e0ed,
@@ -56517,7 +56467,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: c0a326762113f274183828d3d1cf3bdc, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -59228,56 +59178,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5945640561723757654, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5945640561723757654, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5945640561723757654, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5945640561723757654, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5945640561723757654, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.data[0]
-      value: 258392641
-      objectReference: {fileID: 0}
-    - target: {fileID: 5945640561723757654, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.data[1]
-      value: -1356416179
-      objectReference: {fileID: 0}
-    - target: {fileID: 5945640561723757654, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.data[2]
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5945640561723757654, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.data[3]
-      value: 136216627
-      objectReference: {fileID: 0}
-    - target: {fileID: 5945640561723757654, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.data[4]
-      value: 1505020293
-      objectReference: {fileID: 0}
-    - target: {fileID: 5945640561723757654, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.data[5]
-      value: 1586729821
-      objectReference: {fileID: 0}
     - target: {fileID: 6091798533377111979, guid: 8c113c0a15febff468c0beb1c7752b32,
         type: 3}
       propertyPath: m_Layer
@@ -59405,6 +59305,11 @@ PrefabInstance:
       objectReference: {fileID: 4201346439453368512}
     - target: {fileID: 8194100450823158164, guid: 8c113c0a15febff468c0beb1c7752b32,
         type: 3}
+      propertyPath: WiggleChargeMax
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194100450823158164, guid: 8c113c0a15febff468c0beb1c7752b32,
+        type: 3}
       propertyPath: flashRechargeRate
       value: 0.05
       objectReference: {fileID: 0}
@@ -59448,56 +59353,6 @@ PrefabInstance:
       propertyPath: slider
       value: 
       objectReference: {fileID: 484901925}
-    - target: {fileID: 8388587301789224547, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: theFlash
-      value: 
-      objectReference: {fileID: 1801449870}
-    - target: {fileID: 8388587301789224547, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: fullColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8388587301789224547, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: fullColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8388587301789224547, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: fullColor.r
-      value: 0.11517811
-      objectReference: {fileID: 0}
-    - target: {fileID: 8388587301789224547, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: halfColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8388587301789224547, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: halfColor.g
-      value: 0.92926645
-      objectReference: {fileID: 0}
-    - target: {fileID: 8388587301789224547, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: halfColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8388587301789224547, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: emptyColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8388587301789224547, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: emptyColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8388587301789224547, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: emptyColor.r
-      value: 0.6698113
-      objectReference: {fileID: 0}
     - target: {fileID: 8655981187925266648, guid: 8c113c0a15febff468c0beb1c7752b32,
         type: 3}
       propertyPath: m_Materials.Array.size
@@ -59516,11 +59371,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6091798533617958309, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1801449877}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c113c0a15febff468c0beb1c7752b32, type: 3}
 --- !u!1001 &2042912375
 PrefabInstance:

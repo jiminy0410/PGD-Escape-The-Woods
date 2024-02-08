@@ -18,6 +18,10 @@ public class CharacterController2D : MonoBehaviour
 
 	[SerializeField] private float wallSlideSpeed;
 
+	[Space]
+
+	[SerializeField] private AudioSource jumpSound;
+
 	//public PlayerMovement controller;
 
 	float GroundedRadius = 0.3f; // Radius of the overlap circle to determine if grounded
@@ -370,8 +374,11 @@ public class CharacterController2D : MonoBehaviour
 			if ((hang_Counter > 0 || Ledge_Grab || jumps_Left > 0) && jump && !crouch)
 			{
 				Rigidbody2D.velocity = new Vector2(Rigidbody2D.velocity.x, 0f);
+
 				this.Grounded = false;
 				Rigidbody2D.AddForce(new Vector2(0f, JumpForce));
+				jumpSound.pitch = Random.Range(0.85f, 1.1f);
+				jumpSound.Play();
 				jump_Counter = jump_Time;
 				if (hang_Counter < 0)
 				{

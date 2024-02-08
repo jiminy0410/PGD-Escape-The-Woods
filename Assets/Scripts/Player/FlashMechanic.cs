@@ -18,6 +18,7 @@ public class FlashMechanic : MonoBehaviour
 
     private static float enlargedOuterRadius;
 
+    [SerializeField]
     private AudioSource flashSound;
     public GameObject onLightning;
     public GameObject offLightning;
@@ -36,14 +37,12 @@ public class FlashMechanic : MonoBehaviour
 
     void Start()
     {
-        flashSound = this.GetComponent<AudioSource>();
 
         ChargeMax = 0.5f;
         standingChargeRate = ChargeMax;
 
         flashCharges = maxFlashCharges;
         playerVision = GetComponent<UnityEngine.Rendering.Universal.Light2D>();
-        flashSound = this.GetComponent<AudioSource>();
         flashBar.SetMaxCharges(maxFlashCharges);
         //anal = GameObject.Find("AnalyticsObject").GetComponent<AnalyticsSystem>();
 
@@ -78,6 +77,9 @@ public class FlashMechanic : MonoBehaviour
                 standingChargeReduction = 0.12f;
                 break;
         }
+
+        onLightning = flashBar.transform.Find("On").gameObject;
+        offLightning = flashBar.transform.Find("Off").gameObject;
     }
 
     void Update()

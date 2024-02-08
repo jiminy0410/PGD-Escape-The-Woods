@@ -1,14 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 
 public class LightUp : MonoBehaviour
 {
 
     public bool isTouched, glowGrow;
+    private AudioSource triggerSfx;
 
     public float glowing = 0.09f;
+
+    private void Start()
+    {
+        triggerSfx = GetComponent<AudioSource>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -33,9 +37,11 @@ public class LightUp : MonoBehaviour
             if (!transform.Find("Plant Particles").gameObject.activeSelf)
             {
                 transform.Find("Plant Particles").gameObject.SetActive(true);
+                triggerSfx.pitch = Random.Range(0.5f, 1.2f);
+                triggerSfx.Play();
                 Debug.Log("These plants particles weren't active. They should be now.");
             }
-            
+
 
             foreach (UnityEngine.Rendering.Universal.Light2D light in transform.Find("dubbleJumpGrass").transform.GetComponentsInChildren<UnityEngine.Rendering.Universal.Light2D>())
             {

@@ -13,6 +13,12 @@ public class FlashBar : MonoBehaviour
 
     public Color emptyColor, halfColor, fullColor;
 
+    private void Start()
+    {
+        slider = GameObject.Find("FlashBar").GetComponent<Slider>();
+        phill = GameObject.Find("FlashBar").transform.Find("Fill").GetComponent<Image>();
+    }
+
     private void Update()
     {
         //the greater the charge speed, the 'better' the color. changing from red (slow) to green (fast)
