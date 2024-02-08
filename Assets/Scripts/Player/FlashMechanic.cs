@@ -45,7 +45,7 @@ public class FlashMechanic : MonoBehaviour
         playerVision = GetComponent<UnityEngine.Rendering.Universal.Light2D>();
         flashSound = this.GetComponent<AudioSource>();
         flashBar.SetMaxCharges(maxFlashCharges);
-        anal = GameObject.Find("AnalyticsObject").GetComponent<AnalyticsSystem>();
+        //anal = GameObject.Find("AnalyticsObject").GetComponent<AnalyticsSystem>();
 
 
         switch (selectedDifficulty)
@@ -91,13 +91,13 @@ public class FlashMechanic : MonoBehaviour
                 StartCoroutine(Flash());
                 if (gameObject.GetComponent<CharacterController2D>().Grounded == true)
                 {
-                    anal.flashesUsed++;
-                    anal.SendFlashEvent(false);
+                    //anal.flashesUsed++;
+                    //anal.SendFlashEvent(false);
                 }
                 else if (gameObject.GetComponent<CharacterController2D>().Grounded == false)
                 {
-                    anal.flashesUsed++;
-                    anal.SendFlashEvent(true);
+                    //anal.flashesUsed++;
+                    //anal.SendFlashEvent(true);
                 }
 
                 flashCharges--;

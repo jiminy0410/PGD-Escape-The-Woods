@@ -14,7 +14,7 @@ public class DoorSystems : DoorComponents
 
         levelManager = GameObject.Find("LevelManager");
 
-        analSys = GameObject.Find("AnalyticsObject").GetComponent<AnalyticsSystem>();
+        //analSys = GameObject.Find("AnalyticsObject").GetComponent<AnalyticsSystem>();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -37,12 +37,12 @@ public class DoorSystems : DoorComponents
                     }
                     else
                     {
-                        analSys.timePlayedThisLevel += (int)Time.time - analSys.levelStartTime;
+                        //analSys.timePlayedThisLevel += (int)Time.time - analSys.levelStartTime;
 
                         //load the next scene.
-                        GameObject.Find("AnalyticsObject").GetComponent<AnalyticsSystem>().SendLevelCompletionEvent();
+                        //GameObject.Find("AnalyticsObject").GetComponent<AnalyticsSystem>().SendLevelCompletionEvent();
 
-                        analSys.resetVariables();
+                        //analSys.resetVariables();
 
                         SaveSystem.EraseData();
 
@@ -52,12 +52,12 @@ public class DoorSystems : DoorComponents
                 else
                 {
 
-                    analSys.timePlayedThisLevel += (int) Time.time - analSys.levelStartTime;
+                    //analSys.timePlayedThisLevel += (int) Time.time - analSys.levelStartTime;
 
                     //NOT THE FINAL RESULT, CHANGE THIS TO THE VICTORY SCREEN OR SOMETHING
-                    analSys.SendLevelCompletionEvent();
+                    //analSys.SendLevelCompletionEvent();
 
-                    analSys.resetVariables();
+                    //analSys.resetVariables();
 
                     SaveSystem.EraseData();
                     Application.Quit();

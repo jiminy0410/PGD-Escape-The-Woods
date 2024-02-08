@@ -7,15 +7,18 @@ public class MainMenu : MonoBehaviour
 {
     [HideInInspector]
     public AnalyticsSystem analytic;
+    [SerializeField]
+    private AudioSource clickSound;
     private void Start()
     {
+        clickSound = this.GetComponent<AudioSource>();
         if (SaveSystem.LoadTestData() != null)
         {
-            analytic = GameObject.Find("AnalyticsObject").GetComponent<AnalyticsSystem>();
-            analytic.deathCount = SaveSystem.LoadTestData().deathCount;
-            analytic.timePlayedThisLevel = (int) SaveSystem.LoadTestData().timePlayedThisLevel;
-            analytic.flashesUsed = SaveSystem.LoadTestData().flashesUsed;
-            analytic.checkpointTouch = SaveSystem.LoadTestData().checkpointTouch;
+            //analytic = GameObject.Find("AnalyticsObject").GetComponent<AnalyticsSystem>();
+            //analytic.deathCount = SaveSystem.LoadTestData().deathCount;
+            //analytic.timePlayedThisLevel = (int) SaveSystem.LoadTestData().timePlayedThisLevel;
+            //analytic.flashesUsed = SaveSystem.LoadTestData().flashesUsed;
+            //analytic.checkpointTouch = SaveSystem.LoadTestData().checkpointTouch;
         }
         else
         {
@@ -32,10 +35,11 @@ public class MainMenu : MonoBehaviour
 
     public void NewGame()
     {
+        StartCoroutine(klick());
 
         if (SaveSystem.LoadTestData() != null)
         {
-            analytic.resetVariables();
+            //analytic.resetVariables();
             Debug.Log("RESETTING VARIABLES");
         }
 
@@ -57,6 +61,7 @@ public class MainMenu : MonoBehaviour
 
     public void loadScene()
     {
+        StartCoroutine(klick());
         string sceneName = SaveSystem.LoadScene();
         if (sceneName == null)
         {
@@ -70,7 +75,15 @@ public class MainMenu : MonoBehaviour
 
     public void QuitGame()
     {
+        StartCoroutine(klick());
         Debug.Log("QUIT IS WORKING");
         Application.Quit();
+    }
+
+    public IEnumerator klick()
+    {
+        clickSound.pitch = Random.Range(2.5f, 3);
+        clickSound.Play();
+        yield return null;
     }
 }

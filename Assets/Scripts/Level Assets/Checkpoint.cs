@@ -20,9 +20,9 @@ public class Checkpoint : MonoBehaviour
 
         //cooldownCount = Time.time + cooldownTime;
         levelState = GameObject.Find("LevelResetter");
-        analytics = GameObject.Find("AnalyticsObject").GetComponent<AnalyticsSystem>();
+        //analytics = GameObject.Find("AnalyticsObject").GetComponent<AnalyticsSystem>();
 
-        analytics.levelStartTime = (int)Time.time;
+        //analytics.levelStartTime = (int)Time.time;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -60,13 +60,13 @@ public class Checkpoint : MonoBehaviour
                 SaveSystem.SaveScene();
                 cooldownCount = Time.time + cooldownTime;
 
-                analytics.timePlayedThisLevel += (int)Time.time - analytics.levelStartTime;
-                analytics.levelStartTime = (int)Time.time;
+                //analytics.timePlayedThisLevel += (int)Time.time - analytics.levelStartTime;
+                //analytics.levelStartTime = (int)Time.time;
 
                 //this is here to keep track of the amount of checkpoint touches. for the analytics system
-                analytics.checkpointTouch++;
-                SaveSystem.SaveTestData(analytics.GetComponent<AnalyticsSystem>());
-                analytics.SendCheckpointEvent(id);
+                //analytics.checkpointTouch++;
+                //SaveSystem.SaveTestData(analytics.GetComponent<AnalyticsSystem>());
+                //analytics.SendCheckpointEvent(id);
 
             }
         }
