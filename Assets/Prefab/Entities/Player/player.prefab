@@ -211,6 +211,7 @@ MonoBehaviour:
   CornerCheck: {fileID: 6091798533377111978}
   behindeCheck: {fileID: 3286275974685571762}
   CrouchDisableCollider: {fileID: 6091798533617958304}
+  maxFallspeed: 30
   wallSlideSpeed: 3.35
   jumpSFX: {fileID: 1057197054482252139}
   fallingSFX: {fileID: 8535541829844520690}

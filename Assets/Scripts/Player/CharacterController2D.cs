@@ -4,8 +4,8 @@ using UnityEngine;
 public class CharacterController2D : MonoBehaviour
 {
     [SerializeField] private float JumpForce = 200f;                          // Amount of force added when the player jumps.
-    [Range(0, 1)][SerializeField] private float CrouchSpeed = .36f;          // Amount of maxSpeed applied to crouching movement. 1 = 100%
-    [Range(0, .3f)][SerializeField] private float MovementSmoothing = .05f;  // How much to smooth out the movement
+    [Range(0, 1)] [SerializeField] private float CrouchSpeed = .36f;          // Amount of maxSpeed applied to crouching movement. 1 = 100%
+    [Range(0, .3f)] [SerializeField] private float MovementSmoothing = .05f;  // How much to smooth out the movement
     [SerializeField] private bool AirControl = false;                         // Whether or not a player can steer while jumping;
     [SerializeField] private LayerMask WhatIsGround;                          // A mask determining what is ground to the character
     [SerializeField] private Transform GroundCheck;                           // A position marking where to check if the player is grounded.
@@ -13,6 +13,7 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] private Transform CornerCheck;                          // A position marking where to check for corners
     [SerializeField] private Transform behindeCheck;                          // A position marking where to check for objects behinde him
     [SerializeField] private Collider2D CrouchDisableCollider;                // A collider that will be disabled when crouching
+    [SerializeField] float maxFallspeed = 0;
 
     [Space]
 
@@ -219,15 +220,19 @@ public class CharacterController2D : MonoBehaviour
 
         }
 
-        if (velocity.y < 0)
+
+        if (Rigidbody2D.velocity.y < -1)
         {
-            fallingSFX.volume = velocity.y;
+            
+            fallingSFX.volume = (Rigidbody2D.velocity.y * -1) / maxFallspeed;
+            landingSFX.volume = fallingSFX.volume/4;
+            Debug.Log("faling");
         }
-        else
-        if (fallingSFX.volume > 0 && Grounded)
+        else if (fallingSFX.volume > 0 && Grounded)
         {
             fallingSFX.volume = 0;
             landingSFX.Play();
+            Debug.Log("landed");
         }
     }
     public void OnCollisionEnter2D(Collision2D collision)
