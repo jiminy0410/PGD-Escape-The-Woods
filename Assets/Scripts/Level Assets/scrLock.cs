@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class scrLock : MonoBehaviour
 {
@@ -8,9 +6,13 @@ public class scrLock : MonoBehaviour
     public lockAndKey scr;
     public bool manual = false;
 
+    private PersistingSounds persistingSounds;
+
+    [SerializeField] private AudioSource chopSFX;
     public void Start()
     {
         StateMagine = this.gameObject;
+        persistingSounds = GameObject.Find("PersistingSounds").GetComponent<PersistingSounds>();
         scr = this.GetComponent<lockAndKey>();
     }
 
@@ -41,5 +43,7 @@ public class scrLock : MonoBehaviour
             }
             //item.transform.parent = StateMagine.transform;
         }
+
+        persistingSounds.PlaySound("chopTree");
     }
 }

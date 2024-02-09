@@ -7,9 +7,11 @@ public class DoorSystems : DoorComponents
 
     //public AnalyticsSystem analSys;
     [SerializeField] private AudioSource teleportSFX;
-
+    private PersistingSounds persistingSounds;
     void Start()
     {
+        persistingSounds = GameObject.Find("PersistingSounds").GetComponent<PersistingSounds>();
+
         player = GameObject.Find("Player");
         cooldownCount = Time.time + cooldownTime;
 
@@ -51,10 +53,12 @@ public class DoorSystems : DoorComponents
                         SaveSystem.EraseData();
 
                         levelManager.GetComponent<LevelManager>().LoadNextLevel();
+                        persistingSounds.PlaySound("levelComplete");
                     }
                 }
                 else
                 {
+                    persistingSounds.PlaySound("levelComplete");
 
                     //analSys.timePlayedThisLevel += (int) Time.time - analSys.levelStartTime;
 

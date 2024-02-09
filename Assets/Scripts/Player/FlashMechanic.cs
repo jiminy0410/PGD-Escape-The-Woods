@@ -19,12 +19,13 @@ public class FlashMechanic : MonoBehaviour
     private static float enlargedOuterRadius;
 
     [SerializeField]
-    private AudioSource flashSound;
+    private AudioSource flashSound, flashRechargeSFX, flashFullSFX;
     public GameObject onLightning;
     public GameObject offLightning;
     private AnalyticsSystem anal;
 
     public FlashBar flashBar;
+    private bool flashligthFull;
 
     public static Difficulty selectedDifficulty;
 
@@ -78,8 +79,6 @@ public class FlashMechanic : MonoBehaviour
                 break;
         }
 
-        onLightning = flashBar.transform.Find("On").gameObject;
-        offLightning = flashBar.transform.Find("Off").gameObject;
     }
 
     void Update()
@@ -126,23 +125,32 @@ public class FlashMechanic : MonoBehaviour
             offLightning.SetActive(false);
             currentFlashRechargeRate = WiggleChargeMax;
             onLightning.SetActive(true);
+            flashRechargeSFX.volume = 0.1f;
         }
         else
         {
             offLightning.SetActive(true);
             currentFlashRechargeRate = standingChargeRate;
             onLightning.SetActive(false);
+            flashRechargeSFX.volume = 0;
         }
 
 
         if (flashCharges < maxFlashCharges)
+        {
             flashCharges += currentFlashRechargeRate * Time.deltaTime;
+
+        }
 
         if (playerVision.pointLightOuterRadius > defaultOuterRadius)
             playerVision.pointLightOuterRadius -= lightDecay * Time.deltaTime;
 
         if (flashCharges > 1)
+        {
+            flashFullSFX.pitch = Random.Range(0.8f, 1.0f);
+            flashFullSFX.Play();
             flashCharges = 1;
+        }
 
         if (playerVision.pointLightOuterRadius < 2)
             playerVision.pointLightOuterRadius = 2;

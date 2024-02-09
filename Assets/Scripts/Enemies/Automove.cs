@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Automove : MonoBehaviour
 {
+    [SerializeField] private AudioSource walkSFX;
+
     public Transform rayPoint;
     public float rayLength = 0.1f;
 
@@ -38,6 +40,8 @@ public class Automove : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        walkSFX.pitch = Random.RandomRange(0.5f, 1.0f);
+
         if(Vector2.Distance(deltaDist, this.transform.position) < 0.0001f)
         {
             //turn around and walk away

@@ -10,6 +10,8 @@ public class DeathPit : MonoBehaviour
 
     public Transform respawnPoint;
 
+    [SerializeField]
+    private AudioSource deathSFX;
     private AnalyticsSystem analSys;
     void Start()
     {
@@ -36,5 +38,7 @@ public class DeathPit : MonoBehaviour
         levelState.GetComponent<levelState>().Rvert();
 
         player.transform.position = respawnPoint.position;
+
+        deathSFX.Play();
     }
 }

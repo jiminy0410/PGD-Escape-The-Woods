@@ -6,7 +6,8 @@ using UnityEngine.Tilemaps;
 
 public class SecretWallSystems : SecretWallComponents
 {
-
+    [SerializeField]
+    private GameObject player;
     void Start()
     {
         tileRenderer = GetComponent<Tilemap>();
@@ -39,7 +40,7 @@ public class SecretWallSystems : SecretWallComponents
     // && collision == GameObject.Find("Player").GetComponent<BoxCollider2D>()
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision == GameObject.Find("Player").GetComponent<CircleCollider2D>())
+        if (collision == player.GetComponent<CircleCollider2D>())
         {
             collidingWithPlayer = true;
         }
@@ -48,7 +49,7 @@ public class SecretWallSystems : SecretWallComponents
 
     public void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision == GameObject.Find("Player").GetComponent<CircleCollider2D>() && collidingWithPlayer && collision != null)
+        if ( collidingWithPlayer && collision == player.GetComponent<CircleCollider2D>())
         {
             collidingWithPlayer = false;
         }

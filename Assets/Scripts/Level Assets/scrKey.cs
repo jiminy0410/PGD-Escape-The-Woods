@@ -15,6 +15,7 @@ public class scrKey : MonoBehaviour
     private float lightIntensityUI, lightIntensityGeneral;
     public bool manual = false;
 
+    [SerializeField] private AudioSource pickupSFX;
     public void Start()
     {
         this.GetComponent<UnityEngine.Rendering.Universal.Light2D>().intensity = lightIntensityGeneral;
@@ -74,7 +75,9 @@ public class scrKey : MonoBehaviour
         {
             GameObject.Find("LevelResetter").GetComponent<levelState>().AddItemToList(this.gameObject);
         }
-        
+
+        pickupSFX.pitch = Random.Range(0.8f, 1.0f);
+        pickupSFX.Play();
     }
 
     public void Reverd()

@@ -9,8 +9,11 @@ public class MainMenu : MonoBehaviour
     public AnalyticsSystem analytic;
     [SerializeField]
     private AudioSource clickSound;
+
+    private PersistingSounds persistingSounds;
     private void Start()
     {
+        persistingSounds = GameObject.Find("PersistingSounds").GetComponent<PersistingSounds>();
         clickSound = this.GetComponent<AudioSource>();
         if (SaveSystem.LoadTestData() != null)
         {
@@ -30,6 +33,8 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
+        persistingSounds.PlaySound("background");
+        persistingSounds.PlaySound("ambient");
         loadScene();
     }
 
@@ -55,6 +60,9 @@ public class MainMenu : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             return;
         }
+
+        persistingSounds.PlaySound("background");
+        persistingSounds.PlaySound("ambient");
 
         SceneManager.LoadScene(sceneName);
     }

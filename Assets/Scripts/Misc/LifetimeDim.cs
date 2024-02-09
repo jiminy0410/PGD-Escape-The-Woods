@@ -1,7 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class LifetimeDim : MonoBehaviour
 {
@@ -11,7 +9,7 @@ public class LifetimeDim : MonoBehaviour
     public float lifeTime;
 
     private bool biteable = false;
-    
+
     public float blinks;
     public float colorIntensity;
     private float counter;
@@ -20,6 +18,12 @@ public class LifetimeDim : MonoBehaviour
 
     public Color from, to;
     // Start is called before the first frame update
+
+    [SerializeField]
+    private AudioSource chargeSFX, attackSFX;
+    [SerializeField]
+    private Sprite idleSpr, activeSpr;
+
     void Start()
     {
         counter = blinks;
@@ -32,6 +36,9 @@ public class LifetimeDim : MonoBehaviour
         if (collision.gameObject.name == "Player")
         {
             enabled = true;
+
+            chargeSFX.Play();
+            chargeSFX.pitch += 0.1f;
         }
     }
 
@@ -45,31 +52,48 @@ public class LifetimeDim : MonoBehaviour
 
     void FixedUpdate()
     {
-        
-        tint += 0.02f*(colorIntensity)*(blinks/lifeTime);
+
+        tint += 0.02f * (colorIntensity) * (blinks / lifeTime);
         //image.r = tint;
         GetComponent<SpriteRenderer>().color = Color.Lerp(from, to, tint);
         GetComponent<SpriteRenderer>().color = new Color(GetComponent<SpriteRenderer>().color.r, GetComponent<SpriteRenderer>().color.g, GetComponent<SpriteRenderer>().color.b, 1);
-        if (tint >= 1*colorIntensity)
+        if (tint >= 1 * colorIntensity)
         {
+            chargeSFX.Play();
+            chargeSFX.pitch += 0.1f;
+
             counter--;
             tint = 0;
+
         }
         if (counter == 0)
         {
             //player.GetComponent<FuelBasedLight>().currentFuel = player.GetComponent<FuelBasedLight>().maxFuel;
 
+            attackSFX.Play();
+            chargeSFX.pitch = 1;
+
+            GetComponent<SpriteRenderer>().sprite = activeSpr;
+
+
             if (biteable)
             {
                 GameObject.Find("DeathPit").GetComponent<DeathPit>().Death();
             }
-            
+
             counter = blinks;
             GetComponent<SpriteRenderer>().color = Color.white;
+            StartCoroutine("returnSprite");
             enabled = false;
         }
         biteable = false;
 
         //Debug.Log("ye boi");
+    }
+
+    IEnumerator returnSprite()
+    {
+        yield return new WaitForSeconds(1);
+        GetComponent<SpriteRenderer>().sprite = idleSpr;
     }
 }

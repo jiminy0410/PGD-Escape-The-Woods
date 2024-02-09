@@ -21,7 +21,7 @@ public class CharacterController2D : MonoBehaviour
 
     [Space]
 
-    [SerializeField] private AudioSource jumpSFX, fallingSFX, landingSFX;
+    [SerializeField] private AudioSource jumpSFX, fallingSFX, landingSFX, walkSFX;
 
     //public PlayerMovement controller;
 
@@ -108,6 +108,8 @@ public class CharacterController2D : MonoBehaviour
             dashTimer -= Time.deltaTime;
         }
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+
+
 
         if (Input.GetButtonDown("Jump"))
         {
@@ -452,6 +454,16 @@ public class CharacterController2D : MonoBehaviour
         }
 
         Move(horizontalMove * Time.fixedDeltaTime, crouch, jump, jump_Hold, Grounded, Ledge_Grab, Wall_Slide, wiggleWiggleWiggle);
+
+        if ((Rigidbody2D.velocity.x >= 0.1f || Rigidbody2D.velocity.x <= -0.1f) && Grounded)
+        {
+            walkSFX.pitch = Random.Range(0.8f, 1.0f);
+            walkSFX.volume = 0.2f;
+        }
+        else
+        {
+            walkSFX.volume = 0;
+        }
 
         jump = false;
 
