@@ -5,7 +5,8 @@ using UnityEngine;
 public class DoorSystems : DoorComponents
 {
 
-    public AnalyticsSystem analSys;
+    //public AnalyticsSystem analSys;
+    [SerializeField] private AudioSource teleportSFX;
 
     void Start()
     {
@@ -32,6 +33,9 @@ public class DoorSystems : DoorComponents
                         player.transform.position = nextDoor.transform.Find("TransportPoint").position;
                         cooldownCount = Time.time + cooldownTime;
                         nextDoor.gameObject.GetComponent<DoorSystems>().cooldownCount = this.cooldownCount;
+
+                        teleportSFX.pitch = Random.RandomRange(0.7f, 1.0f);
+                        teleportSFX.Play();
 
                         GameObject deathPit = GameObject.Find("DeathPit");
                     }

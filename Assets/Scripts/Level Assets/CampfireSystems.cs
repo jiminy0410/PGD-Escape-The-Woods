@@ -5,6 +5,8 @@ using UnityEngine;
 public class CampfireSystems : CampfireComponents
 {
 
+    [SerializeField] private AudioSource fireSFX;
+
     public void Start()
     {
         acceptablePlayerPos = false;
@@ -17,6 +19,8 @@ public class CampfireSystems : CampfireComponents
         {
             GameObject.Find("LevelResetter").GetComponent<levelState>().AddItemToList(this.gameObject);
             ToggleOTA();
+            fireSFX.pitch = Random.RandomRange(0.85f, 1.2f);
+            fireSFX.Play();
             playerCanToggle = false;
         }
 
