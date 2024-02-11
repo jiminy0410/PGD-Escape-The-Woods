@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 6002093458331390552}
   - component: {fileID: 3376062338489911079}
   m_Layer: 13
-  m_Name: Player
+  m_Name: player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -228,6 +228,9 @@ MonoBehaviour:
   skin: {fileID: 6200000, guid: c23fafe7d617b2a40b39546382102593, type: 2}
   FacingRight: 1
   runSpeed: 20
+  horizontalMove: 0
+  Wemove: 0
+  tuchButtons: 1
   jump: 0
   jump_Hold: 0
   crouch: 0

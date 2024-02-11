@@ -41,10 +41,17 @@ public class CharacterController2D : MonoBehaviour
 
     public float runSpeed = 20f;
 
-    float horizontalMove = 0f;
+    public float horizontalMove = 0f;
+    public float Wemove;
+    public bool tuchButtons;
     public bool jump = false;
     public bool jump_Hold = false;
     public bool crouch = false;
+    public bool A;
+    public bool D;
+    public bool W;
+    public bool S;
+    public bool Spase;
 
     public float jumps_Left, Max_Jumps;
     public float jump_Counter, jump_Time, hang_Counter, hang_Time;
@@ -102,14 +109,24 @@ public class CharacterController2D : MonoBehaviour
 
     void Update()
     {
+        if (!tuchButtons)
+            Wemove = Input.GetAxisRaw("Horizontal");
+
+        if (A)
+        {
+            Wemove = -1;
+        } else if (D)
+        {
+            Wemove = 1;
+        }
+
         if (dashTimer > 0)
         {
             isAbleToDash = false;
             dashTimer -= Time.deltaTime;
         }
-        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
-
-
+        
+        horizontalMove = Wemove * runSpeed;
 
         if (Input.GetButtonDown("Jump"))
         {
@@ -206,13 +223,13 @@ public class CharacterController2D : MonoBehaviour
         {
             if (Time.time < lastInputTapTime + inputTapInterval)
             {
-                if (previousHorInput == (int)-Input.GetAxisRaw("Horizontal"))
+                if (previousHorInput == (int)-Wemove)
                 {
                     wiggleWiggleWiggle = 0;
                 }
             }
 
-            previousHorInput = (int)Input.GetAxisRaw("Horizontal");
+            previousHorInput = (int)Wemove;
             lastInputTapTime = Time.time;
         }
         else if (Time.time > lastInputTapTime + inputTapInterval)
@@ -273,6 +290,34 @@ public class CharacterController2D : MonoBehaviour
             Wall_Slide = false;
         }
     }
+
+    public void SwapTuch()
+    {
+        tuchButtons = !tuchButtons;
+    }
+
+    public void ButtonA()
+    {
+        A = !A;
+    }
+    public void ButtonD()
+    {
+        D = !D;
+    }
+    public void ButtonW()
+    {
+        W = !W;
+    }
+    public void ButtonS()
+    {
+        S = !S;
+    }
+    public void ButtonSpase()
+    {
+        Spase = !Spase;
+    }
+
+
 
     public void Move(float move, bool crouch, bool jump, bool jump_Hold, bool Grounded, bool Ledge_Grab, bool Wall_Slide, int WiggleMeThis)
     {
@@ -354,7 +399,7 @@ public class CharacterController2D : MonoBehaviour
             // And then smoothing it out and applying it to the character
             Rigidbody2D.velocity = Vector3.SmoothDamp(Rigidbody2D.velocity, targetVelocity, ref velocity, MovementSmoothing);
 
-            if (Input.GetAxisRaw("Horizontal") != 0 && Grounded)
+            if (Wemove != 0 && Grounded)
             {
                 playerAnim.SetBool("Moving", true);
             }
@@ -468,6 +513,7 @@ public class CharacterController2D : MonoBehaviour
         jump = false;
 
         //if (!isDashing)
+        Wemove = 0;
 
     }
 
