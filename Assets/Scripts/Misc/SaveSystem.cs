@@ -13,7 +13,7 @@ public static class SaveSystem
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/player" + dataType;
 
-        Debug.Log("Remembering landmark...");
+        //Debug.Log("Remembering landmark...");
         FileStream stream = new FileStream(path, FileMode.Create);
 
         PlayerData data = new PlayerData(checkpoint);
@@ -21,7 +21,24 @@ public static class SaveSystem
         formatter.Serialize(stream, data);
         stream.Close();
 
-        Debug.Log("Position saved!");
+        //Debug.Log("Position saved!");
+
+    }
+
+    public static void SaveDifficulty(int difficulty)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/difficulty" + dataType;
+
+        //Debug.Log("Remembering landmark...");
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        PlayerDifficulty data = new PlayerDifficulty(difficulty);
+
+        formatter.Serialize(stream, data);
+        stream.Close();
+
+        Debug.Log("Difficulty saved!");
 
     }
 
@@ -30,7 +47,7 @@ public static class SaveSystem
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/objects" + dataType;
 
-        Debug.Log("Packing things...");
+        //Debug.Log("Packing things...");
         FileStream stream = new FileStream(path, FileMode.Create);
 
         ObjectData data = new ObjectData(things);
@@ -38,7 +55,7 @@ public static class SaveSystem
         formatter.Serialize(stream, data);
         stream.Close();
 
-        Debug.Log("Objects saved!");
+        //Debug.Log("Objects saved!");
     }
 
     public static void SaveScene()
@@ -46,7 +63,7 @@ public static class SaveSystem
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/scene" + dataType;
 
-        Debug.Log("Memorizing dimension...");
+        //Debug.Log("Memorizing dimension...");
         FileStream stream = new FileStream(path, FileMode.Create);
 
         string data = SceneManager.GetActiveScene().name;
@@ -54,7 +71,7 @@ public static class SaveSystem
         formatter.Serialize(stream, data);
         stream.Close();
 
-        Debug.Log("Scene saved! (The level you're in)");
+        //Debug.Log("Scene saved! (The level you're in)");
     }
 
     public static void SaveTestData(AnalyticsSystem analyticsObject)
@@ -80,14 +97,38 @@ public static class SaveSystem
         {
             BinaryFormatter formatter = new BinaryFormatter();
 
-            Debug.Log("Putting the boy in his place...");
+            //Debug.Log("Putting the boy in his place...");
 
             FileStream stream = new FileStream(path, FileMode.Open);
 
             PlayerData data = (PlayerData)formatter.Deserialize(stream);
             stream.Close();
 
-            Debug.Log("Position loaded!");
+            //Debug.Log("Position loaded!");
+            return data;
+        }
+        else
+        {
+            Debug.LogError("No idea where you're trying to go. No save data found at: " + path);
+            return null;
+        }
+    }
+
+    public static PlayerDifficulty LoadDifficulty() //this is to load the position of the player back in again.
+    {
+        string path = Application.persistentDataPath + "/difficulty" + dataType;
+        if (File.Exists(path))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+
+            //Debug.Log("Putting the boy in his place...");
+
+            FileStream stream = new FileStream(path, FileMode.Open);
+
+            PlayerDifficulty data = (PlayerDifficulty)formatter.Deserialize(stream);
+            stream.Close();
+
+            //Debug.Log("Position loaded!");
             return data;
         }
         else
@@ -104,14 +145,14 @@ public static class SaveSystem
         {
             BinaryFormatter formatter = new BinaryFormatter();
 
-            Debug.Log("Checking backpack...");
+            //Debug.Log("Checking backpack...");
 
             FileStream stream = new FileStream(path, FileMode.Open);
 
             ObjectData data = (ObjectData)formatter.Deserialize(stream);
             stream.Close();
 
-            Debug.Log("Objects loaded!");
+            //Debug.Log("Objects loaded!");
             return data;
         }
         else
@@ -128,15 +169,15 @@ public static class SaveSystem
         {
             BinaryFormatter formatter = new BinaryFormatter();
 
-            Debug.Log("Remembering Dimension");
+            //Debug.Log("Remembering Dimension");
 
             FileStream stream = new FileStream(path, FileMode.Open);
 
             string data = (string)formatter.Deserialize(stream);
             stream.Close();
 
-            Debug.Log("Scene loaded!");
-            Debug.Log("going to scene: " + data);
+            //Debug.Log("Scene loaded!");
+            //Debug.Log("going to scene: " + data);
             return data;
         }
         else
@@ -216,6 +257,20 @@ public static class SaveSystem
         }
 
         path = Application.persistentDataPath + "/testData" + dataType;
+
+        // check if file exists
+        if (!File.Exists(path))
+        {
+            Debug.LogError("can't delete nothing. No save file found at: " + path);
+        }
+        else
+        {
+            Debug.Log("Found file! Deleting" + path);
+
+            File.Delete(path);
+        }
+
+        path = Application.persistentDataPath + "/difficulty" + dataType;
 
         // check if file exists
         if (!File.Exists(path))

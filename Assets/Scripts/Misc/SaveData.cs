@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 //stuff we want to save:
@@ -10,13 +8,16 @@ using UnityEngine.SceneManagement;
 //double jump or not DONE
 //campfires lit DONE
 //the plants that have been turned on?
+//DIFFICULTY SETTING
 
 [System.Serializable]
 public class PlayerData
 {
-    
+
     public float[] position; // this will be the position of the last checkpoint the player touched.
-    
+
+    public int difficulty;
+
     //public bool[] plants; // if everything goes right, this wil be an enourmous list of booleans that say what plants the player has passed or not.
 
     public PlayerData(Checkpoint checkpoint) //save the position of the respawn point for the player here.
@@ -25,7 +26,16 @@ public class PlayerData
         position[0] = checkpoint.resetPoint.position.x;
         position[1] = checkpoint.resetPoint.position.y;
         position[2] = checkpoint.resetPoint.position.z;
+
     }
+}
+
+[System.Serializable]
+public class PlayerDifficulty
+{
+    public int difficulty;
+
+    public PlayerDifficulty(int difficulty_) => difficulty = difficulty_; //Save the difficulty
 }
 
 [System.Serializable]

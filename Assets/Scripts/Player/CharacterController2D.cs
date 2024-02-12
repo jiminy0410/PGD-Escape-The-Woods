@@ -81,6 +81,9 @@ public class CharacterController2D : MonoBehaviour
         overlappingObjects = new List<GameObject>();
 
         loadPosition();
+        loadDifficulty();
+
+        Debug.Log(FlashMechanic.selectedDifficulty);
     }
 
 
@@ -100,6 +103,16 @@ public class CharacterController2D : MonoBehaviour
         position.z = data.position[2];
 
         transform.position = position;
+    }
+
+    public void loadDifficulty()
+    {
+        PlayerDifficulty data = SaveSystem.LoadDifficulty();
+
+        if (data == null)
+            return;
+
+                FlashMechanic.selectedDifficulty = (FlashMechanic.Difficulty)data.difficulty;
     }
 
     private void OnDrawGizmosSelected()
@@ -272,8 +285,7 @@ public class CharacterController2D : MonoBehaviour
             }
         }
 
-        if (!overlappingObjects.Contains(collision.gameObject))
-            overlappingObjects.Add(collision.gameObject);
+      
     }
     public void OnCollisionStay2D(Collision2D collision)
     {
@@ -300,6 +312,17 @@ public class CharacterController2D : MonoBehaviour
             Wall_Slide = false;
         }
 
+
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!overlappingObjects.Contains(collision.gameObject))
+            overlappingObjects.Add(collision.gameObject);
+    }
+
+    public void OnTriggerExit2D(Collider2D collision)
+    {
         overlappingObjects.Remove(collision.gameObject);
     }
 

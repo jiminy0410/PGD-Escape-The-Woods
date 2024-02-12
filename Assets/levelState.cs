@@ -24,13 +24,13 @@ public class levelState : MonoBehaviour
             return;
         }
 
-        Debug.Log("Reorganizing stuff...");
+        //Debug.Log("Reorganizing stuff...");
         for (int i = 0; i < data.objects.Length; i++)
         {
             AddItemToList(GameObject.Find(data.objects[i]));
         }
 
-        Debug.Log("Looks like I have:");
+        //Debug.Log("Looks like I have:");
         for (int i = 0; i < items.Count; i++)
         {
             if (items[i].GetComponent<scrLock>() != null && items.Count > 0)
@@ -56,7 +56,7 @@ public class levelState : MonoBehaviour
             }
 
         }
-        Debug.Log("and that's all my stuff.");
+        //Debug.Log("and that's all my stuff.");
     }
 
 

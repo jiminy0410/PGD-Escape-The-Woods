@@ -10,7 +10,7 @@ public class SettingsMenu : MonoBehaviour
 
     Resolution[] resolutions;
 
-    public Dropdown resolutionDropdown;
+    public Dropdown resolutionDropdown, difficultyDropdown;
 
     void Start()
     {
@@ -33,6 +33,8 @@ public class SettingsMenu : MonoBehaviour
         }
 
         resolutionDropdown.AddOptions(options);
+
+        FlashMechanic.selectedDifficulty = (FlashMechanic.Difficulty) difficultyDropdown.value;
     }
 
     public void HandleInputData(int val)
@@ -51,7 +53,9 @@ public class SettingsMenu : MonoBehaviour
         {
             FlashMechanic.selectedDifficulty = FlashMechanic.Difficulty.Hard;
         }
-        Debug.Log(FlashMechanic.selectedDifficulty);
+        //Debug.Log(FlashMechanic.selectedDifficulty);
+
+        SaveSystem.SaveDifficulty((int) FlashMechanic.selectedDifficulty);
     }
 
 

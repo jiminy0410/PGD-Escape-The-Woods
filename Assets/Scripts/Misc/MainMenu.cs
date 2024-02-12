@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class MainMenu : MonoBehaviour
     private AudioSource clickSound;
 
     private PersistingSounds persistingSounds;
+
+    [SerializeField]
+    private Dropdown difficultyDropdown;
+
     private void Start()
     {
         persistingSounds = GameObject.Find("PersistingSounds").GetComponent<PersistingSounds>();
@@ -27,7 +32,6 @@ public class MainMenu : MonoBehaviour
         {
             Debug.LogWarning("No Test data found! it's probably fine, but if you were excpecting some...");
         }
-        
 
     }
 
@@ -90,7 +94,7 @@ public class MainMenu : MonoBehaviour
 
     public IEnumerator klick()
     {
-        clickSound.pitch = Random.Range(2.5f, 3);
+        clickSound.pitch = Random.Range(1.5f, 2);
         clickSound.Play();
         yield return null;
     }

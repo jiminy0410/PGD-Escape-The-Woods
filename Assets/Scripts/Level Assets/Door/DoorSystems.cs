@@ -7,11 +7,13 @@ public class DoorSystems : DoorComponents, IInteractable
     [SerializeField] private AudioSource teleportSFX;
     private PersistingSounds persistingSounds;
 
+    private bool permissable;
+
     public void Start()
     {
 
         player = GameObject.Find("Player");
-        Debug.Log(player.name);
+        //Debug.Log(player.name);
 
         cooldownCount = Time.time + cooldownTime;
 
@@ -21,10 +23,21 @@ public class DoorSystems : DoorComponents, IInteractable
         persistingSounds = GameObject.Find("PersistingSounds").GetComponent<PersistingSounds>();
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "Player")
+            permissable = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "Player")
+            permissable = false;
+    }
 
     public void Interact()
     {
-        if (Time.time > cooldownCount)
+        if (Time.time > cooldownCount && permissable)
         {
 
             if (!finalDoor)

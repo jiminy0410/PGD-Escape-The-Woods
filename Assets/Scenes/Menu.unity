@@ -5958,6 +5958,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 704d2ca0a8c5c6947a89eeb93d27c9f0, type: 2}
   resolutionDropdown: {fileID: 1027747330}
+  difficultyDropdown: {fileID: 0}
 --- !u!1 &1548119260
 GameObject:
   m_ObjectHideFlags: 0
@@ -7092,6 +7093,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   analytic: {fileID: 0}
   clickSound: {fileID: 1744749234}
+  difficultyDropdown: {fileID: 882382064}
 --- !u!82 &1744749234
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7987,6 +7989,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   analytic: {fileID: 0}
   clickSound: {fileID: 2044481833}
+  difficultyDropdown: {fileID: 0}
 --- !u!82 &2044481833
 AudioSource:
   m_ObjectHideFlags: 0
