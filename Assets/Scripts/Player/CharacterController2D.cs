@@ -1,11 +1,12 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterController2D : MonoBehaviour
 {
     [SerializeField] private float JumpForce = 200f;                          // Amount of force added when the player jumps.
-    [Range(0, 1)] [SerializeField] private float CrouchSpeed = .36f;          // Amount of maxSpeed applied to crouching movement. 1 = 100%
-    [Range(0, .3f)] [SerializeField] private float MovementSmoothing = .05f;  // How much to smooth out the movement
+    [Range(0, 1)][SerializeField] private float CrouchSpeed = .36f;          // Amount of maxSpeed applied to crouching movement. 1 = 100%
+    [Range(0, .3f)][SerializeField] private float MovementSmoothing = .05f;  // How much to smooth out the movement
     [SerializeField] private bool AirControl = false;                         // Whether or not a player can steer while jumping;
     [SerializeField] private LayerMask WhatIsGround;                          // A mask determining what is ground to the character
     [SerializeField] private Transform GroundCheck;                           // A position marking where to check if the player is grounded.
@@ -70,12 +71,14 @@ public class CharacterController2D : MonoBehaviour
     public float inputTapInterval;
     public int wiggleWiggleWiggle;
 
+    private List<GameObject> overlappingObjects;
 
     private void Awake()
     {
         Rigidbody2D = GetComponent<Rigidbody2D>();
         lastInputTapTime = Time.time;
         playerAnim = sprite.gameObject.GetComponent<Animator>();
+        overlappingObjects = new List<GameObject>();
 
         loadPosition();
     }
@@ -115,7 +118,8 @@ public class CharacterController2D : MonoBehaviour
         if (A)
         {
             Wemove = -1;
-        } else if (D)
+        }
+        else if (D)
         {
             Wemove = 1;
         }
@@ -128,12 +132,12 @@ public class CharacterController2D : MonoBehaviour
 
         horizontalMove = Wemove * runSpeed;
 
-        if (Input.GetButtonDown("Jump")||Spase)
+        if (Input.GetButtonDown("Jump") || Spase)
         {
             jump = true;
         }
 
-        if (Input.GetButton("Jump")||Spase)
+        if (Input.GetButton("Jump") || Spase)
         {
             jump_Hold = true;
         }
@@ -142,11 +146,11 @@ public class CharacterController2D : MonoBehaviour
             jump_Hold = false;
         }
 
-        if (Input.GetButtonDown("Crouch")||S)
+        if (Input.GetButtonDown("Crouch") || S)
         {
             crouch = true;
         }
-        else if (Input.GetButtonUp("Crouch")||!S)
+        else if (Input.GetButtonUp("Crouch") || !S)
         {
             crouch = false;
         }
@@ -219,7 +223,7 @@ public class CharacterController2D : MonoBehaviour
 
         ///HOLD POSITION MAGGOT!
         ///holds player's position when spamming Left or Right input
-        if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow)||A||D) && Grounded)
+        if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow) || A || D) && Grounded)
         {
             if (Time.time < lastInputTapTime + inputTapInterval)
             {
@@ -242,9 +246,9 @@ public class CharacterController2D : MonoBehaviour
 
         if (Rigidbody2D.velocity.y < -1)
         {
-            
+
             fallingSFX.volume = (Rigidbody2D.velocity.y * -1) / maxFallspeed;
-            landingSFX.volume = fallingSFX.volume/4;
+            landingSFX.volume = fallingSFX.volume / 4;
             Debug.Log("faling");
         }
         else if (fallingSFX.volume > 0 && Grounded)
@@ -253,6 +257,9 @@ public class CharacterController2D : MonoBehaviour
             landingSFX.Play();
             Debug.Log("landed");
         }
+
+        if (Input.GetButton("Interact"))
+            Interact();
     }
     public void OnCollisionEnter2D(Collision2D collision)
     {
@@ -264,6 +271,9 @@ public class CharacterController2D : MonoBehaviour
                 Rigidbody2D.velocity = new Vector2(Rigidbody2D.velocity.x, 0);
             }
         }
+
+        if (!overlappingObjects.Contains(collision.gameObject))
+            overlappingObjects.Add(collision.gameObject);
     }
     public void OnCollisionStay2D(Collision2D collision)
     {
@@ -289,6 +299,8 @@ public class CharacterController2D : MonoBehaviour
             Rigidbody2D.gravityScale = 2;
             Wall_Slide = false;
         }
+
+        overlappingObjects.Remove(collision.gameObject);
     }
 
     public void SwapTuch()
@@ -539,5 +551,14 @@ public class CharacterController2D : MonoBehaviour
         yield return new WaitForSeconds(0.4f);
         isDashing = false;
         Rigidbody2D.gravityScale = gravity;
+    }
+
+    public void Interact()
+    {
+        foreach (GameObject obj in overlappingObjects)
+        {
+            if (obj.GetComponent<IInteractable>() != null)
+                obj.GetComponent<IInteractable>().Interact();
+        }
     }
 }

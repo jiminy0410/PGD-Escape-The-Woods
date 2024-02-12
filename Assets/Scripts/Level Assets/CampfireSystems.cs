@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CampfireSystems : CampfireComponents
+public class CampfireSystems : CampfireComponents, IInteractable
 {
 
     [SerializeField] private AudioSource fireSFX;
@@ -15,14 +15,7 @@ public class CampfireSystems : CampfireComponents
 
     void Update()
     {
-        if (acceptablePlayerPos && Input.GetAxisRaw("Vertical") > 0 && playerCanToggle)
-        {
-            GameObject.Find("LevelResetter").GetComponent<levelState>().AddItemToList(this.gameObject);
-            ToggleOTA();
-            fireSFX.pitch = Random.RandomRange(0.85f, 1.2f);
-            fireSFX.Play();
-            playerCanToggle = false;
-        }
+
 
     }
 
@@ -51,5 +44,17 @@ public class CampfireSystems : CampfireComponents
         }
 
         playerCanToggle = true;
+    }
+
+    public void Interact()
+    {
+        if (playerCanToggle)
+        {
+            GameObject.Find("LevelResetter").GetComponent<levelState>().AddItemToList(this.gameObject);
+            ToggleOTA();
+            fireSFX.pitch = Random.RandomRange(0.85f, 1.2f);
+            fireSFX.Play();
+            playerCanToggle = false;
+        }
     }
 }

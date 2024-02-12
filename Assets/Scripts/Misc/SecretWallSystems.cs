@@ -10,6 +10,8 @@ public class SecretWallSystems : SecretWallComponents
     private GameObject player;
     void Start()
     {
+        player = GameObject.Find("Player");
+
         tileRenderer = GetComponent<Tilemap>();
         tileRenderer.color = new Color(tileRenderer.color.r, tileRenderer.color.g, tileRenderer.color.b, 255f);
     }

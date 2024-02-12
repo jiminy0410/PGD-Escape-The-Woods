@@ -15,9 +15,11 @@ public class Checkpoint : MonoBehaviour
     public GameObject levelState;
     private AnalyticsSystem analytics;
 
+    private GameObject player;
+
     private void Start()
     {
-
+        player = GameObject.Find("Player");
         //cooldownCount = Time.time + cooldownTime;
         levelState = GameObject.Find("LevelResetter");
         //analytics = GameObject.Find("AnalyticsObject").GetComponent<AnalyticsSystem>();
@@ -51,7 +53,7 @@ public class Checkpoint : MonoBehaviour
                 GameObject deathPit = GameObject.Find("DeathPit");
                 deathPit.GetComponent<DeathPit>().respawnPoint = resetPoint;
 
-                collision.GetComponent<FlashMechanic>().StartCoroutine("Flash");
+                collision.GetComponent<FlashMechanic>().StartCoroutine(collision.GetComponent<FlashMechanic>().Flash(player.transform.position));
                 collision.GetComponent<FlashMechanic>().flashCharges = collision.GetComponent<FlashMechanic>().maxFlashCharges;
 
                 collision.GetComponent<FlashMechanic>().standingChargeRate = collision.GetComponent<FlashMechanic>().ChargeMax;
