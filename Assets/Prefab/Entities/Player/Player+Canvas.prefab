@@ -849,16 +849,6 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 1.5
       objectReference: {fileID: 0}
-    - target: {fileID: 7786896289301647573, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: m_FalloffIntensity
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7786896289301647573, guid: 8c113c0a15febff468c0beb1c7752b32,
-        type: 3}
-      propertyPath: m_PointLightOuterRadius
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8194100450823158164, guid: 8c113c0a15febff468c0beb1c7752b32,
         type: 3}
       propertyPath: onLightning

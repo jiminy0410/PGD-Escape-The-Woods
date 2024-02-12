@@ -146,11 +146,11 @@ public class CharacterController2D : MonoBehaviour
             jump_Hold = false;
         }
 
-        if (Input.GetButtonDown("Crouch") || S)
+        if (Input.GetButton("Crouch") || S)
         {
             crouch = true;
         }
-        else if (Input.GetButtonUp("Crouch") || !S)
+        else
         {
             crouch = false;
         }
@@ -249,13 +249,13 @@ public class CharacterController2D : MonoBehaviour
 
             fallingSFX.volume = (Rigidbody2D.velocity.y * -1) / maxFallspeed;
             landingSFX.volume = fallingSFX.volume / 4;
-            Debug.Log("faling");
+            //Debug.Log("faling");
         }
         else if (fallingSFX.volume > 0 && Grounded)
         {
             fallingSFX.volume = 0;
             landingSFX.Play();
-            Debug.Log("landed");
+            //Debug.Log("landed");
         }
 
         if (Input.GetButton("Interact"))

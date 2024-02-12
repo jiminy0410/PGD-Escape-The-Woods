@@ -29,6 +29,7 @@ public class FlashMechanic : MonoBehaviour
     public FlashBar flashBar;
     private bool flashligthFull;
     public bool Q;
+    private bool canFlash = true;
 
     public static Difficulty selectedDifficulty;
 
@@ -96,39 +97,37 @@ public class FlashMechanic : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1") || Q)
         {
-            Debug.Log("click");
+            //Debug.Log("click");
             Vector2 raycastPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             //RaycastHit2D needs to be a list. Otherwise it will only return the first object it hits.
-            RaycastHit2D hit = Physics2D.Raycast(raycastPos, Vector2.zero);
+            RaycastHit2D[] hits = Physics2D.RaycastAll(raycastPos, Vector2.zero);
             // Check if the object hit has the tag "UI"
 
-            /*
-             //This is to go through all of the hits returned by the RaycastHit2D and to check if it contains any colliders that have the UI tag.
+            canFlash = true;
 
-                        foreach (var hit in hits)
-                        {
-                            // Check if the object hit has the tag "UI"
-                            if (hit.collider.CompareTag("UI"))
-                            {
-                                // If the object is UI, do not perform the action
-                                Debug.Log("Hit UI element. Ignoring action.");
-                                return;
-                            }
-                        }
-            */
+            //This is to go through all of the hits returned by the RaycastHit2D and to check if it contains any colliders that have the UI tag.
 
-
-            if (!hit.collider.CompareTag("UI"))
+            foreach (var hit in hits)
             {
-                Debug.Log(hit.collider.name);
+                // Check if the object hit has the tag "UI"
+                if (hit.collider.CompareTag("UI"))
+                {
+                    // If the object is UI, do not perform the action
+                    //Debug.Log("Hit UI element. Ignoring action.");
+                    canFlash = false;
+                }
+            }
 
+
+            if (canFlash || Q)
+            {
                 if (flashCharges == maxFlashCharges)
                 {
-                    if (Input.GetButtonDown("Fire1"))
-                        StartCoroutine(Flash(Camera.main.ScreenToWorldPoint(Input.mousePosition)));
-                    else
+                    if (Q)
                         StartCoroutine(Flash((player.transform.position)));
+                    else if (Input.GetButtonDown("Fire1"))
+                        StartCoroutine(Flash(Camera.main.ScreenToWorldPoint(Input.mousePosition)));
 
                     if (gameObject.GetComponent<CharacterController2D>().Grounded == true)
                     {
