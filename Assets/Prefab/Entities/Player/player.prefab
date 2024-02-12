@@ -234,6 +234,11 @@ MonoBehaviour:
   jump: 0
   jump_Hold: 0
   crouch: 0
+  A: 0
+  D: 0
+  W: 0
+  S: 0
+  Spase: 0
   jumps_Left: 0
   Max_Jumps: 0
   jump_Counter: 0

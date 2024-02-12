@@ -26,6 +26,7 @@ public class FlashMechanic : MonoBehaviour
 
     public FlashBar flashBar;
     private bool flashligthFull;
+    public bool Q;
 
     public static Difficulty selectedDifficulty;
 
@@ -81,11 +82,16 @@ public class FlashMechanic : MonoBehaviour
 
     }
 
+    public void ButtonQ()
+    {
+        Q = !Q;
+    }
+
     void Update()
     {
         //Debug.Log(selectedDifficulty);
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q)||Q)
         {
             if (flashCharges == maxFlashCharges)
             {

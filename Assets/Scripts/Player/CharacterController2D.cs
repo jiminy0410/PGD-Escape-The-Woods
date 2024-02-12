@@ -125,15 +125,15 @@ public class CharacterController2D : MonoBehaviour
             isAbleToDash = false;
             dashTimer -= Time.deltaTime;
         }
-        
+
         horizontalMove = Wemove * runSpeed;
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump")||Spase)
         {
             jump = true;
         }
 
-        if (Input.GetButton("Jump"))
+        if (Input.GetButton("Jump")||Spase)
         {
             jump_Hold = true;
         }
@@ -142,11 +142,11 @@ public class CharacterController2D : MonoBehaviour
             jump_Hold = false;
         }
 
-        if (Input.GetButtonDown("Crouch"))
+        if (Input.GetButtonDown("Crouch")||S)
         {
             crouch = true;
         }
-        else if (Input.GetButtonUp("Crouch"))
+        else if (Input.GetButtonUp("Crouch")||!S)
         {
             crouch = false;
         }
@@ -219,7 +219,7 @@ public class CharacterController2D : MonoBehaviour
 
         ///HOLD POSITION MAGGOT!
         ///holds player's position when spamming Left or Right input
-        if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow)) && Grounded)
+        if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow)||A||D) && Grounded)
         {
             if (Time.time < lastInputTapTime + inputTapInterval)
             {
@@ -399,7 +399,7 @@ public class CharacterController2D : MonoBehaviour
             // And then smoothing it out and applying it to the character
             Rigidbody2D.velocity = Vector3.SmoothDamp(Rigidbody2D.velocity, targetVelocity, ref velocity, MovementSmoothing);
 
-            if (Wemove != 0 && Grounded)
+            if ((Rigidbody2D.velocity.x >= 0.1f || Rigidbody2D.velocity.x <= -0.1f) && Grounded)
             {
                 playerAnim.SetBool("Moving", true);
             }
@@ -407,6 +407,7 @@ public class CharacterController2D : MonoBehaviour
             {
                 playerAnim.SetBool("Moving", false);
             }
+            Wemove = 0;
 
             if (wiggleWiggleWiggle == 1)
             {
@@ -513,8 +514,6 @@ public class CharacterController2D : MonoBehaviour
         jump = false;
 
         //if (!isDashing)
-        Wemove = 0;
-
     }
 
     private void Flip()
