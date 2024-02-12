@@ -96,28 +96,56 @@ public class FlashMechanic : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1") || Q)
         {
-            if (flashCharges == maxFlashCharges)
+            Debug.Log("click");
+            Vector2 raycastPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            //RaycastHit2D needs to be a list. Otherwise it will only return the first object it hits.
+            RaycastHit2D hit = Physics2D.Raycast(raycastPos, Vector2.zero);
+            // Check if the object hit has the tag "UI"
+
+            /*
+             //This is to go through all of the hits returned by the RaycastHit2D and to check if it contains any colliders that have the UI tag.
+
+                        foreach (var hit in hits)
+                        {
+                            // Check if the object hit has the tag "UI"
+                            if (hit.collider.CompareTag("UI"))
+                            {
+                                // If the object is UI, do not perform the action
+                                Debug.Log("Hit UI element. Ignoring action.");
+                                return;
+                            }
+                        }
+            */
+
+
+            if (!hit.collider.CompareTag("UI"))
             {
-                if (Input.GetButtonDown("Fire1"))
-                    StartCoroutine(Flash(Camera.main.ScreenToWorldPoint(Input.mousePosition)));
-                else
-                    StartCoroutine(Flash((player.transform.position)));
+                Debug.Log(hit.collider.name);
 
-                if (gameObject.GetComponent<CharacterController2D>().Grounded == true)
+                if (flashCharges == maxFlashCharges)
                 {
-                    //anal.flashesUsed++;
-                    //anal.SendFlashEvent(false);
-                }
-                else if (gameObject.GetComponent<CharacterController2D>().Grounded == false)
-                {
-                    //anal.flashesUsed++;
-                    //anal.SendFlashEvent(true);
-                }
+                    if (Input.GetButtonDown("Fire1"))
+                        StartCoroutine(Flash(Camera.main.ScreenToWorldPoint(Input.mousePosition)));
+                    else
+                        StartCoroutine(Flash((player.transform.position)));
 
-                flashCharges--;
-                if (standingChargeRate > standingChargeMin) //when flashing, your next recharge goes slower when standing still
-                {
-                    standingChargeRate -= standingChargeReduction;
+                    if (gameObject.GetComponent<CharacterController2D>().Grounded == true)
+                    {
+                        //anal.flashesUsed++;
+                        //anal.SendFlashEvent(false);
+                    }
+                    else if (gameObject.GetComponent<CharacterController2D>().Grounded == false)
+                    {
+                        //anal.flashesUsed++;
+                        //anal.SendFlashEvent(true);
+                    }
+
+                    flashCharges--;
+                    if (standingChargeRate > standingChargeMin) //when flashing, your next recharge goes slower when standing still
+                    {
+                        standingChargeRate -= standingChargeReduction;
+                    }
                 }
             }
         }
