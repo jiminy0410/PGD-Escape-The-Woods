@@ -349,8 +349,11 @@ public class CharacterController2D : MonoBehaviour
     }
     public void ButtonSpase()
     {
-        Spase = !Spase;
         jump = true;
+    }
+    public void ButtonSpaseHold()
+    {
+        Spase = !Spase;
     }
 
 
