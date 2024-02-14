@@ -145,7 +145,7 @@ public class CharacterController2D : MonoBehaviour
 
         horizontalMove = Wemove * runSpeed;
 
-        if (Input.GetButtonDown("Jump") || Spase)
+        if (Input.GetButtonDown("Jump"))
         {
             jump = true;
         }
@@ -350,6 +350,7 @@ public class CharacterController2D : MonoBehaviour
     public void ButtonSpase()
     {
         Spase = !Spase;
+        jump = true;
     }
 
 
@@ -444,7 +445,11 @@ public class CharacterController2D : MonoBehaviour
             }
             Wemove = 0;
 
-            if (wiggleWiggleWiggle == 1)
+            if (wiggleWiggleWiggle == 0)
+            {
+                playerAnim.SetBool("Shake", true);
+            }
+            else
             {
                 // If the input is moving the player right and the player is facing left...
                 if (move > 0 && !FacingRight)
@@ -459,10 +464,6 @@ public class CharacterController2D : MonoBehaviour
                     Flip();
                 }
                 playerAnim.SetBool("Shake", false);
-            }
-            else
-            {
-                playerAnim.SetBool("Shake", true);
             }
         }
 
