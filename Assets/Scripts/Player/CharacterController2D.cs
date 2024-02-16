@@ -480,7 +480,7 @@ public class CharacterController2D : MonoBehaviour
                     // ... flip the player.
                     Flip();
                 }
-                //playerAnim.SetBool("Shake", false);
+                // playerAnim.SetBool("Shake", false);
             }
         }
 
