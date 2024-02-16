@@ -5,8 +5,8 @@ using UnityEngine;
 public class CharacterController2D : MonoBehaviour
 {
     [SerializeField] private float JumpForce = 200f;                          // Amount of force added when the player jumps.
-    [Range(0, 1)][SerializeField] private float CrouchSpeed = .36f;          // Amount of maxSpeed applied to crouching movement. 1 = 100%
-    [Range(0, .3f)][SerializeField] private float MovementSmoothing = .05f;  // How much to smooth out the movement
+    [Range(0, 1)] [SerializeField] private float CrouchSpeed = .36f;          // Amount of maxSpeed applied to crouching movement. 1 = 100%
+    [Range(0, .3f)] [SerializeField] private float MovementSmoothing = .05f;  // How much to smooth out the movement
     [SerializeField] private bool AirControl = false;                         // Whether or not a player can steer while jumping;
     [SerializeField] private LayerMask WhatIsGround;                          // A mask determining what is ground to the character
     [SerializeField] private Transform GroundCheck;                           // A position marking where to check if the player is grounded.
@@ -33,7 +33,7 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] private bool Ledge_Grab, Wall_Slide;            // Whether or not the player is grounded.
     const float CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
     public Transform sprite;
-    private Animator playerAnim;
+    public Animator playerAnim;
     private Rigidbody2D Rigidbody2D;
     public ParticleSystem DubbleJumpPS;
     public PhysicsMaterial2D skin;
@@ -112,7 +112,7 @@ public class CharacterController2D : MonoBehaviour
         if (data == null)
             return;
 
-                FlashMechanic.selectedDifficulty = (FlashMechanic.Difficulty)data.difficulty;
+        FlashMechanic.selectedDifficulty = (FlashMechanic.Difficulty)data.difficulty;
     }
 
     private void OnDrawGizmosSelected()
@@ -127,6 +127,15 @@ public class CharacterController2D : MonoBehaviour
     {
         if (!tuchButtons)
             Wemove = Input.GetAxisRaw("Horizontal");
+
+        if (Input.touchCount == 0)
+        {
+            A = false;
+            D = false;
+            S = false;
+            W = false;
+            Spase = false;
+        }
 
         if (A)
         {
@@ -285,7 +294,7 @@ public class CharacterController2D : MonoBehaviour
             }
         }
 
-      
+
     }
     public void OnCollisionStay2D(Collision2D collision)
     {
@@ -329,6 +338,11 @@ public class CharacterController2D : MonoBehaviour
     public void SwapTuch()
     {
         tuchButtons = !tuchButtons;
+        A = false;
+        D = false;
+        S = false;
+        W = false;
+        Spase = false;
     }
 
     public void ButtonA()
@@ -450,7 +464,7 @@ public class CharacterController2D : MonoBehaviour
 
             if (wiggleWiggleWiggle == 0)
             {
-                playerAnim.SetBool("Shake", true);
+                //playerAnim.SetBool("Shake", true);
             }
             else
             {
@@ -466,7 +480,7 @@ public class CharacterController2D : MonoBehaviour
                     // ... flip the player.
                     Flip();
                 }
-                playerAnim.SetBool("Shake", false);
+                //playerAnim.SetBool("Shake", false);
             }
         }
 
@@ -549,6 +563,16 @@ public class CharacterController2D : MonoBehaviour
         {
             walkSFX.volume = 0;
         }
+
+        if (Input.touchCount == 0)
+        {
+            A = false;
+            D = false;
+            S = false;
+            W = false;
+            Spase = false;
+        }
+
 
         jump = false;
 

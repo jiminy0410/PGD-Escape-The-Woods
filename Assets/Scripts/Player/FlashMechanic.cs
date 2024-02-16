@@ -166,6 +166,7 @@ public class FlashMechanic : MonoBehaviour
             currentFlashRechargeRate = WiggleChargeMax;
             onLightning.SetActive(true);
             flashRechargeSFX.volume = 0.1f;
+            gameObject.GetComponent<CharacterController2D>().playerAnim.SetBool("Shake", true);
         }
         else
         {
@@ -173,6 +174,8 @@ public class FlashMechanic : MonoBehaviour
             currentFlashRechargeRate = standingChargeRate;
             onLightning.SetActive(false);
             flashRechargeSFX.volume = 0;
+            gameObject.GetComponent<CharacterController2D>().playerAnim.SetBool("Shake", false);
+
         }
 
 
